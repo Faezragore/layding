@@ -95,7 +95,7 @@
 
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://github.com/Faezragore/layding/blob/main/img/4.jpg') center/cover no-repeat fixed;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('img/4.jpg') center/cover no-repeat fixed;
             display: flex;
             align-items: center;
             justify-content: center;
