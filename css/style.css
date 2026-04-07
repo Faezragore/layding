@@ -401,3 +401,171 @@
                 font-size: 2rem;
             }
         }
+
+/* ========== НОВОЕ МЕНЮ С ВЫПАДАЮЩИМИ ПОДМЕНЮ ========== */
+
+/* Контейнер для меню и гамбургера */
+header .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Основное меню */
+.menu {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+}
+
+.menu a:hover {
+    color: #c7a55b;
+}
+
+/* Блок с выпадающим подменю */
+.sub_menu_block {
+    position: relative;
+}
+
+/* Само выпадающее подменю */
+.sub_menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #1a1a1a;
+    min-width: 220px;
+    padding: 10px 0;
+    border-radius: 8px;
+    z-index: 100;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.sub_menu a {
+    display: block;
+    padding: 8px 20px;
+    color: #e5e5e5;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.sub_menu a:hover {
+    background: #c7a55b;
+    color: #0a0a0a;
+}
+
+/* Показываем подменю при наведении (на компьютере) */
+@media (min-width: 769px) {
+    .sub_menu_block:hover .sub_menu {
+        display: block;
+    }
+}
+
+/* Кнопка-бургер (скрыта на компьютере) */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    transition: 0.3s;
+    border-radius: 3px;
+}
+
+/* Анимация бургера при открытии */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Мобильная версия (до 768px) */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+    
+    .menu {
+        display: none;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+        z-index: 999;
+        border-bottom: 1px solid #c7a55b;
+    }
+    
+    .menu.active {
+        display: flex;
+    }
+    
+    .sub_menu_block {
+        width: 100%;
+    }
+    
+    .sub_menu_block > a {
+        display: block;
+        padding: 10px 0;
+        font-size: 18px;
+    }
+    
+    .sub_menu {
+        position: static;
+        display: none;
+        padding-left: 20px;
+        background: transparent;
+        box-shadow: none;
+        margin-top: 5px;
+    }
+    
+    .sub_menu a {
+        padding: 8px 0 8px 15px;
+        font-size: 16px;
+    }
+    
+    .sub_menu_block.active .sub_menu {
+        display: block;
+    }
+    
+    /* Кнопка бронирования в мобильном меню */
+    .book-btn-mobile {
+        display: block;
+        background: #c7a55b;
+        color: #0a0a0a;
+        text-align: center;
+        padding: 12px;
+        border-radius: 30px;
+        margin-top: 10px;
+        font-weight: 600;
+    }
+}

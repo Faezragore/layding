@@ -106,3 +106,68 @@
     }
 
     loadEvents();
+// ========== РАБОТА НОВОГО МЕНЮ ==========
+
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.getElementById('mobile-hamburger');
+    const menu = document.getElementById('main-menu');
+    const subMenuBlocks = document.querySelectorAll('.sub_menu_block');
+    
+    // Открытие/закрытие бургер-меню
+    if (hamburger && menu) {
+        hamburger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            menu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+    }
+    
+    // Для мобильной версии: открытие подменю по клику
+    function checkMobile() {
+        if (window.innerWidth <= 768) {
+            subMenuBlocks.forEach(block => {
+                const link = block.querySelector('> a');
+                
+                // Удаляем старый обработчик, чтобы не дублировать
+                const newLink = link.cloneNode(true);
+                link.parentNode.replaceChild(newLink, link);
+                
+                newLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Закрываем все другие подменю
+                    subMenuBlocks.forEach(b => {
+                        if (b !== block) {
+                            b.classList.remove('active');
+                        }
+                    });
+                    
+                    // Открываем/закрываем текущее
+                    block.classList.toggle('active');
+                });
+            });
+        } else {
+            // На компьютере убираем классы active
+            subMenuBlocks.forEach(block => {
+                block.classList.remove('active');
+            });
+        }
+    }
+    
+    // Запускаем при загрузке и при изменении размера окна
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    // Закрываем меню при клике вне его
+    document.addEventListener('click', function(e) {
+        if (menu && hamburger) {
+            if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+                menu.classList.remove('active');
+                hamburger.classList.remove('active');
+                subMenuBlocks.forEach(block => {
+                    block.classList.remove('active');
+                });
+            }
+        }
+    });
+});
