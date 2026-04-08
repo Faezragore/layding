@@ -314,3 +314,46 @@ if (guestsSlider) {
 
 // Запуск фильтрации при загрузке страницы
 document.addEventListener('DOMContentLoaded', renderVenues);
+<<<<<<< HEAD
+
+// ========== СТРАНИЦА БАНКЕТА - ТАБЫ ==========
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Переключение табов
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    if (tabBtns.length > 0) {
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Убираем active у всех кнопок
+                tabBtns.forEach(b => b.classList.remove('active'));
+                // Добавляем текущей
+                this.classList.add('active');
+                
+                // Скрываем все табы
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Показываем нужный таб
+                const tabId = this.dataset.tab;
+                const activeTab = document.getElementById(`tab-${tabId}`);
+                if (activeTab) activeTab.classList.add('active');
+            });
+        });
+    }
+    
+    // Переключение форматов (иконки вверху)
+    const cateringIcons = document.querySelectorAll('.catering-icon');
+    if (cateringIcons.length > 0) {
+        cateringIcons.forEach(icon => {
+            icon.addEventListener('click', function() {
+                cateringIcons.forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+                // Здесь можно добавить логику перехода на другие страницы
+                // или переключение контента
+            });
+        });
+    }
+});
+=======
+>>>>>>> 24299924047f6702b6430c5e42ebcec47cc21b94

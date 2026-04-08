@@ -832,3 +832,200 @@ header .content {
         height: 200px;
     }
 }
+
+/* ========== СТРАНИЦА БАНКЕТА ========== */
+
+.banquet-section {
+    padding: 120px 5% 80px;
+    background: #0a0a0a;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Иконки форматов */
+.catering-icons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.catering-icon {
+    text-align: center;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: all 0.3s;
+}
+
+.catering-icon.active {
+    opacity: 1;
+}
+
+.catering-icon img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.catering-icon span {
+    display: block;
+    font-size: 14px;
+    color: #e5e5e5;
+}
+
+.catering-icon.active span {
+    color: #c7a55b;
+}
+
+/* Заголовок страницы */
+.page-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.page-title:after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: #c7a55b;
+    margin: 1rem auto 0;
+}
+
+/* Табы (навигация по категориям) */
+.menu-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.tab-btn {
+    padding: 10px 20px;
+    background: #1e1e1e;
+    border: none;
+    color: #e5e5e5;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 14px;
+    border-radius: 30px;
+}
+
+.tab-btn:hover {
+    background: #c7a55b;
+    color: #0a0a0a;
+}
+
+.tab-btn.active {
+    background: #c7a55b;
+    color: #0a0a0a;
+}
+
+/* Цена */
+.price-badge {
+    text-align: center;
+    background: #c7a55b;
+    color: #0a0a0a;
+    padding: 15px 30px;
+    border-radius: 60px;
+    display: inline-block;
+    margin: 0 auto 40px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.price-badge b {
+    font-size: 28px;
+}
+
+/* Контент табов */
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.tab-content.active {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    background: #141414;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.tab-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: 400px;
+}
+
+.tab-menu {
+    padding: 30px;
+}
+
+.tab-menu h2 {
+    color: #c7a55b;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-family: 'Playfair Display', serif;
+}
+
+.menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.menu-item .item-name {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.menu-item .item-desc {
+    font-size: 12px;
+    color: #888;
+    font-style: italic;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+    .tab-content.active {
+        grid-template-columns: 1fr;
+    }
+    
+    .catering-icons {
+        gap: 15px;
+    }
+    
+    .catering-icon img {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .menu-tabs {
+        gap: 8px;
+    }
+    
+    .tab-btn {
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+    
+    .page-title {
+        font-size: 1.8rem;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
