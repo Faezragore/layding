@@ -171,3 +171,146 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// ========== ПЛОЩАДКИ - ДАННЫЕ И ФИЛЬТРАЦИЯ AREAS ==========
+
+// Данные площадок (замените на свои)
+const venuesData = [
+    {
+        name: "ПРОСТРАНСТВО «AMNESIA»",
+        img: "img/venues/amnesia.jpg",
+        type: "loft",
+        capacity: 500,
+        desc: "Уникальный двухъярусный комплекс площадью 1200 кв. м. под Петербургом"
+    },
+    {
+        name: "Лофт «Пальма»",
+        img: "img/venues/palmtree.jfif",
+        type: "loft",
+        capacity: 250,
+        desc: "Старинный особняк «Пальма» — творческое пространство в самом центре Петербурга, вблизи Коломны."
+    },
+    {
+        name: "Пространство «БРУСНИЦЫН ХОЛЛ»",
+        img: "img/venues/brusnitsyn.jpg",
+        type: "loft",
+        capacity: 350,
+        desc: "Многофункциональная площадка для организации событий разного масштаба"
+    },
+    {
+        name: "Загородный клуб «Стеклянный»",
+        img: "img/venues/glass3.jpeg",
+        type: "tent",
+        capacity: 300,
+        desc: "Активный отдых и релакс в окружении природы, всего в 40 минутах езды от Санкт-Петербурга"
+    },
+    {
+        name: "Клуб загородного отдыха «Северный Берег»",
+        img: "img/venues/northernshore.jpg",
+        type: "tent",
+        capacity: 40,
+        desc: "Отдых на берегу живописного озера Хепоярви в Токсово"
+    },
+    {
+        name: "Парк «Зубровник»",
+        img: "img/venues/zubrovnik.jpg",
+        type: "tent",
+        capacity: 250,
+        desc: "Эко-парк с зубрами рядом с Петербургом"
+    },
+    {
+        name: "Крепость «Орешек»",
+        img: "img/venues/nut.jpg",
+        type: "tent",
+        capacity: 150,
+        desc: "Незабываемый квест в старинной крепости"
+    },
+    {
+        name: "Центр активного отдыха «Изумрудное озеро»",
+        img: "img/venues/emeraldlake.jpg",
+        type: "terrace",
+        capacity: 35,
+        desc: "Изумрудное озеро — центр активного отдыха, где можно провести идеальный день на природе."
+    },
+    {
+        name: "Шатёр Forest Tent",
+        img: "img/venues/tent.jpg",
+        type: "tent",
+        capacity: 150,
+        desc: "Премьер-шатёр для выездных мероприятий"
+    }
+];
+
+// DOM элементы
+const venuesGrid = document.getElementById('venuesGrid');
+const noResults = document.getElementById('noResults');
+const guestsSlider = document.getElementById('guests-slider');
+const guestsValue = document.getElementById('guests-value');
+let currentTypeFilter = 'all';
+let currentGuestsFilter = 50;
+
+// Функция отображения площадок
+function renderVenues() {
+    // Проверяем, существует ли venuesGrid
+    if (!venuesGrid) return;
+    
+    // Фильтрация
+    const filtered = venuesData.filter(venue => {
+        // Фильтр по типу
+        if (currentTypeFilter !== 'all' && venue.type !== currentTypeFilter) return false;
+        // Фильтр по количеству гостей
+        if (venue.capacity < currentGuestsFilter) return false;
+        return true;
+    });
+    
+    // Показываем сообщение, если ничего не найдено
+    if (filtered.length === 0) {
+        venuesGrid.style.display = 'none';
+        if (noResults) noResults.style.display = 'block';
+        return;
+    }
+    
+    venuesGrid.style.display = 'grid';
+    if (noResults) noResults.style.display = 'none';
+    
+    // Отображаем карточки
+    venuesGrid.innerHTML = filtered.map(venue => `
+        <div class="venue-card">
+            <div class="venue-img" style="background-image: url('${venue.img}')"></div>
+            <div class="venue-content">
+                <h3>${venue.name}</h3>
+                <div class="venue-capacity">
+                    <span>👥</span> до ${venue.capacity} гостей
+                </div>
+                <p class="venue-desc">${venue.desc}</p>
+                <button class="btn-outline" onclick="alert('Запрос на площадку «${venue.name}» отправлен. Мы свяжемся с вами!')">
+                    Запросить
+                </button>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Обработчики фильтров (проверяем, существуют ли элементы)
+const filterChips = document.querySelectorAll('.filter-chip');
+if (filterChips.length > 0) {
+    filterChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            filterChips.forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            currentTypeFilter = chip.dataset.filter;
+            renderVenues();
+        });
+    });
+}
+
+if (guestsSlider) {
+    guestsSlider.addEventListener('input', function(e) {
+        currentGuestsFilter = parseInt(e.target.value);
+        if (guestsValue) guestsValue.textContent = currentGuestsFilter;
+        renderVenues();
+    });
+}
+
+// Запуск фильтрации при загрузке страницы
+document.addEventListener('DOMContentLoaded', renderVenues);

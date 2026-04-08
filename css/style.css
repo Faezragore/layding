@@ -569,3 +569,266 @@ header .content {
         font-weight: 600;
     }
 }
+
+/* ========== ПЛОЩАДКИ - СТИЛИ AREAS ========== */
+
+.venues-section {
+    padding: 80px 5%;
+    background: #0a0a0a;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    font-family: 'Playfair Display', serif;
+    position: relative;
+}
+
+.section-title:after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: #c7a55b;
+    margin: 1rem auto 0;
+}
+
+/* Блок фильтров */
+.filters-wrapper {
+    background: #141414;
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 40px;
+}
+
+/* Чипы (фильтр по типу) */
+.filters-chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.filter-chip {
+    padding: 8px 22px;
+    background: #1e1e1e;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 14px;
+    font-weight: 500;
+    color: #e5e5e5;
+}
+
+.filter-chip:hover {
+    background: #c7a55b;
+    color: #0a0a0a;
+    transform: translateY(-2px);
+}
+
+.filter-chip.active {
+    background: #c7a55b;
+    color: #0a0a0a;
+}
+
+/* Слайдер для количества гостей */
+.filter-guests {
+    text-align: center;
+}
+
+.filter-guests label {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #e5e5e5;
+}
+
+.filter-guests span {
+    color: #c7a55b;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.filter-guests input[type="range"] {
+    width: 100%;
+    max-width: 500px;
+    height: 4px;
+    -webkit-appearance: none;
+    background: #2a2a2a;
+    border-radius: 2px;
+    margin: 10px 0;
+}
+
+.filter-guests input[type="range"]:focus {
+    outline: none;
+}
+
+.filter-guests input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #c7a55b;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.filter-guests input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+.guests-labels {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    max-width: 500px;
+    margin: 10px auto 0;
+    font-size: 12px;
+    color: #666;
+}
+
+/* Сетка площадок */
+.venues-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+/* Карточка площадки */
+.venue-card {
+    background: #141414;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeIn 0.5s ease;
+}
+
+.venue-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 30px rgba(0,0,0,0.4);
+}
+
+.venue-img {
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.venue-img::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(to top, #141414, transparent);
+}
+
+.venue-content {
+    padding: 20px;
+}
+
+.venue-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    font-family: 'Playfair Display', serif;
+}
+
+.venue-capacity {
+    color: #c7a55b;
+    font-size: 14px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.venue-desc {
+    color: #aaa;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.btn-outline {
+    display: inline-block;
+    background: transparent;
+    border: 1px solid #c7a55b;
+    color: #c7a55b;
+    padding: 8px 25px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.btn-outline:hover {
+    background: #c7a55b;
+    color: #0a0a0a;
+}
+
+/* Сообщение "ничего не найдено" */
+.no-results {
+    text-align: center;
+    padding: 60px;
+    background: #141414;
+    border-radius: 20px;
+    color: #aaa;
+    font-size: 18px;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+    .venues-section {
+        padding: 50px 5%;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .filters-chips {
+        gap: 8px;
+    }
+    
+    .filter-chip {
+        padding: 6px 16px;
+        font-size: 12px;
+    }
+    
+    .guests-labels {
+        gap: 20px;
+    }
+    
+    .venues-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .venue-img {
+        height: 200px;
+    }
+}

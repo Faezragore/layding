@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="css/style.css">
+<section id="venues" class="venues-section">
+    <div class="container">
+        <h2 class="section-title">Площадки для мероприятий</h2>
+        
+        <!-- Блок фильтров -->
+        <div class="filters-wrapper">
+            <!-- Фильтр по типу (чипы) -->
+            <div class="filters-chips">
+                <div class="filter-chip active" data-filter="all">Все</div>
+                <div class="filter-chip" data-filter="banquet">Банкетные залы</div>
+                <div class="filter-chip" data-filter="loft">Лофты</div>
+                <div class="filter-chip" data-filter="mansion">Особняки</div>
+                <div class="filter-chip" data-filter="terrace">С верандой</div>
+                <div class="filter-chip" data-filter="tent">Шатры</div>
+            </div>
+            
+            <!-- Фильтр по количеству гостей (слайдер) -->
+            <div class="filter-guests">
+                <label>Количество гостей: <span id="guests-value">50</span></label>
+                <input type="range" id="guests-slider" min="10" max="500" value="50" step="10">
+                <div class="guests-labels">
+                    <span>до 50</span>
+                    <span>100</span>
+                    <span>200</span>
+                    <span>300</span>
+                    <span>500+</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Сетка с площадками -->
+        <div class="venues-grid" id="venuesGrid"></div>
+        
+        <!-- Сообщение, если ничего не найдено -->
+        <div class="no-results" id="noResults" style="display: none;">Нет подходящих площадок</div>
+    </div>
+</section>
+<script src="js/script.js"></script>
