@@ -234,9 +234,9 @@ const venuesData = [
     },
     {
         name: "Хорошее место!",
-        img: "img/venues/tent.jpg",
+        img: "img/venues/goodplace.jpg",
         type: "tent",
-        capacity: 150,
+        capacity: 15,
         desc: "Хорошее место для хороших людей"
     }
 ];
@@ -247,7 +247,7 @@ const noResults = document.getElementById('noResults');
 const guestsSlider = document.getElementById('guests-slider');
 const guestsValue = document.getElementById('guests-value');
 let currentTypeFilter = 'all';
-let currentGuestsFilter = 50;
+let currentGuestsFilter = 10;
 
 // Функция отображения площадок
 function renderVenues() {
@@ -273,22 +273,36 @@ function renderVenues() {
     venuesGrid.style.display = 'grid';
     if (noResults) noResults.style.display = 'none';
     
-    // Отображаем карточки
-    venuesGrid.innerHTML = filtered.map(venue => `
-        <div class="venue-card">
-            <div class="venue-img" style="background-image: url('${venue.img}')"></div>
-            <div class="venue-content">
-                <h3>${venue.name}</h3>
-                <div class="venue-capacity">
-                    <span>👥</span> до ${venue.capacity} гостей
+    // ОТОБРАЖАЕМ КАРТОЧКИ С ССЫЛКАМИ
+    venuesGrid.innerHTML = filtered.map(venue => {
+        // Определяем ID для ссылки (по названию площадки)
+        let venueId = '';
+        const name = venue.name.toLowerCase();
+        if (name.includes('amnesia')) venueId = 'amnesia';
+        else if (name.includes('пальма')) venueId = 'palma';
+        else if (name.includes('брусницын')) venueId = 'brusnitsyn';
+        else if (name.includes('стеклянный')) venueId = 'glass';
+        else if (name.includes('северный берег')) venueId = 'northernshore';
+        else if (name.includes('зубровник')) venueId = 'zubrovnik';
+        else if (name.includes('орешек')) venueId = 'oreshek';
+        else if (name.includes('изумрудное')) venueId = 'emeraldlake';
+        else if (name.includes('хорошее место')) venueId = 'goodplace';
+        else venueId = 'amnesia';
+        
+        return `
+            <div class="venue-card" onclick="window.location.href='area-detail.html?id=${venueId}'" style="cursor: pointer;">
+                <div class="venue-img" style="background-image: url('${venue.img}')"></div>
+                <div class="venue-content">
+                    <h3>${venue.name}</h3>
+                    <div class="venue-capacity">
+                        <span>👥</span> до ${venue.capacity} гостей
+                    </div>
+                    <p class="venue-desc">${venue.desc}</p>
+                    <button class="btn-outline">Подробнее</button>
                 </div>
-                <p class="venue-desc">${venue.desc}</p>
-                <button class="btn-outline" onclick="alert('Запрос на площадку «${venue.name}» отправлен. Мы свяжемся с вами!')">
-                    Запросить
-                </button>
             </div>
-        </div>
-    `).join('');
+        `;
+    }).join('');
 }
 
 // Обработчики фильтров (проверяем, существуют ли элементы)

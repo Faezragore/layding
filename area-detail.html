@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Площадка | Кейтеринг Повод есть</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .venue-detail-page {
+            min-height: 100vh;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+        
+        .venue-detail-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.65);
+            z-index: 0;
+        }
+        
+        .venue-detail-page > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .detail-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 140px 5% 80px;
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #c7a55b;
+            text-decoration: none;
+            margin-bottom: 30px;
+            transition: 0.3s;
+            font-weight: 500;
+        }
+        
+        .back-btn:hover {
+            gap: 15px;
+            color: #e6c282;
+        }
+        
+        .detail-title {
+            font-size: 3rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+        
+        .badge {
+            background: rgba(199, 165, 91, 0.15);
+            border: 1px solid #c7a55b;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            color: #c7a55b;
+        }
+        
+        .detail-description {
+            background: rgba(20, 20, 20, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            line-height: 1.7;
+            color: #e5e5e5;
+        }
+        
+        .params {
+            background: rgba(20, 20, 20, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px 30px;
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+        
+        .param-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #e5e5e5;
+            font-size: 14px;
+        }
+        
+        .param-item i {
+            width: 24px;
+            color: #c7a55b;
+            font-size: 18px;
+        }
+        
+        .param-item a {
+            color: #e5e5e5;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .param-item a:hover {
+            color: #c7a55b;
+        }
+        
+        .detail-btns {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-order {
+            background: #c7a55b;
+            color: #0a0a0a;
+            padding: 14px 35px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-order:hover {
+            background: #e6c282;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .detail-title {
+                font-size: 2rem;
+            }
+            .detail-content {
+                padding: 120px 5% 60px;
+            }
+            .params {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body class="venue-detail-page" id="venuePage">
+
+<nav id="navbar">
+    <a href="index.html" class="logo">Повод <span>Есть</span></a>
+    <div class="menu-toggle" id="mobile-menu">
+        <i class="fas fa-bars"></i>
+    </div>
+    <div class="menu" id="main-menu">
+        <div class="sub_menu_block">
+            <a href="index.html#about">О нас</a>
+            <div class="sub_menu">
+                <a href="index.html#contacts">Контакты</a>
+                <a href="#actions">Акции</a>
+                <a href="#news">Новости</a>
+            </div>
+        </div>
+        <div class="sub_menu_block">
+            <a href="index.html#menu">Меню</a>
+            <div class="sub_menu">
+                <a href="#banquet">Банкет</a>
+                <a href="#reception">Фуршет</a>
+                <a href="#coffee">Вегетарианское меню</a>
+                <a href="#bbq">Барбекю</a>
+                <a href="#delivery">Премиум меню</a>
+                <a href="#retreat">Ретрит</a>
+            </div>
+        </div>
+        <div class="sub_menu_block">
+            <a href="index.html#services">Услуги</a>
+            <div class="sub_menu">
+                <a href="#consult">Консалтинг</a>
+                <a href="#decor">Декор</a>
+                <a href="#staff">Персонал</a>
+                <a href="#furniture">Мебель и оборудование</a>
+            </div>
+        </div>
+        <a href="areas.html">Площадки</a>
+        <a href="#" class="book-btn" id="openModalBtn">Заказать мероприятие</a>
+    </div>
+    <span class="hamburger" id="mobile-hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </span>
+</nav>
+
+<div class="detail-content">
+    <a href="areas.html" class="back-btn">
+        <i class="fas fa-arrow-left"></i> Назад к площадкам
+    </a>
+    
+    <h1 class="detail-title" id="venueName">Загрузка...</h1>
+    
+    <div class="badges" id="venueBadges"></div>
+    
+    <div class="detail-description" id="venueDesc">
+        <p>Загрузка информации...</p>
+    </div>
+    
+    <div class="params" id="venueParams"></div>
+    
+    <div class="detail-btns">
+        <button class="btn-order" id="orderBtn">Заказать мероприятие</button>
+    </div>
+</div>
+
+<footer>
+    <p>© 2025 Кейтеринг Повод есть. Готовим для вас.</p>
+</footer>
+
+<div id="bookingModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Заказать мероприятие</h2>
+        <form id="bookingForm">
+            <input type="text" placeholder="Имя" required>
+            <input type="tel" placeholder="Телефон" required>
+            <input type="email" placeholder="Почта">
+            <input type="date" required>
+            <select required>
+                <option value="">Вид мероприятия</option>
+                <option>Банкет</option>
+                <option>Фуршет</option>
+                <option>Барбекю</option>
+                <option>Частный шеф</option>
+            </select>
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+</div>
+
+<script src="js/script.js"></script>
+<script>
+    // Данные площадки из URL параметра
+    const urlParams = new URLSearchParams(window.location.search);
+    const venueId = urlParams.get('id') || 'amnesia';
+    
+    const venuesDetail = {
+        amnesia: {
+            name: "Пространство «AMNESIA»",
+            bg: "img/venues/amnesia2.jpg",
+            badges: ["Лофт", "до 500 человек", "Банкет", "Фуршет", "Барбекю", "Кофе-брейк"],
+            desc: "<p>Уникальный двухъярусный комплекс площадью 1200 кв. м. под Петербургом. Пространство «AMNESIA» — это современная площадка для проведения мероприятий любого формата. Интерьер выполнен в стиле лофт с элементами индустриального дизайна.</p><p style='margin-top: 15px;'>Идеально подходит для проведения корпоративов, свадеб, дней рождения, концертов и модных показов. В наличии всё необходимое оборудование, свет, звук, а также просторный паркинг для гостей.</p>",
+            address: "Ленинградская область, Всеволожский район, 12-й км КАД",
+            phone: "+7 (921) 763-81-33",
+            email: "povodest@yandex.ru",
+            website: "amnesia-spb.ru"
+        },
+        palma: {
+            name: "Лофт «Пальма»",
+            bg: "img/venues/palmtree-bg.jpg",
+            badges: ["Лофт", "до 250 человек", "Банкет", "Фуршет", "Кофе-брейк"],
+            desc: "<p>Старинный особняк «Пальма» — творческое пространство в самом центре Петербурга, вблизи Коломны. Уникальное место с исторической атмосферой и современным оснащением.</p><p style='margin-top: 15px;'>Пространство включает несколько залов разной вместимости, идеально для проведения выставок, презентаций, творческих вечеров и камерных мероприятий.</p>",
+            address: "Санкт-Петербург, центр, рядом с метро Коломна",
+            phone: "+7 (921) 763-81-33",
+            email: "povodest@yandex.ru",
+            website: "palmaloft-spb.ru"
+        },
+        brusnitsyn: {
+            name: "Пространство «БРУСНИЦЫН ХОЛЛ»",
+            bg: "img/venues/brusnitsyn-bg.jfif",
+            badges: ["Лофт", "до 350 человек", "Банкет", "Фуршет", "Барбекю", "Конференция"],
+            desc: "<p>Многофункциональная площадка для организации событий разного масштаба. Брусницын Холл — это современное пространство с панорамными окнами и видами на Неву.</p><p style='margin-top: 15px;'>Отлично подходит для проведения форумов, конференций, корпоративов и свадеб. Оснащение включает профессиональный свет, звук, сцену и всё необходимое оборудование.Банкетная рассадка - 350 чел. Фуршетная рассадка - 1000 чел.</p>",
+            address: "Санкт-Петербург, Васильевский остров",
+            phone: "+7 (921) 763-81-33",
+            email: "povodest@yandex.ru",
+            website: "brusnitsynhall-spb.ru"
+        },
+        glass: {
+            name: "Загородный клуб «Стеклянный»",
+            bg: "img/venues/glass-bg.jpg",
+            badges: ["Шатёр", "до 300 человек", "Банкет", "Барбекю", "С верандой"],
+            desc: "<p>Активный отдых и релакс в окружении природы, всего в 40 минутах езды от Санкт-Петербурга. Клуб «Стеклянный» расположен на берегу живописного озера.</p><p style='margin-top: 15px;'>Идеальное место для выездных мероприятий, корпоративов на природе, свадеб и дней рождения. На территории есть оборудованные зоны для барбекю, детская площадка, пляж.</p>",
+            address: "Ленинградская область, 40 км от СПб",
+            phone: "+7 (921) 763-81-33",
+            email: "povodest@yandex.ru",
+            website: "glassclub-spb.ru"
+        },
+        northernshore: {
+            name: "Клуб загородного отдыха «Северный Берег»",
+            bg: "img/venues/northernshore-bg.png",
+            badges: ["Шатёр", "до 40 человек", "Барбекю", "С верандой", "Баня", "С верандой"],
+            desc: "<p>Отдых на берегу живописного озера Хепоярви в Токсово. Камерное пространство для небольших мероприятий в окружении леса и воды.</p><p style='margin-top: 15px;'>Исследовать озеро и залив на лодках,сапбордах или катамаранах.Вейкбординг.Пейнтбол.Верховая езда на лошадях.Пляжный волейбол.</p>",
+            address: "Токсово, озеро Хепоярви",
+            phone: "+7 (921) 763-81-33",
+            email: "povodest@yandex.ru",
+            website: "northernshore-spb.ru"
+        },
+        zubrovnik: {
+            name: "Парк «Зубровник»",
+            bg: "img/venues/zubrovnik-bg.jfif",
+            badges: ["Шатёр", "до 250 человек", "Банкет", "Барбекю", "Эко-парк"],
+            desc: "<p>Эко-парк с зубрами рядом с Петербургом. Уникальное место, где можно совместить мероприятие с экскурсией и общением с животными.</p><p style='margin-top: 15px;'>Идеально для детских праздников, семейных мероприятий, корпоративов на природе. Есть оборудованные беседки, зоны для барбекю, детская площадка.</p>",
+            address: "Ленинградская область, Всеволожский район,Ново-Кавголовский лесопарк",
+            phone: "+7 (921) 763-81-33",
+            email: "povodest@yandex.ru",
+            website: "zubrovnik-park.ru"
+        },
+        oreshek: {
+            name: "Крепость «Орешек»",
+            bg: "img/venues/oreshek-bg.jpg",
+            badges: ["Историческая", "до 150 человек", "Банкет", "Фуршет", "Квест"],
+            desc: "<p>Незабываемый квест в старинной крепости на острове. Историческое место с уникальной атмосферой.</p><p style='margin-top: 15px;'>Отличный выбор для нестандартных мероприятий, корпоративов в стиле приключения, исторических реконструкций. Требуется предварительное согласование с администрацией музея.</p>",
+            address: "Ленинградская область, Шлиссельбург, остров Ореховый",
+            phone: "+7 (921) 763-81-33",
+            email: "povodest@yandex.ru",
+            website: "oreshek-fortress.ru"
+        },
+        emeraldlake: {
+            name: "Центр активного отдыха «Изумрудное озеро»",
+            bg: "img/venues/emeraldlake-bg.jpg",
+            badges: ["С верандой", "до 35 человек", "Активный отдых", "Барбекю"],
+            desc: "<p>Изумрудное озеро — центр активного отдыха, где можно провести идеальный день на природе. Камерное пространство для небольших компаний.</p><p style='margin-top: 15px;'>Здесь есть всё для яркого отдыха: верёвочный парк, троллей, скалодром, тир, байки и питбайки, прогулки на лошадях, лодки и катамараны, беседки у озера, уютное кафе, детские зоны и семейные мастер-классы.</p>",
+            address: "Ленинградская область, Всеволожский район, Изумрудное озеро. Широта 60°9′6″N (60.151768) Долгота 30°28′28″E (30.474564)",
+            phone: "+7 (921) 763-81-33",
+            email: "povodest@yandex.ru",
+            website: "emeraldlake-spb.ru"
+        },
+        goodplace: {
+            name: "Хорошее место!",
+            bg: "img/venues/goodplace-bg.jpg",
+            badges: ["Баня", "до 150 человек", "Банкет", "Барбекю", "Уютно"],
+            desc: "<p>Хорошее место для хороших людей. Пространство создано для тёплых встреч и душевных праздников.</p><p style='margin-top: 15px;'></p>",
+            address: "Санкт-Петербург, поселок Пушное",
+            phone: "+7 (921) 763-81-33",
+            email: "povodest@yandex.ru",
+            website: "goodplace-spb.ru"
+        }
+    };
+    
+    const venue = venuesDetail[venueId];
+    
+    if (venue) {
+        document.getElementById('venueName').textContent = venue.name;
+        document.body.style.backgroundImage = `url('${venue.bg}')`;
+        
+        const badgesHtml = venue.badges.map(b => `<span class="badge">${b}</span>`).join('');
+        document.getElementById('venueBadges').innerHTML = badgesHtml;
+        document.getElementById('venueDesc').innerHTML = venue.desc;
+        
+        document.getElementById('venueParams').innerHTML = `
+            <div class="param-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>${venue.address}</span>
+            </div>
+            <div class="param-item">
+                <i class="fas fa-phone-alt"></i>
+                <a href="tel:${venue.phone.replace(/\D/g, '')}">${venue.phone}</a>
+            </div>
+            <div class="param-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:${venue.email}">${venue.email}</a>
+            </div>
+            <div class="param-item">
+                <i class="fas fa-globe"></i>
+                <a href="#" target="_blank">${venue.website}</a>
+            </div>
+        `;
+    } else {
+        document.getElementById('venueName').textContent = 'Площадка не найдена';
+    }
+    
+    document.getElementById('orderBtn')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('bookingModal').style.display = 'flex';
+    });
+</script>
+</body>
+</html>
