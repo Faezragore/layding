@@ -314,7 +314,6 @@ if (guestsSlider) {
 
 // Запуск фильтрации при загрузке страницы
 document.addEventListener('DOMContentLoaded', renderVenues);
-<<<<<<< HEAD
 
 // ========== СТРАНИЦА БАНКЕТА - ТАБЫ ==========
 
@@ -355,5 +354,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-=======
->>>>>>> 24299924047f6702b6430c5e42ebcec47cc21b94
