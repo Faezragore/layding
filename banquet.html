@@ -1,26 +1,253 @@
-<link rel="stylesheet" href="css/style.css">
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меню банкета | Кейтеринг Повод есть</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Дополнительные стили для страницы банкета */
+        .banquet-section {
+            padding: 120px 5% 80px;
+            background: #0a0a0a;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .catering-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .catering-icon {
+            text-align: center;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: all 0.3s;
+        }
+        
+        .catering-icon.active {
+            opacity: 1;
+        }
+        
+        .catering-icon img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 8px;
+        }
+        
+        .catering-icon span {
+            display: block;
+            font-size: 12px;
+            color: #e5e5e5;
+        }
+        
+        .catering-icon.active span {
+            color: #c7a55b;
+        }
+        
+        .page-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .page-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: #c7a55b;
+            margin: 1rem auto 0;
+        }
+        
+        .menu-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .tab-btn {
+            padding: 10px 20px;
+            background: #1e1e1e;
+            border: none;
+            color: #e5e5e5;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            border-radius: 30px;
+        }
+        
+        .tab-btn:hover {
+            background: #c7a55b;
+            color: #0a0a0a;
+        }
+        
+        .tab-btn.active {
+            background: #c7a55b;
+            color: #0a0a0a;
+        }
+        
+        .price-badge {
+            text-align: center;
+            background: #c7a55b;
+            color: #0a0a0a;
+            padding: 15px 30px;
+            border-radius: 60px;
+            display: inline-block;
+            margin: 0 auto 40px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .price-badge b {
+            font-size: 28px;
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+            background: #141414;
+            border-radius: 20px;
+            padding: 30px;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .tab-menu h2 {
+            color: #c7a55b;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+        }
+        
+        .menu-items {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .menu-item {
+            padding: 12px 0;
+            border-bottom: 1px dashed #2a2a2a;
+        }
+        
+        .item-name {
+            font-weight: 500;
+            color: #e5e5e5;
+            font-size: 16px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 768px) {
+            .banquet-section {
+                padding: 100px 5% 60px;
+            }
+            .page-title {
+                font-size: 1.8rem;
+            }
+            .tab-btn {
+                padding: 6px 12px;
+                font-size: 11px;
+            }
+            .tab-menu h2 {
+                font-size: 1.4rem;
+            }
+            .item-name {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav id="navbar">
+    <a href="index.html" class="logo">Повод <span>Есть</span></a>
+    <div class="menu-toggle" id="mobile-menu">
+        <i class="fas fa-bars"></i>
+    </div>
+    <div class="menu" id="main-menu">
+        <div class="sub_menu_block">
+            <a href="index.html#about">О нас</a>
+            <div class="sub_menu">
+                <a href="index.html#contacts">Контакты</a>
+                <a href="#actions">Акции</a>
+                <a href="#news">Новости</a>
+            </div>
+        </div>
+        <div class="sub_menu_block">
+            <a href="index.html#menu">Меню</a>
+            <div class="sub_menu">
+                <a href="banquet.html">Банкет</a>
+                <a href="#reception">Фуршет</a>
+                <a href="#coffee">Вегетарианское меню</a>
+                <a href="#bbq">Барбекю</a>
+                <a href="#delivery">Премиум меню</a>
+                <a href="#retreat">Ретрит</a>
+            </div>
+        </div>
+        <div class="sub_menu_block">
+            <a href="index.html#services">Услуги</a>
+            <div class="sub_menu">
+                <a href="#consult">Консалтинг</a>
+                <a href="#decor">Декор</a>
+                <a href="#staff">Персонал</a>
+                <a href="#furniture">Мебель и оборудование</a>
+            </div>
+        </div>
+        <a href="areas.html">Площадки</a>
+        <a href="#" class="book-btn" id="openModalBtn">Заказать мероприятие</a>
+    </div>
+    <span class="hamburger" id="mobile-hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </span>
+</nav>
+
 <section id="banquet" class="banquet-section">
     <div class="container">
         
         <!-- Иконки форматов -->
         <div class="catering-icons">
-            <div class="catering-icon active">
+            <div class="catering-icon active" data-format="banquet">
                 <img src="img/icons/banquet.svg" alt="Банкет">
                 <span>Банкет</span>
             </div>
-            <div class="catering-icon">
+            <div class="catering-icon" data-format="buffet">
                 <img src="img/icons/buffet.svg" alt="Фуршет">
                 <span>Фуршет</span>
             </div>
-            <div class="catering-icon">
+            <div class="catering-icon" data-format="vegetarian">
                 <img src="img/icons/coffee.svg" alt="Вегетарианское меню">
                 <span>Вегетарианское меню</span>
             </div>
-            <div class="catering-icon">
+            <div class="catering-icon" data-format="bbq">
                 <img src="img/icons/bbq.svg" alt="Барбекю">
                 <span>Барбекю</span>
             </div>
-            <div class="catering-icon">
+            <div class="catering-icon" data-format="vip">
                 <img src="img/icons/delivery.svg" alt="VIP-меню">
                 <span>VIP-меню</span>
             </div>
@@ -30,45 +257,23 @@
         
         <!-- Навигация по категориям (ТАБЫ) -->
         <div class="menu-tabs">
-            <button class="tab-btn" data-tab="cold">Холодные закуски</button>
+            <button class="tab-btn active" data-tab="cold">Холодные закуски</button>
             <button class="tab-btn" data-tab="salads">Салаты</button>
             <button class="tab-btn" data-tab="hot">Горячие закуски</button>
             <button class="tab-btn" data-tab="main">Горячие блюда</button>
-            <button class="tab-btn" data-tab="desserts">Выпечка и десерты</button>
+            <button class="tab-btn" data-tab="garnish">Гарнир</button>
+            <button class="tab-btn" data-tab="sauce">Соус</button>
+            <button class="tab-btn" data-tab="bread">Хлебный буфет</button>
             <button class="tab-btn" data-tab="drinks">Напитки</button>
         </div>
         
         <!-- Цена -->
-        <div class="price-badge">от <b>4500 ₽</b><br>на человека</div>
-        
-        <!-- Контент табов -->
-        <div class="tab-content active" id="tab-canape">
-            <div class="tab-image">
-                <img src="img/banquet/canape.jpg" alt="Канапе">
-            </div>
-            <div class="tab-menu">
-                <h2>КАНАПЕ-WELCOME</h2>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <div class="item-name">Козий сыр с инжиром на зерновом хлебе</div>
-                        <div class="item-desc">Goat cheese with figs on whole-grain bread</div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="item-name">Сыр Бри с черным виноградом</div>
-                        <div class="item-desc">Brie cheese with black grapes</div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="item-name">Пармская ветчина с пармезаном и медовой дыней</div>
-                        <div class="item-desc">Parma ham with parmesan and honey melon</div>
-                    </div>
-                </div>
-            </div>
+        <div style="text-align: center;">
+            <div class="price-badge">от <b>3300 ₽</b><br>на человека</div>
         </div>
         
-        <div class="tab-content" id="tab-cold">
-            <div class="tab-image">
-                <img src="img/banquet/cold.jpg" alt="Холодные закуски">
-            </div>
+        <!-- ТАБ 1: Холодные закуски -->
+        <div class="tab-content active" id="tab-cold">
             <div class="tab-menu">
                 <h2>ХОЛОДНЫЕ ЗАКУСКИ</h2>
                 <div class="menu-items">
@@ -84,18 +289,188 @@
                     <div class="menu-item">
                         <div class="item-name">Сырное плато, украшено свежими фруктами, медом и орешками</div>
                     </div>
-					<div class="menu-item">
+                    <div class="menu-item">
                         <div class="item-name">Пряная сельдь с картофелем и маринованным луком</div>
                     </div>
-					<div class="menu-item">
+                    <div class="menu-item">
                         <div class="item-name">Винная закуска (пряные маслины, оливки, хлебные палочки)</div>
                     </div>
                 </div>
             </div>
         </div>
         
-        <!-- Добавьте остальные табы по аналогии -->
+        <!-- ТАБ 2: Салаты -->
+        <div class="tab-content" id="tab-salads">
+            <div class="tab-menu">
+                <h2>САЛАТЫ</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-name">Салат Цезарь с кусочками куриного шашлыка</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name">Оливье</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ТАБ 3: Горячие закуски -->
+        <div class="tab-content" id="tab-hot">
+            <div class="tab-menu">
+                <h2>ГОРЯЧИЕ ЗАКУСКИ</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-name">Грибной жульен с сыром</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name">Куриные наггетсы с соусом</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ТАБ 4: Горячие блюда -->
+        <div class="tab-content" id="tab-main">
+            <div class="tab-menu">
+                <h2>ГОРЯЧИЕ БЛЮДА</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-name">Шашлык куриный с маринованным луком</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name">Шашлык из шеи свинины с маринованным луком</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ТАБ 5: Гарнир -->
+        <div class="tab-content" id="tab-garnish">
+            <div class="tab-menu">
+                <h2>ГАРНИР</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-name">Картофель «Айдахо»</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name">Овощи гриль (баклажаны, кабачки, болгарский перец, шампиньоны)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ТАБ 6: Соус -->
+        <div class="tab-content" id="tab-sauce">
+            <div class="tab-menu">
+                <h2>СОУС</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-name">Томатный соус с пряностями</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ТАБ 7: Хлебный буфет -->
+        <div class="tab-content" id="tab-bread">
+            <div class="tab-menu">
+                <h2>ХЛЕБНЫЙ БУФЕТ</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-name">Хлебное ассорти (3 вида)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ТАБ 9: Напитки -->
+        <div class="tab-content" id="tab-drinks">
+            <div class="tab-menu">
+                <h2>НАПИТКИ</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-name">Домашний морс (клюквенный, облепиховый, черносмородиновый, имбирный)</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name">Чай чёрный и зелёный</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name">Кофе растворимый</div>
+                    </div>
+                </div>
+            </div>
+        </div>
         
     </div>
 </section>
+
+<footer>
+    <p>© 2025 Кейтеринг Повод есть. Готовим для вас.</p>
+</footer>
+
+<!-- Модальное окно -->
+<div id="bookingModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Заказать мероприятие</h2>
+        <form id="bookingForm">
+            <input type="text" placeholder="Имя" required>
+            <input type="tel" placeholder="Телефон" required>
+            <input type="email" placeholder="Почта">
+            <input type="date" required>
+            <select required>
+                <option value="">Вид мероприятия</option>
+                <option>Банкет</option>
+                <option>Фуршет</option>
+                <option>Барбекю</option>
+                <option>Частный шеф</option>
+            </select>
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+</div>
+
 <script src="js/script.js"></script>
+<script>
+    // ========== РАБОТА ТАБОВ НА СТРАНИЦЕ БАНКЕТА ==========
+    document.addEventListener('DOMContentLoaded', function() {
+        // Переключение табов
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        if (tabBtns.length > 0) {
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Убираем active у всех кнопок
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    // Добавляем текущей
+                    this.classList.add('active');
+                    
+                    // Скрываем все табы
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Показываем нужный таб
+                    const tabId = this.dataset.tab;
+                    const activeTab = document.getElementById(`tab-${tabId}`);
+                    if (activeTab) activeTab.classList.add('active');
+                });
+            });
+        }
+        
+        // Переключение форматов (иконки вверху)
+        const cateringIcons = document.querySelectorAll('.catering-icon');
+        if (cateringIcons.length > 0) {
+            cateringIcons.forEach(icon => {
+                icon.addEventListener('click', function() {
+                    cateringIcons.forEach(i => i.classList.remove('active'));
+                    this.classList.add('active');
+                    const format = this.dataset.format;
+                    // Здесь можно добавить логику переключения меню
+                    console.log('Выбран формат:', format);
+                });
+            });
+        }
+    });
+</script>
+</body>
+</html>
