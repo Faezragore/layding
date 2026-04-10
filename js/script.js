@@ -238,6 +238,13 @@ const venuesData = [
         type: "tent",
         capacity: 15,
         desc: "Хорошее место для хороших людей"
+    },
+    {
+        name: "Центра активного отдыха «Илоранта»",
+        img: "img/venues/iloranta.jpg",
+        type: "terrace",
+        capacity: 70,
+        desc: "В переводе с финского «Илоранта» означает Берег радости"
     }
 ];
 
@@ -287,6 +294,7 @@ function renderVenues() {
         else if (name.includes('орешек')) venueId = 'oreshek';
         else if (name.includes('изумрудное')) venueId = 'emeraldlake';
         else if (name.includes('хорошее место')) venueId = 'goodplace';
+		else if (name.includes('илоранта')) venueId = 'iloranta';            
         else venueId = 'amnesia';
         
         return `
