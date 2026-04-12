@@ -245,7 +245,15 @@ const venuesData = [
         type: "terrace",
         capacity: 70,
         desc: "В переводе с финского «Илоранта» означает Берег радости"
+    },
+	{
+        name: "Загородная площадка «В Кругу своих»",
+        img: "img/venues/v-krugu-svoih.jpg",
+        type: "tent",
+        capacity: 30,
+        desc: "Самые лучшие моменты своей жизни мы разделяем с близкими"
     }
+	
 ];
 
 // DOM элементы
@@ -294,7 +302,8 @@ function renderVenues() {
         else if (name.includes('орешек')) venueId = 'oreshek';
         else if (name.includes('изумрудное')) venueId = 'emeraldlake';
         else if (name.includes('хорошее место')) venueId = 'goodplace';
-		else if (name.includes('илоранта')) venueId = 'iloranta';            
+		else if (name.includes('илоранта')) venueId = 'iloranta';
+		else if (name.includes('в кругу своих')) venueId = 'v-krugu-svoih';		
         else venueId = 'amnesia';
         
         return `
