@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меню | Кейтеринг Повод есть</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .menu-detail-page {
+            min-height: 100vh;
+            background: #0a0a0a;
+        }
+        
+        .menu-detail-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 140px 5% 80px;
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #c7a55b;
+            text-decoration: none;
+            margin-bottom: 30px;
+            transition: 0.3s;
+            font-weight: 500;
+        }
+        
+        .back-btn:hover {
+            gap: 15px;
+            color: #e6c282;
+        }
+        
+        .menu-title {
+            text-align: center;
+            font-size: 3rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .menu-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: #c7a55b;
+            margin: 1rem auto 0;
+        }
+        
+        .price-badge {
+            text-align: center;
+            background: #c7a55b;
+            color: #0a0a0a;
+            padding: 12px 25px;
+            border-radius: 40px;
+            display: inline-block;
+            margin: 0 auto 40px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .price-badge b {
+            font-size: 24px;
+        }
+        
+        /* Сетка категорий меню */
+        .menu-categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+        
+        .cat-btn {
+            padding: 10px 24px;
+            background: #1e1e1e;
+            border: none;
+            color: #e5e5e5;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            border-radius: 30px;
+        }
+        
+        .cat-btn:hover, .cat-btn.active {
+            background: #c7a55b;
+            color: #0a0a0a;
+        }
+        
+        /* Контент категории */
+        .category-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        .category-content.active {
+            display: block;
+        }
+        
+        /* Карточка блюда с картинкой */
+        .dish-card {
+            display: flex;
+            gap: 25px;
+            background: #141414;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .dish-card:hover {
+            transform: translateX(5px);
+        }
+        
+        .dish-img {
+            width: 120px;
+            height: 120px;
+            flex-shrink: 0;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .dish-info {
+            padding: 15px 20px 15px 0;
+            flex: 1;
+        }
+        
+        .dish-name {
+            font-weight: 600;
+            font-size: 18px;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        
+        .dish-desc {
+            font-size: 13px;
+            color: #888;
+            line-height: 1.5;
+        }
+        
+        /* Для категорий без картинок (простой список) */
+        .simple-menu-items {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .simple-item {
+            padding: 12px 0;
+            border-bottom: 1px dashed #2a2a2a;
+        }
+        
+        .simple-item-name {
+            font-weight: 500;
+            color: #e5e5e5;
+            font-size: 16px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-detail-content {
+                padding: 100px 5% 60px;
+            }
+            .menu-title {
+                font-size: 2rem;
+            }
+            .dish-card {
+                flex-direction: column;
+                gap: 0;
+            }
+            .dish-img {
+                width: 100%;
+                height: 180px;
+            }
+            .dish-info {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body class="menu-detail-page">
+
+<nav id="navbar">
+    <a href="index.html" class="logo">Повод <span>Есть</span></a>
+    <div class="menu-toggle" id="mobile-menu">
+        <i class="fas fa-bars"></i>
+    </div>
+    <div class="menu" id="main-menu">
+        <div class="sub_menu_block">
+            <a href="index.html#about">О нас</a>
+            <div class="sub_menu">
+                <a href="index.html#contacts">Контакты</a>
+                <a href="#actions">Акции</a>
+                <a href="#news">Новости</a>
+            </div>
+        </div>
+        <div class="sub_menu_block">
+            <a href="index.html#menu">Меню</a>
+            <div class="sub_menu">
+                <a href="menu-detail.html?id=banquet">Банкет</a>
+                <a href="menu-detail.html?id=buffet">Фуршет</a>
+                <a href="menu-detail.html?id=vegetarian">Вегетарианское меню</a>
+                <a href="menu-detail.html?id=bbq">Барбекю</a>
+                <a href="menu-detail.html?id=premium">Премиум меню</a>
+                <a href="menu-detail.html?id=retreat">Ретрит</a>
+            </div>
+        </div>
+        <div class="sub_menu_block">
+            <a href="index.html#services">Услуги</a>
+            <div class="sub_menu">
+                <a href="#consult">Консалтинг</a>
+                <a href="#decor">Декор</a>
+                <a href="#staff">Персонал</a>
+                <a href="#furniture">Мебель и оборудование</a>
+            </div>
+        </div>
+        <a href="areas.html">Площадки</a>
+        <a href="#" class="book-btn" id="openModalBtn">Заказать мероприятие</a>
+    </div>
+    <span class="hamburger" id="mobile-hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </span>
+</nav>
+
+<div class="menu-detail-content">
+    <a href="index.html#menu" class="back-btn">
+        <i class="fas fa-arrow-left"></i> Назад к меню
+    </a>
+    
+    <h1 class="menu-title" id="menuTitle">Загрузка...</h1>
+    
+    <div style="text-align: center;">
+        <div class="price-badge" id="priceBadge">от <b>0 ₽</b><br>на человека</div>
+    </div>
+    
+    <!-- Кнопки категорий -->
+    <div class="menu-categories" id="categoriesContainer"></div>
+    
+    <!-- Контейнер для контента категорий -->
+    <div id="categoriesContent"></div>
+</div>
+
+<footer>
+    <p>© 2025 Кейтеринг Повод есть. Готовим для вас.</p>
+</footer>
+
+<div id="bookingModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Заказать мероприятие</h2>
+        <form id="bookingForm">
+            <input type="text" placeholder="Имя" required>
+            <input type="tel" placeholder="Телефон" required>
+            <input type="email" placeholder="Почта">
+            <input type="date" required>
+            <select required>
+                <option value="">Вид мероприятия</option>
+                <option>Банкет</option>
+                <option>Фуршет</option>
+                <option>Барбекю</option>
+                <option>Частный шеф</option>
+            </select>
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+</div>
+
+<script src="js/script.js"></script>
+<script>
+    // Данные меню
+    const menusData = {
+        banquet: {
+            name: "Банкет",
+            price: "3300",
+            categories: {
+                cold: { name: "Холодные закуски", type: "simple",
+                    items: [
+                        "Ассорти свежих овощей с зелёным маслом",
+                        "Ассорти солений и маринадов",
+                        "Мясное плато",
+                        "Сырное плато",
+                        "Пряная сельдь с картофелем",
+                        "Винная закуска (маслины, оливки)"
+                    ]
+                },
+                salads: { name: "Салаты", type: "simple",
+                    items: ["Салат Цезарь с куриным шашлыком", "Оливье"]
+                },
+                hot: { name: "Горячие закуски", type: "dish",
+                    items: [
+                        { name: "Грибной жульен с сыром", img: "img/menu/julien.jpg", desc: "Нежные грибы в сливочном соусе под сырной корочкой" },
+                        { name: "Куриные наггетсы с соусом", img: "img/menu/nuggets.jpg", desc: "Хрустящие кусочки куриного филе" }
+                    ]
+                },
+                main: { name: "Горячие блюда", type: "dish",
+                    items: [
+                        { name: "Шашлык куриный", img: "img/menu/chicken-shashlik.jpg", desc: "С маринованным луком" },
+                        { name: "Шашлык из шеи свинины", img: "img/menu/pork-shashlik.jpg", desc: "С маринованным луком" }
+                    ]
+                },
+                garnish: { name: "Гарнир", type: "simple",
+                    items: ["Картофель «Айдахо»", "Овощи гриль"]
+                },
+                sauce: { name: "Соус", type: "simple",
+                    items: ["Томатный соус с пряностями"]
+                },
+                bread: { name: "Хлебный буфет", type: "simple",
+                    items: ["Хлебное ассорти (3 вида)"]
+                },
+                drinks: { name: "Напитки", type: "simple",
+                    items: ["Домашний морс (4 вида)", "Чай чёрный и зелёный", "Кофе растворимый"]
+                }
+            }
+        },
+        buffet: {
+            name: "Фуршет",
+            price: "По договоренности",
+            categories: {
+                cold: { name: "Холодные закуски", type: "simple",
+                    items: [
+                        "Ассорти свежих овощей с зелёным маслом",
+                        "Сырное плато, украшено свежими фруктами, медом и орешками",
+                        "Мясное плато, декорировано маринованным огурчиком, томатами черри и свежей зеленью",
+                        "Брускетта с красной икрой и сливочным сыром",
+                        "Рулетики из ветчины с сырной начинкой",  
+                        "Капрезе (томаты с моцареллой и рукколой)",
+                        "Брускетта с бужениной/ бастурмой/ индейкой",
+                        "Мидия запеченная под пармезаном",
+                        "Ролл из красной рыбы с кукурузой",
+                        "Ролл из огурца с сырным муссом и орехами",
+                        "Анти-паста (пармезан, оливки, пармская ветчина, вяленые томаты, артишоки, фокаччо)",
+                        "Овощное канапе",
+                        "Тарталетка с греческим салатом",
+                        "Тарталетка с салатом цезарь",
+                        "Тар-тар из лосося в тарталетке",
+                        "Тарталетка с салатом из авокадо и креветками",
+                        "Тарталетка с икрой",
+                        "Тарталетка с столичным салатом",
+                        "Винная закуска (пряные маслины, оливки, хлебные палочки)",
+                        "Фруктовое ассорти"  
+                    ]
+                },
+                hot: { name: "Горячие закуски", type: "dish",
+                    items: [
+                        { name: "Жульен с курой и грибами в тарталетке", img: "img/menu/julien.jpg", desc: "" },
+                        { name: "Шашлычок овощной (шампиньон, кабачок, паприка, томат)", img: "img/menu/julien.jpg", desc: "" },
+                        { name: "Шашлычок из свинины на шпажке", img: "img/menu/julien.jpg", desc: "" },
+                        { name: "Шашлычок из курицы на шпажке", img: "img/menu/julien.jpg", desc: "" },
+                        { name: "Шашлычок из тигровых креветок", img: "img/menu/julien.jpg", desc: "" }						
+                    ]
+                }
+            }
+        },
+        vegetarian: {
+            name: "Вегетарианское меню",
+            price: "2800",
+            categories: {
+                cold: { name: "Холодные закуски", type: "simple",
+                    items: ["Овощные роллы", "Гуакамоле с тортильей", "Фалафель", "Табуле"]
+                },
+                hot: { name: "Горячие блюда", type: "simple",
+                    items: ["Рататуй", "Запечённые овощи с тофу", "Грибной жульен (веган)"]
+                },
+                salads: { name: "Салаты", type: "simple",
+                    items: ["Греческий салат", "Салат с киноа и авокадо", "Цезарь без курицы"]
+                }
+            }
+        },
+        bbq: {
+            name: "Барбекю",
+            price: "2400",
+            categories: {
+                cold: { name: "Холодные закуски", type: "simple",
+                    items: [
+                        "Ассорти свежих овощей с зелёным маслом",
+                        "Ассорти солений и маринадов",
+                        "Ветчинные рулетики с сыром"
+                    ]
+                },
+                salads: { name: "Салаты", type: "simple",
+                    items: ["Салат Цезарь с пряной курицей", "Греческий салат с фетой и оливками", "Салат из свежих помидоров с базиликом и моцареллой", "Фруктовый салат"]
+                },
+                main: { name: "Горячие блюда", type: "dish",
+                    items: [
+                        { name: "Медальон", img: "img/menu/chicken-shashlik.jpg", desc: "из куриной грудки" },
+                        { name: "Шашлык из куриный", img: "img/menu/pork-shashlik.jpg", desc: "С маринованным луком" },
+						{ name: "Шашлык из шеи свинины", img: "img/menu/pork-shashlik.jpg", desc: "С маринованным луком" },
+						{ name: "Шашлык из баранины", img: "img/menu/pork-shashlik.jpg", desc: "С маринованным луком" },
+						{ name: "Куриные крылышки", img: "img/menu/pork-shashlik.jpg", desc: "запеченные на гриле в соусе BBQ" },
+						{ name: "Куриные колбаски", img: "img/menu/pork-shashlik.jpg", desc: "на гриле" },
+						{ name: "Рыба на гриле", img: "img/menu/pork-shashlik.jpg", desc: "лосось или форель" },
+						{ name: "Шашлык из креветок", img: "img/menu/pork-shashlik.jpg", desc: "с чесноком и лимоном" }
+                    ]
+                },
+                garnish: { name: "Гарнир", type: "simple",
+                    items: ["Картофель «Айдахо»", "Овощи гриль"]
+                },
+                sauce: { name: "Соус", type: "simple",
+                    items: ["Томатный соус с пряностями", "Домашняя аджика", "Соус BBQ", "Сметанно-чесночный соус"]
+                },
+                bread: { name: "Хлебный буфет", type: "simple",
+                    items: ["Хлебное ассорти (3 вида)"]
+                },
+                drinks: { name: "Напитки", type: "simple",
+                    items: ["Домашний морс", "Лимонад на выбор (классический мохито, цитрусовый лимонад с апельсином)"]
+                }
+            }
+        },
+        retreat: {
+            name: "Ретрит",
+            price: "4000",
+            categories: {
+                breakfast: { name: "Здоровый завтрак", type: "simple",
+                    items: ["Гранола с ягодами", "Смузи-боул", "Овсяная каша с фруктами", "Зелёный смузи"]
+                },
+                lunch: { name: "Обед", type: "simple",
+                    items: ["Салат с киноа", "Тыквенный суп", "Запечённый лосось с овощами"]
+                },
+                dinner: { name: "Ужин", type: "simple",
+                    items: ["Вегетарианское рагу", "Салат из свежих овощей", "Чай с травами"]
+                }
+            }
+        }
+    };
+    
+    // Получаем id из URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const menuId = urlParams.get('id') || 'banquet';
+    const menu = menusData[menuId];
+    
+    if (menu) {
+        // Устанавливаем заголовок и цену
+        document.getElementById('menuTitle').textContent = menu.name;
+        document.getElementById('priceBadge').innerHTML = `от <b>${menu.price} ₽</b><br>на человека`;
+        
+        // Создаём кнопки категорий
+        const categories = menu.categories;
+        const catNames = Object.keys(categories);
+        const categoriesContainer = document.getElementById('categoriesContainer');
+        const categoriesContent = document.getElementById('categoriesContent');
+        
+        // Генерируем кнопки
+        categoriesContainer.innerHTML = catNames.map((key, index) => 
+            `<button class="cat-btn ${index === 0 ? 'active' : ''}" data-cat="${key}">${categories[key].name}</button>`
+        ).join('');
+        
+        // Генерируем контент категорий
+        categoriesContent.innerHTML = catNames.map((key, index) => {
+            const cat = categories[key];
+            let itemsHtml = '';
+            
+            if (cat.type === 'dish') {
+                itemsHtml = cat.items.map(item => `
+                    <div class="dish-card">
+                        <div class="dish-img" style="background-image: url('${item.img}')"></div>
+                        <div class="dish-info">
+                            <div class="dish-name">${item.name}</div>
+                            <div class="dish-desc">${item.desc}</div>
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                itemsHtml = `
+                    <div class="simple-menu-items">
+                        ${cat.items.map(item => `
+                            <div class="simple-item">
+                                <div class="simple-item-name">${item}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            }
+            
+            return `<div class="category-content ${index === 0 ? 'active' : ''}" id="cat-${key}">${itemsHtml}</div>`;
+        }).join('');
+        
+        // Обработчики переключения категорий
+        document.querySelectorAll('.cat-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const catId = this.dataset.cat;
+                document.querySelectorAll('.category-content').forEach(content => content.classList.remove('active'));
+                document.getElementById(`cat-${catId}`).classList.add('active');
+            });
+        });
+    } else {
+        document.getElementById('menuTitle').textContent = 'Меню не найдено';
+    }
+    
+    // Обработчик модального окна
+    document.getElementById('orderBtn')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('bookingModal').style.display = 'flex';
+    });
+</script>
+</body>
+</html>
