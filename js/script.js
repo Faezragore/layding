@@ -385,3 +385,86 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// ========== МОБИЛЬНОЕ МЕНЮ (БУРГЕР) ==========
+document.addEventListener('DOMContentLoaded', function() {
+    // Находим элементы
+    const hamburger = document.querySelector('.hamburger');
+    const mainMenu = document.querySelector('.menu');
+    
+    console.log('Бургер найден:', hamburger);
+    console.log('Меню найдено:', mainMenu);
+    
+    // Если бургер и меню существуют
+    if (hamburger && mainMenu) {
+        // Открытие/закрытие меню при клике на бургер
+        hamburger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            mainMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            console.log('Меню активность:', mainMenu.classList.contains('active'));
+        });
+        
+        // Закрываем меню при клике на ссылку внутри меню
+        const menuLinks = mainMenu.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mainMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+        
+        // Закрываем меню при клике вне его
+        document.addEventListener('click', function(e) {
+            if (!mainMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                mainMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        });
+    }
+    
+    // Для мобильных подменю (всплывающие меню внутри бургера)
+    const subMenuBlocks = document.querySelectorAll('.sub_menu_block');
+    
+    function initMobileSubmenus() {
+        if (window.innerWidth <= 768) {
+            subMenuBlocks.forEach(block => {
+                const link = block.querySelector('> a');
+                if (!link.hasAttribute('data-mobile-handler')) {
+                    link.setAttribute('data-mobile-handler', 'true');
+                    
+                    // Сохраняем оригинальный href
+                    const originalHref = link.getAttribute('href');
+                    
+                    link.addEventListener('click', function(e) {
+                        // Если подменю существует
+                        const subMenu = block.querySelector('.sub_menu');
+                        if (subMenu && subMenu.children.length > 0) {
+                            e.preventDefault();
+                            
+                            // Закрываем все другие подменю
+                            subMenuBlocks.forEach(b => {
+                                if (b !== block) {
+                                    b.classList.remove('active');
+                                }
+                            });
+                            
+                            // Открываем/закрываем текущее
+                            block.classList.toggle('active');
+                        }
+                        // Если нет подменю, просто переходим по ссылке
+                    });
+                }
+            });
+        } else {
+            // На компьютере убираем активные классы
+            subMenuBlocks.forEach(block => {
+                block.classList.remove('active');
+            });
+        }
+    }
+    
+    // Запускаем при загрузке и при изменении размера окна
+    initMobileSubmenus();
+    window.addEventListener('resize', initMobileSubmenus);
+});
