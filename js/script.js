@@ -468,3 +468,33 @@ document.addEventListener('DOMContentLoaded', function() {
     initMobileSubmenus();
     window.addEventListener('resize', initMobileSubmenus);
 });
+
+// ========== БУРГЕР-МЕНЮ ДЛЯ ТЕЛЕФОНОВ ==========
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const menu = document.querySelector('.menu');
+    
+    if (hamburger && menu) {
+        hamburger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            menu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+        
+        // Закрываем меню при клике на ссылку
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                menu.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+        
+        // Закрываем меню при клике вне его
+        document.addEventListener('click', function(e) {
+            if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+                menu.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        });
+    }
+});

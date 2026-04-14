@@ -1099,3 +1099,180 @@ header .content {
     margin: 10px 0 5px;
     letter-spacing: 1px;
 }
+
+/* ========== АДАПТИВ ДЛЯ ТЕЛЕФОНОВ ========== */
+
+/* Планшеты и маленькие ноутбуки (до 992px) */
+@media (max-width: 992px) {
+    .container {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+/* Телефоны (до 768px) */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    
+    /* Шапка и меню */
+    nav {
+        padding: 1rem 5%;
+    }
+    
+    .logo {
+        font-size: 1.3rem;
+    }
+    
+    .hamburger {
+        display: flex !important;
+    }
+    
+    .menu {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+        z-index: 1000;
+    }
+    
+    .menu.active {
+        display: flex;
+    }
+    
+    .menu a {
+        font-size: 18px;
+        padding: 10px 0;
+    }
+    
+    /* Герой-секция */
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .cta-button {
+        padding: 0.8rem 1.8rem;
+        font-size: 0.9rem;
+    }
+    
+    /* Секции */
+    section {
+        padding: 3rem 5%;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    /* Сетка меню */
+    .menu-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    /* Галерея */
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .gallery-item {
+        height: 220px;
+    }
+    
+    /* Контакты */
+    .contacts-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    /* Модальное окно */
+    .modal-content {
+        width: 95%;
+        padding: 1.5rem;
+    }
+    
+    /* Фильтры площадок */
+    .filters-wrapper {
+        padding: 15px;
+    }
+    
+    .filters-chips {
+        gap: 8px;
+    }
+    
+    .filter-chip {
+        padding: 6px 14px;
+        font-size: 12px;
+    }
+    
+    .filter-guests input[type="range"] {
+        width: 100%;
+    }
+    
+    .guests-labels {
+        gap: 15px;
+        font-size: 10px;
+    }
+    
+    /* Карточки площадок */
+    .venues-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .venue-card {
+        max-width: 100%;
+    }
+    
+    /* Преимущества */
+    .bm_items {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    /* Футер */
+    footer {
+        padding: 1.5rem;
+        font-size: 12px;
+    }
+}
+
+/* Маленькие телефоны (до 480px) */
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 1.6rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .filter-chip {
+        padding: 5px 12px;
+        font-size: 11px;
+    }
+    
+    .venue-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .bm_items {
+        grid-template-columns: 1fr;
+    }
+}
