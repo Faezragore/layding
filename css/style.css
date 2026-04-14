@@ -1079,3 +1079,23 @@ header .content {
         transform: rotate(-45deg) translate(7px, -6px);
     }
 }
+
+.simple-item strong {
+    color: #c7a55b;
+    font-size: 18px;
+    display: block;
+    margin-top: 10px;
+}
+
+/* Стили для разделителей в меню */
+.simple-item:has(strong) {
+    margin-top: 15px;
+}
+
+.simple-item-name strong {
+    color: #c7a55b;
+    font-size: 18px;
+    display: block;
+    margin: 10px 0 5px;
+    letter-spacing: 1px;
+}
