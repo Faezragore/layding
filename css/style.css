@@ -1314,3 +1314,84 @@ header .content {
         color: #c7a55b;
     }
 }
+
+/* ========== ИКОНКИ МЕНЮ НА ГЛАВНОЙ ========== */
+.menu-icons-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.menu-icon-item {
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 0.8;
+    width: 100px;
+}
+
+.menu-icon-item:hover {
+    transform: translateY(-5px);
+    opacity: 1;
+}
+
+.menu-icon-item img {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 10px;
+    filter: brightness(0) invert(1);
+    transition: 0.3s;
+}
+
+.menu-icon-item:hover img {
+    filter: brightness(0) invert(0.8) sepia(1) hue-rotate(320deg) saturate(5);
+}
+
+.menu-icon-item span {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #e5e5e5;
+}
+
+@media (max-width: 768px) {
+    .menu-icons-grid {
+        gap: 20px;
+    }
+    .menu-icon-item {
+        width: 80px;
+    }
+    .menu-icon-item img {
+        width: 50px;
+        height: 50px;
+    }
+    .menu-icon-item span {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-icons-grid {
+        gap: 15px;
+    }
+    .menu-icon-item {
+        width: 70px;
+    }
+    .menu-icon-item img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.emoji-icon {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .emoji-icon {
+        font-size: 35px;
+    }
+}

@@ -511,14 +511,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 const link = block.querySelector('> a');
                 const subMenu = block.querySelector('.sub_menu');
                 
-                // Проверяем, есть ли подменю
+                // Проверяем, есть ли подменю и есть ли у ссылки href не javascript:void(0)
                 if (subMenu && subMenu.children.length > 0) {
-                    // Убираем стандартное поведение ссылки
-                    link.removeEventListener('click', link.clickHandler);
+                    // Убираем старый обработчик, если есть
+                    const oldLink = link;
+                    const newLink = oldLink.cloneNode(true);
+                    oldLink.parentNode.replaceChild(newLink, oldLink);
                     
                     // Добавляем новый обработчик
-                    link.clickHandler = function(e) {
+                    newLink.addEventListener('click', function(e) {
                         e.preventDefault();
+                        e.stopPropagation();
                         
                         // Закрываем все другие подменю
                         subMenuBlocks.forEach(b => {
@@ -529,9 +532,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         
                         // Открываем/закрываем текущее
                         block.classList.toggle('active');
-                    };
-                    
-                    link.addEventListener('click', link.clickHandler);
+                    });
                 }
             });
         } else {
