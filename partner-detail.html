@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Партнёр | Кейтеринг Повод есть</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .partner-detail-page {
+            min-height: 100vh;
+            background: #0a0a0a;
+        }
+        
+        .partner-detail-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 140px 5% 80px;
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #c7a55b;
+            text-decoration: none;
+            margin-bottom: 30px;
+            transition: 0.3s;
+            font-weight: 500;
+        }
+        
+        .back-btn:hover {
+            gap: 15px;
+            color: #e6c282;
+        }
+        
+        .partner-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            background: #141414;
+            border-radius: 30px;
+            overflow: hidden;
+        }
+        
+        .partner-detail-img {
+            height: 100%;
+            min-height: 400px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .partner-detail-info {
+            padding: 40px;
+        }
+        
+        .partner-detail-title {
+            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .partner-detail-desc {
+            color: #e5e5e5;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+        
+        .partner-params {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding: 20px 0;
+            border-top: 1px solid #2a2a2a;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        
+        .partner-param {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #e5e5e5;
+            font-size: 15px;
+        }
+        
+        .partner-param i {
+            width: 24px;
+            color: #c7a55b;
+            font-size: 18px;
+        }
+        
+        .partner-param a {
+            color: #e5e5e5;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .partner-param a:hover {
+            color: #c7a55b;
+        }
+        
+        .btn-order {
+            background: #c7a55b;
+            color: #0a0a0a;
+            padding: 14px 35px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-order:hover {
+            background: #e6c282;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .partner-detail-content {
+                padding: 100px 5% 60px;
+            }
+            .partner-detail-grid {
+                grid-template-columns: 1fr;
+            }
+            .partner-detail-img {
+                min-height: 250px;
+            }
+            .partner-detail-info {
+                padding: 25px;
+            }
+            .partner-detail-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body class="partner-detail-page">
+
+<nav id="navbar">
+    <a href="index.html" class="logo">Повод <span>Есть</span></a>
+    <div class="menu-toggle" id="mobile-menu">
+        <i class="fas fa-bars"></i>
+    </div>
+    <div class="menu" id="main-menu">
+        <div class="sub_menu_block">
+            <a href="index.html#about">О нас</a>
+            <div class="sub_menu">
+                <a href="index.html#contacts">Контакты</a>
+                <a href="#actions">Акции</a>
+                <a href="#news">Новости</a>
+            </div>
+        </div>
+        <div class="sub_menu_block">
+            <a href="index.html#menu">Меню</a>
+            <div class="sub_menu">
+                <a href="menu-detail.html?id=banquet">Банкет</a>
+                <a href="menu-detail.html?id=buffet">Фуршет</a>
+                <a href="menu-detail.html?id=vegetarian">Вегетарианское меню</a>
+                <a href="menu-detail.html?id=bbq">Барбекю</a>
+                <a href="menu-detail.html?id=premium">Премиум меню</a>
+                <a href="menu-detail.html?id=retreat">Ретрит</a>
+                <a href="menu-detail.html?id=retreatpp">Ретрит ПП</a>
+            </div>
+        </div>
+        <div class="sub_menu_block">
+            <a href="index.html#services">Услуги</a>
+            <div class="sub_menu">
+                <a href="#consult">Консалтинг</a>
+                <a href="#decor">Декор</a>
+                <a href="#staff">Персонал</a>
+                <a href="#furniture">Мебель и оборудование</a>
+            </div>
+        </div>
+        <a href="areas.html">Площадки</a>
+        <a href="partners.html">Партнёры</a>
+        <a href="#" class="book-btn" id="openModalBtn">Заказать мероприятие</a>
+    </div>
+    <span class="hamburger" id="mobile-hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </span>
+</nav>
+
+<div class="partner-detail-content">
+    <a href="partners.html" class="back-btn">
+        <i class="fas fa-arrow-left"></i> Назад к партнёрам
+    </a>
+    
+    <div id="partnerContent">Загрузка...</div>
+</div>
+
+<footer>
+    <p>© 2025 Кейтеринг Повод есть. Готовим для вас.</p>
+</footer>
+
+<div id="bookingModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Заказать мероприятие</h2>
+        <form id="bookingForm">
+            <input type="text" placeholder="Имя" required>
+            <input type="tel" placeholder="Телефон" required>
+            <input type="email" placeholder="Почта">
+            <input type="date" required>
+            <select required>
+                <option value="">Вид мероприятия</option>
+                <option>Банкет</option>
+                <option>Фуршет</option>
+                <option>Барбекю</option>
+                <option>Частный шеф</option>
+            </select>
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+</div>
+
+<script src="js/script.js"></script>
+<script>
+    // Данные партнёров (полные)
+    const partnersDetail = {
+        partner1: {
+            name: "Название партнёра 1",
+            img: "img/partners/partner1.jpg",
+            fullDesc: "<p>Полное описание партнёра. Здесь можно рассказать подробнее о компании, её услугах и преимуществах сотрудничества. Например: компания работает на рынке более 10 лет, предоставляет высококачественные услуги, имеет отличные отзывы и т.д.</p><p>Можно добавить несколько абзацев текста, чтобы подробно описать все преимущества работы с этим партнёром.</p>",
+            address: "Санкт-Петербург, ул. Примерная, д. 1",
+            phone: "+7 (921) 763-81-33",
+            email: "partner1@example.ru",
+            website: "partner1.ru"
+        },
+        partner2: {
+            name: "Название партнёра 2",
+            img: "img/partners/partner2.jpg",
+            fullDesc: "<p>Полное описание второго партнёра. Подробная информация о компании и условиях сотрудничества. Здесь можно рассказать о преимуществах, скидках для клиентов, особенностях работы и т.д.</p>",
+            address: "Санкт-Петербург, ул. Вторая, д. 10",
+            phone: "+7 (921) 763-81-33",
+            email: "partner2@example.ru",
+            website: "partner2.ru"
+        }
+    };
+    
+    // Получаем id из URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const partnerId = urlParams.get('id') || 'partner1';
+    const partner = partnersDetail[partnerId];
+    
+    const contentDiv = document.getElementById('partnerContent');
+    
+    if (partner) {
+        contentDiv.innerHTML = `
+            <div class="partner-detail-grid">
+                <div class="partner-detail-img" style="background-image: url('${partner.img}')"></div>
+                <div class="partner-detail-info">
+                    <h1 class="partner-detail-title">${partner.name}</h1>
+                    <div class="partner-detail-desc">${partner.fullDesc}</div>
+                    <div class="partner-params">
+                        <div class="partner-param">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>${partner.address}</span>
+                        </div>
+                        <div class="partner-param">
+                            <i class="fas fa-phone-alt"></i>
+                            <a href="tel:${partner.phone.replace(/\D/g, '')}">${partner.phone}</a>
+                        </div>
+                        <div class="partner-param">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:${partner.email}">${partner.email}</a>
+                        </div>
+                        <div class="partner-param">
+                            <i class="fas fa-globe"></i>
+                            <a href="#" target="_blank">${partner.website}</a>
+                        </div>
+                    </div>
+                    <button class="btn-order" id="orderBtn">Заказать мероприятие</button>
+                </div>
+            </div>
+        `;
+    } else {
+        contentDiv.innerHTML = '<p style="color:white; text-align:center;">Партнёр не найден</p>';
+    }
+    
+    // Обработчик кнопки заказа
+    document.getElementById('orderBtn')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('bookingModal').style.display = 'flex';
+    });
+</script>
+</body>
+</html>

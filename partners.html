@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Партнёры | Кейтеринг Повод есть</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Дополнительные стили для страницы партнёров */
+        .partners-section {
+            padding: 140px 5% 80px;
+            background: #0a0a0a;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: #c7a55b;
+            margin: 1rem auto 0;
+        }
+        
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+        }
+        
+        .partner-card {
+            background: #141414;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .partner-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.4);
+        }
+        
+        .partner-img {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .partner-img::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(to top, #141414, transparent);
+        }
+        
+        .partner-content {
+            padding: 20px;
+        }
+        
+        .partner-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+            color: #fff;
+        }
+        
+        .partner-desc {
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            border: 1px solid #c7a55b;
+            color: #c7a55b;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .btn-outline:hover {
+            background: #c7a55b;
+            color: #0a0a0a;
+        }
+        
+        @media (max-width: 768px) {
+            .partners-section {
+                padding: 100px 5% 60px;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .partners-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            .partner-img {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav id="navbar">
+    <a href="index.html" class="logo">Повод <span>Есть</span></a>
+    <div class="menu-toggle" id="mobile-menu">
+        <i class="fas fa-bars"></i>
+    </div>
+    <div class="menu" id="main-menu">
+        <div class="sub_menu_block">
+            <a href="index.html#about">О нас</a>
+            <div class="sub_menu">
+                <a href="index.html#contacts">Контакты</a>
+                <a href="#actions">Акции</a>
+                <a href="#news">Новости</a>
+            </div>
+        </div>
+        <div class="sub_menu_block">
+            <a href="index.html#menu">Меню</a>
+            <div class="sub_menu">
+                <a href="menu-detail.html?id=banquet">Банкет</a>
+                <a href="menu-detail.html?id=buffet">Фуршет</a>
+                <a href="menu-detail.html?id=vegetarian">Вегетарианское меню</a>
+                <a href="menu-detail.html?id=bbq">Барбекю</a>
+                <a href="menu-detail.html?id=premium">Премиум меню</a>
+                <a href="menu-detail.html?id=retreat">Ретрит</a>
+                <a href="menu-detail.html?id=retreatpp">Ретрит ПП</a>
+            </div>
+        </div>
+        <div class="sub_menu_block">
+            <a href="index.html#services">Услуги</a>
+            <div class="sub_menu">
+                <a href="#consult">Консалтинг</a>
+                <a href="#decor">Декор</a>
+                <a href="#staff">Персонал</a>
+                <a href="#furniture">Мебель и оборудование</a>
+            </div>
+        </div>
+        <a href="areas.html">Площадки</a>
+        <a href="partners.html">Партнёры</a>
+        <a href="#" class="book-btn" id="openModalBtn">Заказать мероприятие</a>
+    </div>
+    <span class="hamburger" id="mobile-hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </span>
+</nav>
+
+<section class="partners-section">
+    <div class="container">
+        <h2 class="section-title">Наши партнёры</h2>
+        <div class="partners-grid" id="partnersGrid"></div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2025 Кейтеринг Повод есть. Готовим для вас.</p>
+</footer>
+
+<div id="bookingModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Заказать мероприятие</h2>
+        <form id="bookingForm">
+            <input type="text" placeholder="Имя" required>
+            <input type="tel" placeholder="Телефон" required>
+            <input type="email" placeholder="Почта">
+            <input type="date" required>
+            <select required>
+                <option value="">Вид мероприятия</option>
+                <option>Банкет</option>
+                <option>Фуршет</option>
+                <option>Барбекю</option>
+                <option>Частный шеф</option>
+            </select>
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+</div>
+
+<script src="js/script.js"></script>
+<script>
+    // Данные партнёров
+    const partnersData = [
+        {
+            id: "partner1",
+            name: "Название партнёра 1",
+            img: "img/partners/partner1.jpg",
+            desc: "Краткое описание партнёра. Здесь можно написать несколько предложений о компании.",
+            fullDesc: "<p>Полное описание партнёра. Здесь можно рассказать подробнее о компании, её услугах и преимуществах сотрудничества.</p>",
+            address: "Санкт-Петербург, ул. Примерная, д. 1",
+            phone: "+7 (921) 763-81-33",
+            email: "partner1@example.ru",
+            website: "partner1.ru"
+        },
+        {
+            id: "partner2",
+            name: "Название партнёра 2",
+            img: "img/partners/partner2.jpg",
+            desc: "Краткое описание второго партнёра. Здесь можно написать несколько предложений.",
+            fullDesc: "<p>Полное описание второго партнёра. Подробная информация о компании и условиях сотрудничества.</p>",
+            address: "Санкт-Петербург, ул. Вторая, д. 10",
+            phone: "+7 (921) 763-81-33",
+            email: "partner2@example.ru",
+            website: "partner2.ru"
+        }
+    ];
+
+    // Отображение карточек партнёров
+    const partnersGrid = document.getElementById('partnersGrid');
+    
+    if (partnersGrid) {
+        partnersGrid.innerHTML = partnersData.map(partner => `
+            <div class="partner-card" onclick="window.location.href='partner-detail.html?id=${partner.id}'">
+                <div class="partner-img" style="background-image: url('${partner.img}')"></div>
+                <div class="partner-content">
+                    <h3>${partner.name}</h3>
+                    <p class="partner-desc">${partner.desc}</p>
+                    <button class="btn-outline">Подробнее</button>
+                </div>
+            </div>
+        `).join('');
+    }
+</script>
+</body>
+</html>

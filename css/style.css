@@ -1276,3 +1276,41 @@ header .content {
         grid-template-columns: 1fr;
     }
 }
+
+/* Мобильные подменю */
+@media (max-width: 768px) {
+    .sub_menu_block {
+        position: relative;
+        width: 100%;
+    }
+    
+    .sub_menu_block > a {
+        display: block;
+        padding: 12px 0;
+        font-size: 18px;
+        font-weight: 500;
+    }
+    
+    .sub_menu {
+        display: none;
+        padding-left: 20px;
+        background: rgba(30, 30, 30, 0.9);
+        border-radius: 12px;
+        margin-top: 5px;
+    }
+    
+    .sub_menu_block.active .sub_menu {
+        display: block;
+    }
+    
+    .sub_menu a {
+        display: block;
+        padding: 10px 0 10px 15px;
+        font-size: 16px;
+        color: #ddd;
+    }
+    
+    .sub_menu a:hover {
+        color: #c7a55b;
+    }
+}

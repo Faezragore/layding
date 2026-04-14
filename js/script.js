@@ -498,3 +498,51 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// ========== МОБИЛЬНЫЕ ПОДМЕНЮ (РАСКРЫВАЮЩИЕСЯ) ==========
+document.addEventListener('DOMContentLoaded', function() {
+    // Находим все блоки с подменю
+    const subMenuBlocks = document.querySelectorAll('.sub_menu_block');
+    
+    // Функция для мобильной версии
+    function initMobileSubmenus() {
+        if (window.innerWidth <= 768) {
+            subMenuBlocks.forEach(block => {
+                const link = block.querySelector('> a');
+                const subMenu = block.querySelector('.sub_menu');
+                
+                // Проверяем, есть ли подменю
+                if (subMenu && subMenu.children.length > 0) {
+                    // Убираем стандартное поведение ссылки
+                    link.removeEventListener('click', link.clickHandler);
+                    
+                    // Добавляем новый обработчик
+                    link.clickHandler = function(e) {
+                        e.preventDefault();
+                        
+                        // Закрываем все другие подменю
+                        subMenuBlocks.forEach(b => {
+                            if (b !== block) {
+                                b.classList.remove('active');
+                            }
+                        });
+                        
+                        // Открываем/закрываем текущее
+                        block.classList.toggle('active');
+                    };
+                    
+                    link.addEventListener('click', link.clickHandler);
+                }
+            });
+        } else {
+            // На компьютере убираем активные классы
+            subMenuBlocks.forEach(block => {
+                block.classList.remove('active');
+            });
+        }
+    }
+    
+    // Запускаем при загрузке и при изменении размера окна
+    initMobileSubmenus();
+    window.addEventListener('resize', initMobileSubmenus);
+});
