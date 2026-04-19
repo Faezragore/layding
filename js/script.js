@@ -551,3 +551,24 @@ document.addEventListener('DOMContentLoaded', function() {
     initMobileSubmenus();
     window.addEventListener('resize', initMobileSubmenus);
 });
+
+// ========== БУРГЕР-МЕНЮ (ПРОСТАЯ ВЕРСИЯ) ==========
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.getElementById('mobile-hamburger');
+    const menu = document.getElementById('main-menu');
+    
+    console.log('Бургер найден:', hamburger);
+    console.log('Меню найдено:', menu);
+    
+    if (hamburger && menu) {
+        hamburger.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            menu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            console.log('Меню активно:', menu.classList.contains('active'));
+        });
+    } else {
+        console.log('Бургер или меню не найдены!');
+    }
+});
