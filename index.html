@@ -8,69 +8,79 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <style>
-    </style>
 </head>
 <body>
 
 <nav id="navbar">
-    <a href="#" class="logo">Повод <span>Есть</span></a>
-    <div class="menu-toggle" id="mobile-menu">
-        <i class="fas fa-bars"></i>
-    </div>
-<div class="menu" id="main-menu">
-    <div class="sub_menu_block">
-        <a href="#about">О нас</a>
-        <div class="sub_menu">
-            <a href="#contacts">Контакты</a>
-            <a href="#actions">Акции</a>
-            <a href="#news">Новости</a>
+    <div class="logo-area">
+        <div class="logo-wrapper">
+            <a href="#" class="logo">
+            <img src="img/logo.png" alt="Повод есть" class="logo-img">
+            </a>
+            <div class="logo-vertical-text">
+                <span>Организация</span>
+                <span>мероприятий</span>
+                <span>в Санкт-Петербурге</span>
+				<span>и ЛО</span>
+            </div>
         </div>
     </div>
-    <div class="sub_menu_block">
-        <a href="javascript:void(0)">Меню</a>
-        <div class="sub_menu">
-            <a href="menu-detail.html?id=banquet">Банкет</a>
-            <a href="menu-detail.html?id=buffet">Фуршет</a>
-            <a href="menu-detail.html?id=vegetarian">Вегетарианское меню</a>
-            <a href="menu-detail.html?id=bbq">Барбекю</a>
-            <a href="menu-detail.html?id=premium">Премиум меню</a>
-            <a href="menu-detail.html?id=retreat">Ретрит</a>
-			<a href="menu-detail.html?id=retreatpp">Ретрит ПП</a>
+    
+    <div class="menu" id="main-menu">
+        <div class="sub_menu_block">
+            <a href="#about">О нас</a>
+            <div class="sub_menu">
+                <a href="#contacts">Контакты</a>
+                <a href="#actions">Акции</a>
+                <a href="#news">Новости</a>
+            </div>
         </div>
-    </div>
-    <div class="sub_menu_block">
-        <a href="#services">Услуги</a>
-        <div class="sub_menu">
-            <a href="#consult">Консалтинг</a>
-            <a href="#decor">Декор</a>
-            <a href="#staff">Персонал</a>
-            <a href="partners.html">Партнёры</a>
+        <div class="sub_menu_block">
+            <a href="javascript:void(0)">Меню</a>
+            <div class="sub_menu">
+                <a href="menu-detail.html?id=banquet">Банкет</a>
+                <a href="menu-detail.html?id=buffet">Фуршет</a>
+                <a href="menu-detail.html?id=vegetarian">Вегетарианское меню</a>
+                <a href="menu-detail.html?id=bbq">Барбекю</a>
+                <a href="menu-detail.html?id=premium">Премиум меню</a>
+                <a href="menu-detail.html?id=retreat">Ретрит</a>
+                <a href="menu-detail.html?id=retreatpp">Ретрит ПП</a>
+            </div>
         </div>
+        <div class="sub_menu_block">
+            <a href="#services">Услуги</a>
+            <div class="sub_menu">
+                <a href="#consult">Консалтинг</a>
+                <a href="#decor">Декор</a>
+                <a href="#staff">Персонал</a>
+                <a href="partners.html">Партнёры</a>
+            </div>
+        </div>
+        <a href="areas.html">Площадки</a>
+        <a href="#" class="book-btn" id="openModalBtn">Заказать мероприятие</a>
+        <a href="upload/Menu.pdf" class="book-btn" id="downloadMenuBtn" target="_blank">Скачать меню</a>
     </div>
-    <a href="areas.html">Площадки</a>
-	<a href="#" class="book-btn" id="openModalBtn">Заказать мероприятие</a>
-</div>
-<span class="hamburger" id="mobile-hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-</span>
+    
+    <span class="hamburger" id="mobile-hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </span>
 </nav>
 
 <section class="hero">
     <div class="hero-content">
         <h1>Повод есть!</h1>
-        <p>Готовим для вас!.</p>
-		<p>Здесь должна быть красивая картинка.,но пока её нету!</p>
-        <button class="cta-button" id="heroBookBtn">Заказать мероприятие</button>
+        <p>Готовим для вас!</p>
+        <a href="#" class="book-btn" id="openModalBtn">Заказать мероприятие</a>
+        <a href="upload/Menu.pdf" class="book-btn" id="downloadMenuBtn" target="_blank">Скачать меню</a>
     </div>
 </section>
 
 <section id="about">
     <h2 class="section-title">О нас</h2>
     <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-        <p style="font-size: 1.1rem;">«Повод есть»— это команда профессионалов кейтеринга, которые знают, как превратить любое событие в праздник.Мы работаем по Санкт-Петербургу и Ленинградской области,организуя фуршеты, банкеты, корпоративы, свадьбы и камерные мероприятия “под ключ”.</p>
+        <p style="font-size: 1.1rem;">«Повод есть» — это команда профессионалов кейтеринга, которые знают, как превратить любое событие в праздник. Мы работаем по Санкт-Петербургу и Ленинградской области, организуя фуршеты, банкеты, корпоративы, свадьбы и камерные мероприятия "под ключ".</p>
         <p style="margin-top: 1rem;">От меню и сервировки до обслуживания гостей — мы берём на себя всё, чтобы вы могли просто отдыхать и наслаждаться своим событием.</p>
     </div>
 </section>
@@ -123,7 +133,7 @@
     <h2 class="section-title">Контакты</h2>
     <div class="contacts-container">
         <div class="contact-info">
-            <p><i class="fas fa-map-marker-alt"></i> Санкт-петербург</p>
+            <p><i class="fas fa-map-marker-alt"></i> Санкт-Петербург</p>
             <p><i class="fas fa-phone-alt"></i> +7 (921) 763-81-33</p>
             <p><i class="fas fa-envelope"></i> povodest@yandex.ru</p>
             <div style="margin-top: 1.5rem;">
@@ -132,14 +142,11 @@
                 <i class="fab fa-vk" style="font-size: 1.8rem; cursor: pointer;"></i>
             </div>
         </div>
-        <div class="map">
-            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A0c1a2b3c4d5e6f7g8h9i0j&source=constructor" allowfullscreen></iframe>
-        </div>
     </div>
 </section>
 
 <footer>
-    <p>© 2025 Кейтеринг повод есть. Готовим для вас.</p>
+    <p>© 2025 Кейтеринг Повод есть. Готовим для вас.</p>
 </footer>
 
 <div id="bookingModal" class="modal">

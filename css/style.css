@@ -1395,3 +1395,214 @@ header .content {
         font-size: 35px;
     }
 }
+
+.logo-icon {
+    display: flex;
+    align-items: center;
+}
+
+.logo-icon img {
+    height: 40px;
+    width: auto;
+}
+
+@media (max-width: 768px) {
+    .logo-icon img {
+        height: 30px;
+    }
+}
+
+.logo-subtitle span {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #e5e5e5;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+/* Левый блок с логотипом и подписью */
+.logo-area {
+    display: flex;
+    align-items: center;
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Расстояние между логотипом и вертикальным текстом */
+}
+
+.logo {
+    font-size: 1.8rem; /* Ваш текущий размер */
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #fff;
+    text-decoration: none;
+    white-space: nowrap; /* Чтобы логотип не переносился */
+}
+
+.logo span {
+    color: #c7a55b;
+}
+
+/* Вертикальный текст */
+.logo-vertical-text {
+    display: flex;
+    flex-direction: column;  /* Располагаем строки вертикально */
+    line-height: 1.2;       /* Компактное межстрочное расстояние */
+    border-left: 1px solid rgba(199, 165, 91, 0.5); /* Тонкая разделительная линия, как на сайте-примере */
+    padding-left: 15px;
+}
+
+.logo-vertical-text span {
+    font-size: 1rem;        /* Размер текста подписи. Вы можете увеличить до 1.2rem или 1.4rem, чтобы он был ближе к размеру логотипа */
+    font-weight: 400;
+    color: #e5e5e5;
+    letter-spacing: 0.3px;
+    white-space: nowrap;     /* Каждая строка не переносится */
+}
+
+/* Для адаптивности на телефонах (скрываем вертикальный текст, если он мешает) */
+@media (max-width: 768px) {
+    .logo-vertical-text {
+        display: none;
+    }
+    .logo {
+        font-size: 1.3rem;
+    }
+}
+
+/* ========== ЛЕВЫЙ БЛОК С ЛОГОТИПОМ И ПОДПИСЬЮ ========== */
+.logo-area {
+    display: flex;
+    align-items: center;
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #fff;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: #c7a55b;
+}
+
+.logo-vertical-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    border-left: 1px solid rgba(199, 165, 91, 0.5);
+    padding-left: 15px;
+}
+
+.logo-vertical-text span {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #e5e5e5;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+.logo-vertical-text span:first-child {
+    font-weight: 500;
+    color: #fff;
+}
+
+/* Навигация */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+nav.scrolled {
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 0.8rem 5%;
+    border-bottom: 1px solid rgba(199, 165, 91, 0.3);
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    .logo-vertical-text {
+        display: none;
+    }
+    
+    .logo {
+        font-size: 1.3rem;
+    }
+    
+    nav {
+        padd/* ========== ЛОГОТИП КАРТИНКА ========== */
+.logo-img {
+    height: 50px;
+    width: auto;
+    display: block;
+}
+
+/* Если нужно изменить размер под телефон */
+@media (max-width: 768px) {
+    .logo-img {
+        height: 40px;
+    }
+}ing: 0.8rem 5%;
+    }
+}
+
+/* ========== ЛОГОТИП КАРТИНКА ========== */
+.logo-img {
+    height: 60px;      /* Уменьшите это значение, чтобы сделать логотип меньше */
+    width: auto;
+    display: block;
+}
+
+/* Если нужно ещё меньше */
+@media (max-width: 768px) {
+    .logo-img {
+        height: 30px;  /* На телефоне ещё меньше */
+    }
+}
+
+/* Убираем подчёркивание у всех кнопок и ссылок-кнопок */
+.book-btn,
+.cta-button,
+.cta-download,
+.btn-outline,
+.btn-order {
+    text-decoration: none !important;
+}
+
+/* Дополнительно для всех ссылок в меню */
+.menu a {
+    text-decoration: none;
+}
+
+/* Для кнопки скачать меню */
+#downloadMenuBtn {
+    text-decoration: none;
+}
+
+/* Для всех кнопок в целом */
+button,
+a.button,
+input[type="submit"],
+.btn {
+    text-decoration: none;
+}
