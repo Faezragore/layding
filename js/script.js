@@ -45,8 +45,12 @@
     }
 
     const modal = document.getElementById('bookingModal');
-    const openBtns = [document.getElementById('openModalBtn'), document.getElementById('heroBookBtn')];
-    const closeBtn = document.querySelector('.close-modal');
+    const openBtns = [
+       document.getElementById('openModalBtn'),
+       document.getElementById('heroBookBtn'),
+       document.getElementById('heroOpenModalBtn')  // Добавляем новую кнопку из hero-секции
+    ];
+const closeBtn = document.querySelector('.close-modal');
 
     openBtns.forEach(btn => {
         if(btn) btn.addEventListener('click', (e) => {
