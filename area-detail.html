@@ -164,12 +164,20 @@
 </head>
 <body class="venue-detail-page" id="venuePage">
 
+<!-- ШАПКА (как на других страницах) -->
 <nav id="navbar">
-    <a href="index.html" class="logo">Повод <span>Есть</span></a>
-    <div class="menu-toggle" id="mobile-menu">
-        <i class="fas fa-bars"></i>
+    <div class="logo-area">
+        <img src="img/logo.png" alt="Повод есть" class="logo-img">
+        <div class="logo-vertical-text">
+            <span>Организация</span>
+            <span>мероприятий</span>
+            <span>в Санкт-Петербурге</span>
+            <span>и ЛО</span>
+        </div>
     </div>
-    <div class="menu" id="main-menu">
+    
+    <!-- ГОРИЗОНТАЛЬНОЕ МЕНЮ (для компьютера) -->
+    <div class="menu">
         <div class="sub_menu_block">
             <a href="index.html#about">О нас</a>
             <div class="sub_menu">
@@ -179,14 +187,15 @@
             </div>
         </div>
         <div class="sub_menu_block">
-            <a href="index.html#menu">Меню</a>
+            <a href="javascript:void(0)">Меню</a>
             <div class="sub_menu">
-                <a href="#banquet">Банкет</a>
-                <a href="#reception">Фуршет</a>
-                <a href="#coffee">Вегетарианское меню</a>
-                <a href="#bbq">Барбекю</a>
-                <a href="#delivery">Премиум меню</a>
-                <a href="#retreat">Ретрит</a>
+                <a href="menu-detail.html?id=banquet">Банкет</a>
+                <a href="menu-detail.html?id=buffet">Фуршет</a>
+                <a href="menu-detail.html?id=vegetarian">Вегетарианское меню</a>
+                <a href="menu-detail.html?id=bbq">Барбекю</a>
+                <a href="menu-detail.html?id=premium">Премиум меню</a>
+                <a href="menu-detail.html?id=retreat">Ретрит</a>
+                <a href="menu-detail.html?id=retreatpp">Ретрит ПП</a>
             </div>
         </div>
         <div class="sub_menu_block">
@@ -199,14 +208,55 @@
             </div>
         </div>
         <a href="areas.html">Площадки</a>
-        <a href="#" class="book-btn" id="openModalBtn">Заказать мероприятие</a>
     </div>
-    <span class="hamburger" id="mobile-hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </span>
+    
+    <div class="nav-right">
+        <div class="nav-buttons">
+            <a href="#" class="btn-nav" id="openModalBtn">Заказать мероприятие</a>
+            <a href="upload/Menu.pdf" class="btn-nav btn-nav-outline" target="_blank">Скачать меню</a>
+        </div>
+        <div class="hamburger" id="mobile-hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
 </nav>
+
+<!-- БУРГЕР-МЕНЮ -->
+<div class="mobile-menu-overlay" id="mobile-menu-overlay">
+    <div class="mobile-menu-item">
+        <a href="index.html#about">О НАС</a>
+        <div class="mobile-submenu">
+            <a href="index.html#contacts">КОНТАКТЫ</a>
+            <a href="#actions">АКЦИИ</a>
+            <a href="#news">НОВОСТИ</a>
+        </div>
+    </div>
+    <div class="mobile-menu-item">
+        <a href="javascript:void(0)">МЕНЮ</a>
+        <div class="mobile-submenu">
+            <a href="menu-detail.html?id=banquet">БАНКЕТ</a>
+            <a href="menu-detail.html?id=buffet">ФУРШЕТ</a>
+            <a href="menu-detail.html?id=vegetarian">ВЕГЕТАРИАНСКОЕ</a>
+            <a href="menu-detail.html?id=bbq">БАРБЕКЮ</a>
+            <a href="menu-detail.html?id=premium">ПРЕМИУМ</a>
+            <a href="menu-detail.html?id=retreat">РЕТРИТ</a>
+        </div>
+    </div>
+    <div class="mobile-menu-item">
+        <a href="index.html#services">УСЛУГИ</a>
+        <div class="mobile-submenu">
+            <a href="#consult">КОНСАЛТИНГ</a>
+            <a href="#decor">ДЕКОР</a>
+            <a href="#staff">ПЕРСОНАЛ</a>
+            <a href="partners.html">ПАРТНЁРЫ</a>
+        </div>
+    </div>
+    <div class="mobile-menu-item">
+        <a href="areas.html">ПЛОЩАДКИ</a>
+    </div>
+</div>
 
 <div class="detail-content">
     <a href="areas.html" class="back-btn">
@@ -303,7 +353,7 @@
         northernshore: {
             name: "Клуб загородного отдыха «Северный Берег»",
             bg: "img/venues/northernshore-bg.png",
-            badges: ["Шатёр", "до 40 человек", "Барбекю", "С верандой", "Баня", "С верандой"],
+            badges: ["Шатёр", "до 40 человек", "Барбекю", "С верандой", "Баня"],
             desc: "<p>Отдых на берегу живописного озера Хепоярви в Токсово. Камерное пространство для небольших мероприятий в окружении леса и воды.</p><p style='margin-top: 15px;'>Исследовать озеро и залив на лодках,сапбордах или катамаранах.Вейкбординг.Пейнтбол.Верховая езда на лошадях.Пляжный волейбол.</p>",
             address: "Токсово, озеро Хепоярви",
             phone: "+7 (921) 763-81-33",
@@ -335,7 +385,7 @@
             bg: "img/venues/emeraldlake-bg.jpg",
             badges: ["С верандой", "до 35 человек", "Активный отдых", "Барбекю"],
             desc: "<p>Изумрудное озеро — центр активного отдыха, где можно провести идеальный день на природе. Камерное пространство для небольших компаний.</p><p style='margin-top: 15px;'>Здесь есть всё для яркого отдыха: верёвочный парк, троллей, скалодром, тир, байки и питбайки, прогулки на лошадях, лодки и катамараны, беседки у озера, уютное кафе, детские зоны и семейные мастер-классы.</p>",
-            address: "Ленинградская область, Всеволожский район, Изумрудное озеро. Широта 60°9′6″N (60.151768) Долгота 30°28′28″E (30.474564)",
+            address: "Ленинградская область, Всеволожский район, Изумрудное озеро",
             phone: "+7 (921) 763-81-33",
             email: "povodest@yandex.ru",
             website: "emeraldlake-spb.ru"
@@ -343,8 +393,8 @@
         goodplace: {
             name: "Хорошее место!",
             bg: "img/venues/goodplace-bg.jpg",
-            badges: ["Баня", "до 150 человек", "Банкет", "Барбекю", "Уютно"],
-            desc: "<p>Хорошее место для хороших людей. Пространство создано для тёплых встреч и душевных праздников.</p><p style='margin-top: 15px;'></p>",
+            badges: ["Баня", "до 15 человек", "Банкет", "Барбекю", "Уютно"],
+            desc: "<p>Хорошее место для хороших людей. Пространство создано для тёплых встреч и душевных праздников.</p>",
             address: "Санкт-Петербург, поселок Пушное",
             phone: "+7 (921) 763-81-33",
             email: "povodest@yandex.ru",
@@ -354,13 +404,13 @@
             name: "Центр активного отдыха «Илоранта»",
             bg: "img/venues/iloranta-bg.jpg",
             badges: ["С верандой", "до 70 человек", "Активный отдых", "Барбекю", "Бассейн", "Баня"],
-            desc: "<p>Илоранта — центр активного отдыха, где можно провести идеальный день на природе. Камерное пространство для небольших компаний.</p><p style='margin-top: 15px;'>Здесь есть всё для расслабленного отдыха: бассейн, баня, настольный теннис, футбол, баскетбол, волейбол, бадминтон, велосипеды, лодки и катамараны, беседки у озера, уютное кафе, детские зоны и семейные мастер-классы.</p>",
+            desc: "<p>Илоранта — центр активного отдыха, где можно провести идеальный день на природе. Камерное пространство для небольших компаний.</p><p style='margin-top: 15px;'>В переводе с финского «Илоранта» означает Берег радости. Здесь есть всё для расслабленного отдыха: бассейн, баня, настольный теннис, футбол, баскетбол, волейбол, бадминтон, велосипеды, лодки и катамараны, беседки у озера, уютное кафе, детские зоны и семейные мастер-классы.</p>",
             address: "Ленинградская область, Выборгский район, Большое Лесное озеро",
             phone: "+7 (921) 763-81-33",
             email: "povodest@yandex.ru",
             website: "iloranta.ru"
         },
-         "v-krugu-svoih": {
+        "v-krugu-svoih": {
             name: "Загородная площадка «В Кругу своих»",
             bg: "img/venues/v-krugu-svoih-bg.jpg",
             badges: ["С верандой", "до 30 человек", "Барбекю", "Баня", "Костер"],
@@ -369,7 +419,7 @@
             phone: "+7 (921) 763-81-33",
             email: "povodest@yandex.ru",
             website: "divawedding.ru/zagorodnaya-ploshchadka-v-krugu-svoih"
-        },
+        }
     };
 
     const venue = venuesDetail[venueId];

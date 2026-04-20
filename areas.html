@@ -3,29 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Площадки — Кейтеринг Повод есть</title>
+    <title>Площадки | Кейтеринг Повод есть</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+<!-- ШАПКА -->
+<nav id="navbar">
+    <div class="logo-area">
+        <img src="img/logo.png" alt="Повод есть" class="logo-img">
+        <div class="logo-vertical-text">
+            <span>Организация</span>
+            <span>мероприятий</span>
+            <span>в Санкт-Петербурге</span>
+            <span>и ЛО</span>
+        </div>
+    </div>
+    
+    <!-- ГОРИЗОНТАЛЬНОЕ МЕНЮ (для компьютера) -->
+    <div class="menu">
+        <div class="sub_menu_block">
+            <a href="index.html#about">О нас</a>
+            <div class="sub_menu">
+                <a href="index.html#contacts">Контакты</a>
+                <a href="#actions">Акции</a>
+                <a href="#news">Новости</a>
+            </div>
+        </div>
+        <div class="sub_menu_block">
+            <a href="javascript:void(0)">Меню</a>
+            <div class="sub_menu">
+                <a href="menu-detail.html?id=banquet">Банкет</a>
+                <a href="menu-detail.html?id=buffet">Фуршет</a>
+                <a href="menu-detail.html?id=vegetarian">Вегетарианское меню</a>
+                <a href="menu-detail.html?id=bbq">Барбекю</a>
+                <a href="menu-detail.html?id=premium">Премиум меню</a>
+                <a href="menu-detail.html?id=retreat">Ретрит</a>
+                <a href="menu-detail.html?id=retreatpp">Ретрит ПП</a>
+            </div>
+        </div>
+        <div class="sub_menu_block">
+            <a href="index.html#services">Услуги</a>
+            <div class="sub_menu">
+                <a href="#consult">Консалтинг</a>
+                <a href="#decor">Декор</a>
+                <a href="#staff">Персонал</a>
+                <a href="partners.html">Партнёры</a>
+            </div>
+        </div>
+        <a href="areas.html">Площадки</a>
+    </div>
+    
+    <div class="nav-right">
+        <div class="nav-buttons">
+            <a href="#" class="btn-nav" id="openModalBtn">Заказать мероприятие</a>
+            <a href="upload/Menu.pdf" class="btn-nav btn-nav-outline" target="_blank">Скачать меню</a>
+        </div>
+        <div class="hamburger" id="mobile-hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- БУРГЕР-МЕНЮ -->
+<div class="mobile-menu-overlay" id="mobile-menu-overlay">
+    <div class="mobile-menu-item">
+        <a href="index.html#about">О НАС</a>
+        <div class="mobile-submenu">
+            <a href="index.html#contacts">КОНТАКТЫ</a>
+            <a href="#actions">АКЦИИ</a>
+            <a href="#news">НОВОСТИ</a>
+        </div>
+    </div>
+    <div class="mobile-menu-item">
+        <a href="javascript:void(0)">МЕНЮ</a>
+        <div class="mobile-submenu">
+            <a href="menu-detail.html?id=banquet">БАНКЕТ</a>
+            <a href="menu-detail.html?id=buffet">ФУРШЕТ</a>
+            <a href="menu-detail.html?id=vegetarian">ВЕГЕТАРИАНСКОЕ</a>
+            <a href="menu-detail.html?id=bbq">БАРБЕКЮ</a>
+            <a href="menu-detail.html?id=premium">ПРЕМИУМ</a>
+            <a href="menu-detail.html?id=retreat">РЕТРИТ</a>
+        </div>
+    </div>
+    <div class="mobile-menu-item">
+        <a href="index.html#services">УСЛУГИ</a>
+        <div class="mobile-submenu">
+            <a href="#consult">КОНСАЛТИНГ</a>
+            <a href="#decor">ДЕКОР</a>
+            <a href="#staff">ПЕРСОНАЛ</a>
+            <a href="partners.html">ПАРТНЁРЫ</a>
+        </div>
+    </div>
+    <div class="mobile-menu-item">
+        <a href="areas.html">ПЛОЩАДКИ</a>
+    </div>
+</div>
+
 <!-- СЕКЦИЯ ПЛОЩАДОК -->
-<section id="venues" class="venues-section">
+<section class="venues-section">
     <div class="container">
         <h2 class="section-title">Площадки для мероприятий</h2>
         
-        <!-- Блок фильтров -->
+        <!-- Фильтры -->
         <div class="filters-wrapper">
             <div class="filters-chips">
                 <div class="filter-chip active" data-filter="all">Все</div>
-                <div class="filter-chip" data-filter="banquet">Банкетные залы</div>
                 <div class="filter-chip" data-filter="loft">Лофты</div>
-                <div class="filter-chip" data-filter="mansion">Особняки</div>
-                <div class="filter-chip" data-filter="terrace">С верандой</div>
                 <div class="filter-chip" data-filter="tent">Шатры</div>
+                <div class="filter-chip" data-filter="terrace">С верандой</div>
             </div>
             
             <div class="filter-guests">
@@ -41,18 +133,39 @@
             </div>
         </div>
         
-        <!-- Сетка с площадками -->
+        <!-- Сетка площадок -->
         <div class="venues-grid" id="venuesGrid"></div>
-          
+        
         <!-- Сообщение, если ничего не найдено -->
         <div class="no-results" id="noResults" style="display: none;">Нет подходящих площадок</div>
     </div>
 </section>
 
-<!-- ПОДВАЛ -->
 <footer>
     <p>© 2025 Кейтеринг Повод есть. Готовим для вас.</p>
 </footer>
+
+<!-- МОДАЛЬНОЕ ОКНО -->
+<div id="bookingModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Заказать мероприятие</h2>
+        <form id="bookingForm">
+            <input type="text" placeholder="Имя" required>
+            <input type="tel" placeholder="Телефон" required>
+            <input type="email" placeholder="Почта">
+            <input type="date" required>
+            <select required>
+                <option value="">Вид мероприятия</option>
+                <option>Банкет</option>
+                <option>Фуршет</option>
+                <option>Барбекю</option>
+                <option>Частный шеф</option>
+            </select>
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+</div>
 
 <script src="js/script.js"></script>
 </body>

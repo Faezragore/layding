@@ -6,27 +6,26 @@
     <title>Повод есть | Готовим для вас!</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+<!-- ШАПКА -->
 <nav id="navbar">
     <div class="logo-area">
-        <div class="logo-wrapper">
-            <a href="#" class="logo">
-            <img src="img/logo.png" alt="Повод есть" class="logo-img">
-            </a>
-            <div class="logo-vertical-text">
-                <span>Организация</span>
-                <span>мероприятий</span>
-                <span>в Санкт-Петербурге</span>
-				<span>и ЛО</span>
-            </div>
+        <img src="img/logo.png" alt="Повод есть" class="logo-img">
+        <div class="logo-vertical-text">
+            <span>Организация</span>
+            <span>мероприятий</span>
+            <span>в Санкт-Петербурге</span>
+            <span>и ЛО</span>
         </div>
     </div>
     
-    <div class="menu" id="main-menu">
+    <!-- ГОРИЗОНТАЛЬНОЕ МЕНЮ (только на компьютере) -->
+    <div class="menu">
         <div class="sub_menu_block">
             <a href="#about">О нас</a>
             <div class="sub_menu">
@@ -57,46 +56,77 @@
             </div>
         </div>
         <a href="areas.html">Площадки</a>
-        <a href="#" class="book-btn" id="openModalBtn">Заказать мероприятие</a>
-        <a href="upload/Menu.pdf" class="book-btn" id="downloadMenuBtn" target="_blank">Скачать меню</a>
     </div>
     
-    <span class="hamburger" id="mobile-hamburger">
+<div class="nav-right">
+    <div class="nav-buttons">
+        <a href="#" class="btn-nav" id="openModalBtn">Заказать мероприятие</a>
+        <a href="upload/Menu.pdf" class="btn-nav btn-nav-outline" target="_blank">Скачать меню</a>
+    </div>
+    <div class="hamburger" id="mobile-hamburger">
         <span></span>
         <span></span>
         <span></span>
-    </span>
+    </div>
+</div>
 </nav>
-<script>
-    // ПРЯМОЙ ТЕСТ БУРГЕРА
-    document.getElementById('mobile-hamburger').onclick = function() {
-        var menu = document.getElementById('main-menu');
-        if (menu.style.display === 'flex') {
-            menu.style.display = 'none';
-        } else {
-            menu.style.display = 'flex';
-        }
-        this.classList.toggle('active');
-    };
-</script>
 
+<!-- ВЫЕЗЖАЮЩЕЕ БУРГЕР-МЕНЮ -->
+<div class="mobile-menu-overlay" id="mobile-menu-overlay">
+    <div class="mobile-menu-item">
+        <a href="#about">О НАС</a>
+        <div class="mobile-submenu">
+            <a href="#contacts">КОНТАКТЫ</a>
+            <a href="#actions">АКЦИИ</a>
+            <a href="#news">НОВОСТИ</a>
+        </div>
+    </div>
+    <div class="mobile-menu-item">
+        <a href="javascript:void(0)">МЕНЮ</a>
+        <div class="mobile-submenu">
+            <a href="menu-detail.html?id=banquet">БАНКЕТ</a>
+            <a href="menu-detail.html?id=buffet">ФУРШЕТ</a>
+            <a href="menu-detail.html?id=coffee">КОФЕ-БРЕЙК</a>
+            <a href="menu-detail.html?id=bbq">БАРБЕКЮ</a>
+            <a href="menu-detail.html?id=delivery">ДОСТАВКА</a>
+        </div>
+    </div>
+    <div class="mobile-menu-item">
+        <a href="#services">УСЛУГИ</a>
+        <div class="mobile-submenu">
+            <a href="#consult">КОНСАЛТИНГ</a>
+            <a href="#decor">ДЕКОР</a>
+            <a href="#staff">ПЕРСОНАЛ</a>
+            <a href="#furniture">МЕБЕЛЬ</a>
+        </div>
+    </div>
+    <div class="mobile-menu-item">
+        <a href="areas.html">ПЛОЩАДКИ</a>
+    </div>
+</div>
+
+<!-- ГЕРОЙ СЕКЦИЯ -->
 <section class="hero">
     <div class="hero-content">
         <h1>Повод есть!</h1>
         <p>Готовим для вас!</p>
-        <a href="#" class="book-btn" id="heroOpenModalBtn">Заказать мероприятие</a>
-        <a href="upload/Menu.pdf" class="book-btn" id="downloadMenuBtn" target="_blank">Скачать меню</a>
+        <div class="hero-buttons">
+            <a href="#" class="btn" id="heroOpenModalBtn">Заказать мероприятие</a>
+            <a href="upload/Menu.pdf" class="btn btn-outline" target="_blank">Скачать меню</a>
+        </div>
     </div>
 </section>
 
+<!-- О НАС -->
 <section id="about">
     <h2 class="section-title">О нас</h2>
-    <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-        <p style="font-size: 1.1rem;">«Повод есть» — это команда профессионалов кейтеринга, которые знают, как превратить любое событие в праздник. Мы работаем по Санкт-Петербургу и Ленинградской области, организуя фуршеты, банкеты, корпоративы, свадьбы и камерные мероприятия "под ключ".</p>
-        <p style="margin-top: 1rem;">От меню и сервировки до обслуживания гостей — мы берём на себя всё, чтобы вы могли просто отдыхать и наслаждаться своим событием.</p>
+    <div class="about-text">
+        <p>«Повод есть» — это команда профессионалов кейтеринга, которые знают, как превратить любое событие в праздник. Мы работаем по Санкт-Петербургу и Ленинградской области, организуя фуршеты, банкеты, корпоративы, свадьбы и камерные мероприятия "под ключ".</p>
+        <p style="margin-top: 15px;">От меню и сервировки до обслуживания гостей — мы берём на себя всё, чтобы вы могли просто отдыхать и наслаждаться своим событием.</p>
     </div>
 </section>
 
+<!-- МЕНЮ (ИКОНКИ) -->
 <section id="menu">
     <h2 class="section-title">Наше меню</h2>
     <div class="menu-icons-grid">
@@ -131,6 +161,7 @@
     </div>
 </section>
 
+<!-- ГАЛЕРЕЯ -->
 <section id="gallery">
     <h2 class="section-title">Галерея</h2>
     <div class="gallery-grid">
@@ -141,6 +172,30 @@
     </div>
 </section>
 
+<!-- ПАРТНЁРЫ -->
+<section id="partners">
+    <h2 class="section-title">Наши партнёры</h2>
+    <div class="partners-grid" id="partnersGrid">
+        <div class="partner-card" onclick="window.location.href='partners.html?id=1'">
+            <div class="partner-img" style="background-image: url('img/partners/partner1.jpg')"></div>
+            <div class="partner-content">
+                <h3>Партнёр 1</h3>
+                <p class="partner-desc">Краткое описание партнёра</p>
+                <button class="btn-outline">Подробнее</button>
+            </div>
+        </div>
+        <div class="partner-card" onclick="window.location.href='partners.html?id=2'">
+            <div class="partner-img" style="background-image: url('img/partners/partner2.jpg')"></div>
+            <div class="partner-content">
+                <h3>Партнёр 2</h3>
+                <p class="partner-desc">Краткое описание второго партнёра</p>
+                <button class="btn-outline">Подробнее</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- КОНТАКТЫ -->
 <section id="contacts">
     <h2 class="section-title">Контакты</h2>
     <div class="contacts-container">
@@ -148,11 +203,11 @@
             <p><i class="fas fa-map-marker-alt"></i> Санкт-Петербург</p>
             <p><i class="fas fa-phone-alt"></i> +7 (921) 763-81-33</p>
             <p><i class="fas fa-envelope"></i> povodest@yandex.ru</p>
-            <div style="margin-top: 1.5rem;">
-                <i class="fab fa-instagram" style="font-size: 1.8rem; margin-right: 1rem; cursor: pointer;"></i>
-                <i class="fab fa-telegram" style="font-size: 1.8rem; margin-right: 1rem; cursor: pointer;"></i>
-                <i class="fab fa-vk" style="font-size: 1.8rem; cursor: pointer;"></i>
-            </div>
+        </div>
+        <div class="social-icons">
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-telegram"></i>
+            <i class="fab fa-vk"></i>
         </div>
     </div>
 </section>
@@ -161,6 +216,7 @@
     <p>© 2025 Кейтеринг Повод есть. Готовим для вас.</p>
 </footer>
 
+<!-- МОДАЛЬНОЕ ОКНО -->
 <div id="bookingModal" class="modal">
     <div class="modal-content">
         <span class="close-modal">&times;</span>
