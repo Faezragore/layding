@@ -67,6 +67,18 @@
         <span></span>
     </span>
 </nav>
+<script>
+    // ПРЯМОЙ ТЕСТ БУРГЕРА
+    document.getElementById('mobile-hamburger').onclick = function() {
+        var menu = document.getElementById('main-menu');
+        if (menu.style.display === 'flex') {
+            menu.style.display = 'none';
+        } else {
+            menu.style.display = 'flex';
+        }
+        this.classList.toggle('active');
+    };
+</script>
 
 <section class="hero">
     <div class="hero-content">
