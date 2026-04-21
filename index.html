@@ -6,7 +6,7 @@
     <title>Повод есть | Готовим для вас!</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@300,400,500,600,700&family=Playfair+Display:wght@400,500,600,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -25,7 +25,7 @@
     </div>
     
     <!-- ГОРИЗОНТАЛЬНОЕ МЕНЮ (только на компьютере) -->
-    <div class="menu">
+    <div class="menu" id="main-menu">
         <div class="sub_menu_block">
             <a href="#about">О нас</a>
             <div class="sub_menu">
@@ -70,39 +70,49 @@
     </div>
 </div>
 </nav>
-
 <!-- ВЫЕЗЖАЮЩЕЕ БУРГЕР-МЕНЮ -->
 <div class="mobile-menu-overlay" id="mobile-menu-overlay">
-    <div class="mobile-menu-item">
-        <a href="#about">О НАС</a>
+    <!-- О НАС -->
+    <div class="mobile-menu-section">
+        <div class="mobile-menu-main">О НАС</div>
         <div class="mobile-submenu">
             <a href="#contacts">КОНТАКТЫ</a>
             <a href="#actions">АКЦИИ</a>
             <a href="#news">НОВОСТИ</a>
+            <a href="#chefs">НАШИ ПОВАРА</a>
+            <a href="#photo">ФОТОАЛЬБОМ</a>
         </div>
     </div>
-    <div class="mobile-menu-item">
-        <a href="javascript:void(0)">МЕНЮ</a>
+    
+    <!-- МЕНЮ -->
+    <div class="mobile-menu-section">
+        <div class="mobile-menu-main">МЕНЮ</div>
         <div class="mobile-submenu">
             <a href="menu-detail.html?id=banquet">БАНКЕТ</a>
             <a href="menu-detail.html?id=buffet">ФУРШЕТ</a>
-            <a href="menu-detail.html?id=coffee">КОФЕ-БРЕЙК</a>
+            <a href="menu-detail.html?id=vegetarian">ВЕГЕТАРИАНСКОЕ МЕНЮ</a>
             <a href="menu-detail.html?id=bbq">БАРБЕКЮ</a>
-            <a href="menu-detail.html?id=delivery">ДОСТАВКА</a>
+            <a href="menu-detail.html?id=premium">ПРЕМИУМ МЕНЮ</a>
+            <a href="menu-detail.html?id=retreat">РЕТРИТ</a>
+            <a href="menu-detail.html?id=retreatpp">РЕТРИТ ПП</a>
         </div>
     </div>
-    <div class="mobile-menu-item">
-        <a href="#services">УСЛУГИ</a>
+    
+    <!-- УСЛУГИ -->
+    <div class="mobile-menu-section">
+        <div class="mobile-menu-main">УСЛУГИ</div>
         <div class="mobile-submenu">
             <a href="#consult">КОНСАЛТИНГ</a>
             <a href="#decor">ДЕКОР</a>
             <a href="#staff">ПЕРСОНАЛ</a>
             <a href="#furniture">МЕБЕЛЬ</a>
+            <a href="partners.html">ПАРТНЁРЫ</a>
         </div>
     </div>
-    <div class="mobile-menu-item">
-        <a href="areas.html">ПЛОЩАДКИ</a>
-    </div>
+    
+<!-- ПЛОЩАДКИ -->
+<div class="mobile-menu-section">
+    <a href="areas.html" class="mobile-menu-main">ПЛОЩАДКИ</a>
 </div>
 
 <!-- ГЕРОЙ СЕКЦИЯ -->

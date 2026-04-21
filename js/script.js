@@ -1,266 +1,164 @@
-    const events = [
-        { img: 'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80', date: 'APRIL 15, 20:00', title: 'Jazz Night', desc: 'An atmospheric evening with the best jazz standards.', price: 'Entry 1500 RUB' },
-        { img: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80', date: 'APRIL 22, 19:30', title: 'Soul & Blues', desc: 'Deep voice and guitar. Immerse yourself in blues.', price: 'Entry 2000 RUB' },
-        { img: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80', date: 'APRIL 30, 21:00', title: 'DJ Set', desc: 'A dance evening with the best DJs in Moscow.', price: 'Entry 1000 RUB' }
-    ];
+// ========== СОБЫТИЯ (СЛАЙДЕР) ==========
+const events = [
+    { img: 'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80', date: 'APRIL 15, 20:00', title: 'Jazz Night', desc: 'An atmospheric evening with the best jazz standards.', price: 'Entry 1500 RUB' },
+    { img: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80', date: 'APRIL 22, 19:30', title: 'Soul & Blues', desc: 'Deep voice and guitar. Immerse yourself in blues.', price: 'Entry 2000 RUB' },
+    { img: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80', date: 'APRIL 30, 21:00', title: 'DJ Set', desc: 'A dance evening with the best DJs in Moscow.', price: 'Entry 1000 RUB' }
+];
 
-    function loadEvents() {
-        const slider = document.getElementById('eventsSlider');
-        if(!slider) return;
-        slider.innerHTML = '';
-        events.forEach(ev => {
-            const card = document.createElement('div');
-            card.className = 'event-card';
-            card.innerHTML = `
-                <img src="${ev.img}" alt="${ev.title}">
-                <div class="event-info">
-                    <div class="event-date">${ev.date}</div>
-                    <h3>${ev.title}</h3>
-                    <p class="event-desc">${ev.desc}</p>
-                    <p class="event-price">${ev.price}</p>
-                    <button class="book-event book-event-btn">Book ticket</button>
-                </div>
-            `;
-            slider.appendChild(card);
-        });
-        document.querySelectorAll('.book-event-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.getElementById('bookingModal').style.display = 'flex';
-            });
-        });
-    }
-
-    window.addEventListener('scroll', () => {
-        const nav = document.getElementById('navbar');
-        if(window.scrollY > 50) nav.classList.add('scrolled');
-        else nav.classList.remove('scrolled');
+function loadEvents() {
+    const slider = document.getElementById('eventsSlider');
+    if (!slider) return;
+    slider.innerHTML = '';
+    events.forEach(ev => {
+        const card = document.createElement('div');
+        card.className = 'event-card';
+        card.innerHTML = `
+            <img src="${ev.img}" alt="${ev.title}">
+            <div class="event-info">
+                <div class="event-date">${ev.date}</div>
+                <h3>${ev.title}</h3>
+                <p class="event-desc">${ev.desc}</p>
+                <p class="event-price">${ev.price}</p>
+                <button class="book-event book-event-btn">Book ticket</button>
+            </div>
+        `;
+        slider.appendChild(card);
     });
-
-    const mobileBtn = document.getElementById('mobile-menu');
-    const navLinks = document.getElementById('nav-links');
-    if(mobileBtn) {
-        mobileBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+    document.querySelectorAll('.book-event-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.getElementById('bookingModal').style.display = 'flex';
         });
-    }
+    });
+}
 
-    const modal = document.getElementById('bookingModal');
-    const openBtns = [
-       document.getElementById('openModalBtn'),
-       document.getElementById('heroBookBtn'),
-       document.getElementById('heroOpenModalBtn')  // Добавляем новую кнопку из hero-секции
-    ];
+// ========== СКРОЛЛ ШАПКИ ==========
+window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 50) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+});
+
+// ========== МОДАЛЬНОЕ ОКНО ==========
+const modal = document.getElementById('bookingModal');
+const openBtns = [
+    document.getElementById('openModalBtn'),
+    document.getElementById('heroBookBtn'),
+    document.getElementById('heroOpenModalBtn')
+];
 const closeBtn = document.querySelector('.close-modal');
 
-    openBtns.forEach(btn => {
-        if(btn) btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            modal.style.display = 'flex';
-        });
-    });
-    if(closeBtn) closeBtn.addEventListener('click', () => modal.style.display = 'none');
-    window.addEventListener('click', (e) => { if(e.target === modal) modal.style.display = 'none'; });
-
-    const form = document.getElementById('bookingForm');
-    if(form) form.addEventListener('submit', (e) => {
+openBtns.forEach(btn => {
+    if (btn) btn.addEventListener('click', (e) => {
         e.preventDefault();
-        alert('Thank you! We will contact you to confirm your reservation.');
-        modal.style.display = 'none';
-        form.reset();
+        if (modal) modal.style.display = 'flex';
     });
+});
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if(target) {
-                target.scrollIntoView({ behavior: 'smooth' });
-                if(navLinks.classList.contains('active')) navLinks.classList.remove('active');
-            }
-        });
-    });
+if (closeBtn) closeBtn.addEventListener('click', () => {
+    if (modal) modal.style.display = 'none';
+});
 
-    const slider = document.getElementById('eventsSlider');
-    let isDown = false;
-    let startX;
-    let scrollLeft;
+window.addEventListener('click', (e) => {
+    if (e.target === modal) modal.style.display = 'none';
+});
 
-    if(slider) {
-        slider.addEventListener('mousedown', (e) => {
-            isDown = true;
-            slider.style.cursor = 'grabbing';
-            startX = e.pageX - slider.offsetLeft;
-            scrollLeft = slider.scrollLeft;
-        });
-        slider.addEventListener('mouseleave', () => {
-            isDown = false;
-            slider.style.cursor = 'grab';
-        });
-        slider.addEventListener('mouseup', () => {
-            isDown = false;
-            slider.style.cursor = 'grab';
-        });
-        slider.addEventListener('mousemove', (e) => {
-            if(!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - slider.offsetLeft;
-            const walk = (x - startX) * 2;
-            slider.scrollLeft = scrollLeft - walk;
-        });
-    }
+const form = document.getElementById('bookingForm');
+if (form) form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Спасибо! Мы свяжемся с вами для подтверждения.');
+    if (modal) modal.style.display = 'none';
+    form.reset();
+});
 
-    loadEvents();
-// ========== РАБОТА НОВОГО МЕНЮ ==========
-
-document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.getElementById('mobile-hamburger');
-    const menu = document.getElementById('main-menu');
-    const subMenuBlocks = document.querySelectorAll('.sub_menu_block');
-    
-    // Открытие/закрытие бургер-меню
-    if (hamburger && menu) {
-        hamburger.addEventListener('click', function(e) {
-            e.stopPropagation();
-            menu.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        });
-    }
-    
-    // Для мобильной версии: открытие подменю по клику
-    function checkMobile() {
-        if (window.innerWidth <= 768) {
-            subMenuBlocks.forEach(block => {
-                const link = block.querySelector('> a');
-                
-                // Удаляем старый обработчик, чтобы не дублировать
-                const newLink = link.cloneNode(true);
-                link.parentNode.replaceChild(newLink, link);
-                
-                newLink.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // Закрываем все другие подменю
-                    subMenuBlocks.forEach(b => {
-                        if (b !== block) {
-                            b.classList.remove('active');
-                        }
-                    });
-                    
-                    // Открываем/закрываем текущее
-                    block.classList.toggle('active');
-                });
-            });
-        } else {
-            // На компьютере убираем классы active
-            subMenuBlocks.forEach(block => {
-                block.classList.remove('active');
-            });
-        }
-    }
-    
-    // Запускаем при загрузке и при изменении размера окна
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    // Закрываем меню при клике вне его
-    document.addEventListener('click', function(e) {
-        if (menu && hamburger) {
-            if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
-                menu.classList.remove('active');
-                hamburger.classList.remove('active');
-                subMenuBlocks.forEach(block => {
-                    block.classList.remove('active');
-                });
-            }
+// ========== ПЛАВНАЯ ПРОКРУТКА ==========
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#' || href === 'javascript:void(0)') return;
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
         }
     });
 });
 
-// ========== ПЛОЩАДКИ - ДАННЫЕ И ФИЛЬТРАЦИЯ AREAS ==========
+// ========== СЛАЙДЕР (DRAG TO SCROLL) ==========
+const slider = document.getElementById('eventsSlider');
+let isDown = false;
+let startX;
+let scrollLeft;
 
-// Данные площадок (замените на свои)
-const venuesData = [
-    {
-        name: "ПРОСТРАНСТВО «AMNESIA»",
-        img: "img/venues/amnesia.jpg",
-        type: "loft",
-        capacity: 500,
-        desc: "Уникальный двухъярусный комплекс площадью 1200 кв. м. под Петербургом"
-    },
-    {
-        name: "Лофт «Пальма»",
-        img: "img/venues/palmtree.jfif",
-        type: "loft",
-        capacity: 250,
-        desc: "Старинный особняк «Пальма» — творческое пространство в самом центре Петербурга, вблизи Коломны."
-    },
-    {
-        name: "Пространство «БРУСНИЦЫН ХОЛЛ»",
-        img: "img/venues/brusnitsyn.jpg",
-        type: "loft",
-        capacity: 350,
-        desc: "Многофункциональная площадка для организации событий разного масштаба"
-    },
-    {
-        name: "Загородный клуб «Стеклянный»",
-        img: "img/venues/glass3.jpeg",
-        type: "tent",
-        capacity: 300,
-        desc: "Активный отдых и релакс в окружении природы, всего в 40 минутах езды от Санкт-Петербурга"
-    },
-    {
-        name: "Клуб загородного отдыха «Северный Берег»",
-        img: "img/venues/northernshore.jpg",
-        type: "tent",
-        capacity: 40,
-        desc: "Отдых на берегу живописного озера Хепоярви в Токсово"
-    },
-    {
-        name: "Парк «Зубровник»",
-        img: "img/venues/zubrovnik.jpg",
-        type: "tent",
-        capacity: 250,
-        desc: "Эко-парк с зубрами рядом с Петербургом"
-    },
-    {
-        name: "Крепость «Орешек»",
-        img: "img/venues/nut.jpg",
-        type: "tent",
-        capacity: 150,
-        desc: "Незабываемый квест в старинной крепости"
-    },
-    {
-        name: "Центр активного отдыха «Изумрудное озеро»",
-        img: "img/venues/emeraldlake.jpg",
-        type: "terrace",
-        capacity: 35,
-        desc: "Изумрудное озеро — центр активного отдыха, где можно провести идеальный день на природе."
-    },
-    {
-        name: "Хорошее место!",
-        img: "img/venues/goodplace.jpg",
-        type: "tent",
-        capacity: 15,
-        desc: "Хорошее место для хороших людей"
-    },
-    {
-        name: "Центра активного отдыха «Илоранта»",
-        img: "img/venues/iloranta.jpg",
-        type: "terrace",
-        capacity: 70,
-        desc: "В переводе с финского «Илоранта» означает Берег радости"
-    },
-	{
-        name: "Загородная площадка «В Кругу своих»",
-        img: "img/venues/v-krugu-svoih.jpg",
-        type: "tent",
-        capacity: 30,
-        desc: "Самые лучшие моменты своей жизни мы разделяем с близкими"
+if (slider) {
+    slider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        slider.style.cursor = 'grabbing';
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+    });
+    slider.addEventListener('mouseleave', () => {
+        isDown = false;
+        slider.style.cursor = 'grab';
+    });
+    slider.addEventListener('mouseup', () => {
+        isDown = false;
+        slider.style.cursor = 'grab';
+    });
+    slider.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 2;
+        slider.scrollLeft = scrollLeft - walk;
+    });
+}
+
+loadEvents();
+
+// ========== БУРГЕР-МЕНЮ (ГЛАВНЫЙ ОБРАБОТЧИК) ==========
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.getElementById('mobile-hamburger');
+    const menu = document.getElementById('main-menu');
+    
+    if (hamburger && menu) {
+        hamburger.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            menu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+        
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                menu.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+        
+        document.addEventListener('click', function(e) {
+            if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+                menu.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        });
     }
-	
+});
+
+// ========== ПЛОЩАДКИ - ДАННЫЕ И ФИЛЬТРАЦИЯ ==========
+const venuesData = [
+    { name: "ПРОСТРАНСТВО «AMNESIA»", img: "img/venues/amnesia.jpg", type: "loft", capacity: 500, desc: "Уникальный двухъярусный комплекс площадью 1200 кв. м. под Петербургом" },
+    { name: "Лофт «Пальма»", img: "img/venues/palmtree.jfif", type: "loft", capacity: 250, desc: "Старинный особняк «Пальма» — творческое пространство в самом центре Петербурга" },
+    { name: "Пространство «БРУСНИЦЫН ХОЛЛ»", img: "img/venues/brusnitsyn.jpg", type: "loft", capacity: 350, desc: "Многофункциональная площадка" },
+    { name: "Загородный клуб «Стеклянный»", img: "img/venues/glass3.jpeg", type: "tent", capacity: 300, desc: "Активный отдых и релакс в окружении природы" },
+    { name: "Клуб загородного отдыха «Северный Берег»", img: "img/venues/northernshore.jpg", type: "tent", capacity: 40, desc: "Отдых на берегу озера Хепоярви" },
+    { name: "Парк «Зубровник»", img: "img/venues/zubrovnik.jpg", type: "tent", capacity: 250, desc: "Эко-парк с зубрами" },
+    { name: "Крепость «Орешек»", img: "img/venues/nut.jpg", type: "tent", capacity: 150, desc: "Квест в старинной крепости" },
+    { name: "Центр активного отдыха «Изумрудное озеро»", img: "img/venues/emeraldlake.jpg", type: "terrace", capacity: 35, desc: "Центр активного отдыха" },
+    { name: "Хорошее место!", img: "img/venues/goodplace.jpg", type: "tent", capacity: 15, desc: "Хорошее место для хороших людей" },
+    { name: "Центр активного отдыха «Илоранта»", img: "img/venues/iloranta.jpg", type: "terrace", capacity: 70, desc: "Берег радости" },
+    { name: "Загородная площадка «В Кругу своих»", img: "img/venues/v-krugu-svoih.jpg", type: "tent", capacity: 30, desc: "Уютные праздники у костра" }
 ];
 
-// DOM элементы
 const venuesGrid = document.getElementById('venuesGrid');
 const noResults = document.getElementById('noResults');
 const guestsSlider = document.getElementById('guests-slider');
@@ -268,21 +166,15 @@ const guestsValue = document.getElementById('guests-value');
 let currentTypeFilter = 'all';
 let currentGuestsFilter = 10;
 
-// Функция отображения площадок
 function renderVenues() {
-    // Проверяем, существует ли venuesGrid
     if (!venuesGrid) return;
     
-    // Фильтрация
     const filtered = venuesData.filter(venue => {
-        // Фильтр по типу
         if (currentTypeFilter !== 'all' && venue.type !== currentTypeFilter) return false;
-        // Фильтр по количеству гостей
         if (venue.capacity < currentGuestsFilter) return false;
         return true;
     });
     
-    // Показываем сообщение, если ничего не найдено
     if (filtered.length === 0) {
         venuesGrid.style.display = 'none';
         if (noResults) noResults.style.display = 'block';
@@ -292,9 +184,7 @@ function renderVenues() {
     venuesGrid.style.display = 'grid';
     if (noResults) noResults.style.display = 'none';
     
-    // ОТОБРАЖАЕМ КАРТОЧКИ С ССЫЛКАМИ
     venuesGrid.innerHTML = filtered.map(venue => {
-        // Определяем ID для ссылки (по названию площадки)
         let venueId = '';
         const name = venue.name.toLowerCase();
         if (name.includes('amnesia')) venueId = 'amnesia';
@@ -306,8 +196,8 @@ function renderVenues() {
         else if (name.includes('орешек')) venueId = 'oreshek';
         else if (name.includes('изумрудное')) venueId = 'emeraldlake';
         else if (name.includes('хорошее место')) venueId = 'goodplace';
-		else if (name.includes('илоранта')) venueId = 'iloranta';
-		else if (name.includes('в кругу своих')) venueId = 'v-krugu-svoih';		
+        else if (name.includes('илоранта')) venueId = 'iloranta';
+        else if (name.includes('в кругу своих')) venueId = 'v-krugu-svoih';
         else venueId = 'amnesia';
         
         return `
@@ -315,9 +205,7 @@ function renderVenues() {
                 <div class="venue-img" style="background-image: url('${venue.img}')"></div>
                 <div class="venue-content">
                     <h3>${venue.name}</h3>
-                    <div class="venue-capacity">
-                        <span>👥</span> до ${venue.capacity} гостей
-                    </div>
+                    <div class="venue-capacity">👥 до ${venue.capacity} гостей</div>
                     <p class="venue-desc">${venue.desc}</p>
                     <button class="btn-outline">Подробнее</button>
                 </div>
@@ -326,7 +214,6 @@ function renderVenues() {
     }).join('');
 }
 
-// Обработчики фильтров (проверяем, существуют ли элементы)
 const filterChips = document.querySelectorAll('.filter-chip');
 if (filterChips.length > 0) {
     filterChips.forEach(chip => {
@@ -347,28 +234,19 @@ if (guestsSlider) {
     });
 }
 
-// Запуск фильтрации при загрузке страницы
 document.addEventListener('DOMContentLoaded', renderVenues);
 
 // ========== СТРАНИЦА БАНКЕТА - ТАБЫ ==========
-
 document.addEventListener('DOMContentLoaded', function() {
-    // Переключение табов
     const tabBtns = document.querySelectorAll('.tab-btn');
     const tabContents = document.querySelectorAll('.tab-content');
     
     if (tabBtns.length > 0) {
         tabBtns.forEach(btn => {
             btn.addEventListener('click', function() {
-                // Убираем active у всех кнопок
                 tabBtns.forEach(b => b.classList.remove('active'));
-                // Добавляем текущей
                 this.classList.add('active');
-                
-                // Скрываем все табы
                 tabContents.forEach(content => content.classList.remove('active'));
-                
-                // Показываем нужный таб
                 const tabId = this.dataset.tab;
                 const activeTab = document.getElementById(`tab-${tabId}`);
                 if (activeTab) activeTab.classList.add('active');
@@ -376,213 +254,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Переключение форматов (иконки вверху)
     const cateringIcons = document.querySelectorAll('.catering-icon');
     if (cateringIcons.length > 0) {
         cateringIcons.forEach(icon => {
             icon.addEventListener('click', function() {
                 cateringIcons.forEach(i => i.classList.remove('active'));
                 this.classList.add('active');
-                // Здесь можно добавить логику перехода на другие страницы
-                // или переключение контента
             });
         });
     }
 });
 
-// ========== МОБИЛЬНОЕ МЕНЮ (БУРГЕР) ==========
-document.addEventListener('DOMContentLoaded', function() {
-    // Находим элементы
-    const hamburger = document.querySelector('.hamburger');
-    const mainMenu = document.querySelector('.menu');
-    
-    console.log('Бургер найден:', hamburger);
-    console.log('Меню найдено:', mainMenu);
-    
-    // Если бургер и меню существуют
-    if (hamburger && mainMenu) {
-        // Открытие/закрытие меню при клике на бургер
-        hamburger.addEventListener('click', function(e) {
-            e.stopPropagation();
-            mainMenu.classList.toggle('active');
-            hamburger.classList.toggle('active');
-            console.log('Меню активность:', mainMenu.classList.contains('active'));
-        });
-        
-        // Закрываем меню при клике на ссылку внутри меню
-        const menuLinks = mainMenu.querySelectorAll('a');
-        menuLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                mainMenu.classList.remove('active');
-                hamburger.classList.remove('active');
-            });
-        });
-        
-        // Закрываем меню при клике вне его
-        document.addEventListener('click', function(e) {
-            if (!mainMenu.contains(e.target) && !hamburger.contains(e.target)) {
-                mainMenu.classList.remove('active');
-                hamburger.classList.remove('active');
-            }
-        });
-    }
-    
-    // Для мобильных подменю (всплывающие меню внутри бургера)
-    const subMenuBlocks = document.querySelectorAll('.sub_menu_block');
-    
-    function initMobileSubmenus() {
-        if (window.innerWidth <= 768) {
-            subMenuBlocks.forEach(block => {
-                const link = block.querySelector('> a');
-                if (!link.hasAttribute('data-mobile-handler')) {
-                    link.setAttribute('data-mobile-handler', 'true');
-                    
-                    // Сохраняем оригинальный href
-                    const originalHref = link.getAttribute('href');
-                    
-                    link.addEventListener('click', function(e) {
-                        // Если подменю существует
-                        const subMenu = block.querySelector('.sub_menu');
-                        if (subMenu && subMenu.children.length > 0) {
-                            e.preventDefault();
-                            
-                            // Закрываем все другие подменю
-                            subMenuBlocks.forEach(b => {
-                                if (b !== block) {
-                                    b.classList.remove('active');
-                                }
-                            });
-                            
-                            // Открываем/закрываем текущее
-                            block.classList.toggle('active');
-                        }
-                        // Если нет подменю, просто переходим по ссылке
-                    });
-                }
-            });
-        } else {
-            // На компьютере убираем активные классы
-            subMenuBlocks.forEach(block => {
-                block.classList.remove('active');
-            });
-        }
-    }
-    
-    // Запускаем при загрузке и при изменении размера окна
-    initMobileSubmenus();
-    window.addEventListener('resize', initMobileSubmenus);
-});
-
-// ========== БУРГЕР-МЕНЮ ДЛЯ ТЕЛЕФОНОВ ==========
-document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.querySelector('.hamburger');
-    const menu = document.querySelector('.menu');
-    
-    if (hamburger && menu) {
-        hamburger.addEventListener('click', function(e) {
-            e.stopPropagation();
-            menu.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        });
-        
-        // Закрываем меню при клике на ссылку
-        menu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', function() {
-                menu.classList.remove('active');
-                hamburger.classList.remove('active');
-            });
-        });
-        
-        // Закрываем меню при клике вне его
-        document.addEventListener('click', function(e) {
-            if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
-                menu.classList.remove('active');
-                hamburger.classList.remove('active');
-            }
-        });
-    }
-});
-
-// ========== МОБИЛЬНЫЕ ПОДМЕНЮ (РАСКРЫВАЮЩИЕСЯ) ==========
-document.addEventListener('DOMContentLoaded', function() {
-    // Находим все блоки с подменю
-    const subMenuBlocks = document.querySelectorAll('.sub_menu_block');
-    
-    // Функция для мобильной версии
-    function initMobileSubmenus() {
-        if (window.innerWidth <= 768) {
-            subMenuBlocks.forEach(block => {
-                const link = block.querySelector('> a');
-                const subMenu = block.querySelector('.sub_menu');
-                
-                // Проверяем, есть ли подменю и есть ли у ссылки href не javascript:void(0)
-                if (subMenu && subMenu.children.length > 0) {
-                    // Убираем старый обработчик, если есть
-                    const oldLink = link;
-                    const newLink = oldLink.cloneNode(true);
-                    oldLink.parentNode.replaceChild(newLink, oldLink);
-                    
-                    // Добавляем новый обработчик
-                    newLink.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        
-                        // Закрываем все другие подменю
-                        subMenuBlocks.forEach(b => {
-                            if (b !== block) {
-                                b.classList.remove('active');
-                            }
-                        });
-                        
-                        // Открываем/закрываем текущее
-                        block.classList.toggle('active');
-                    });
-                }
-            });
-        } else {
-            // На компьютере убираем активные классы
-            subMenuBlocks.forEach(block => {
-                block.classList.remove('active');
-            });
-        }
-    }
-    
-    // Запускаем при загрузке и при изменении размера окна
-    initMobileSubmenus();
-    window.addEventListener('resize', initMobileSubmenus);
-});
-
-// ========== БУРГЕР-МЕНЮ (ПРОСТАЯ ВЕРСИЯ) ==========
-document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.getElementById('mobile-hamburger');
-    const menu = document.getElementById('main-menu');
-    
-	
-    console.log('Бургер найден:', hamburger);
-    console.log('Меню найдено:', menu);
-    
-    if (hamburger && menu) {
-        hamburger.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            menu.classList.toggle('active');
-            hamburger.classList.toggle('active');
-            console.log('Меню активно:', menu.classList.contains('active'));
-        });
-    } else {
-        console.log('Бургер или меню не найдены!');
-    }
-});
-
-// ========== ПАРТНЁРЫ - ДАННЫЕ И ОТОБРАЖЕНИЕ ==========
+// ========== ПАРТНЁРЫ ==========
 const partnersData = [
     {
         id: "partner1",
         name: "ZaSov",
         img: "img/partners/zasov.jpg",
         desc: "ZaSov - квесты в реальности.",
-        fullDesc: "<p>Лучшие квесты и игры СПб по рейтингу экспертов! Квесты и зажигательные шоу-игры в Санкт-Петербурге! Больше загадок, круче удовольствие! Максимум драйва и веселья!</p>",
-        address: "Санкт-Петербург, Ораниенбаумская улица, проспект Энгельса, 126к1, Новоизмайловский проспект, 3",
+        fullDesc: "<p>Лучшие квесты и игры СПб по рейтингу экспертов!</p>",
+        address: "Санкт-Петербург, Ораниенбаумская улица, проспект Энгельса, 126к1",
         phone: "+7 (921) 763-81-33",
         email: "povodest@yandex.ru",
         website: "za-sov.su"
@@ -591,8 +282,8 @@ const partnersData = [
         id: "partner2",
         name: "ДИКИЙ ДЫМ – WILD SMOKE",
         img: "img/partners/partner2.jpg",
-        desc: "ДИКИЙ ДЫМ | БУРГЕРНАЯ ЭНКОЛОВО | МЯСО ИЗ СМОКЕРА.",
-        fullDesc: "<p>ДИКИЙ ДЫМ | БУРГЕРНАЯ ЭНКОЛОВО | МЯСО ИЗ СМОКЕРА. Собственное производство мяса, техасский смокер и барбекю, свежайшая продукция, большой выбор, быстрое обслуживание.</p>",
+        desc: "БУРГЕРНАЯ | МЯСО ИЗ СМОКЕРА",
+        fullDesc: "<p>Собственное производство мяса, техасский смокер и барбекю</p>",
         address: "д. Энколово, Лазурная 1",
         phone: "+7 (921) 763-81-33",
         email: "povodest@yandex.ru",
@@ -602,33 +293,62 @@ const partnersData = [
         id: "partner3",
         name: "Золотой ключ и Ко",
         img: "img/partners/partner3.jpg",
-        desc: "Организация мероприятий, туристические услуги.",
-        fullDesc: "<p>Золотой ключ и Кo. Организует и проводит корпоративные мероприятия разного формата: тренинги командообразования (тимбилдинг), веревочные тренинги, сценарные программы и квесты, прогулки на теплоходах, корпоративные праздники; подбирает площадки для пикника, залы и оборудованные площадки для выездных семинаров, конференций, тренингов, тематических программ; кафе и рестораны для проведения банкетов, а также загородные базы для проведения корпоративных программ; разрабатывает и проводит тематические программы для детей: выпускные вечера, игры-квесты, интерактивные уроки живой истории, экскурсии для школьников.</p>",
-        address: "191123, Санкт-Петербург, ул. Восстания 40/18",
+        desc: "Организация мероприятий",
+        fullDesc: "<p>Организует корпоративные мероприятия, тимбилдинг, квесты</p>",
+        address: "Санкт-Петербург, ул. Восстания 40/18",
         phone: "+7 (921) 763-81-33",
         email: "povodest@yandex.ru",
         website: "openkey.spb.ru/"
     }
 ];
 
-// Функция отображения партнёров на главной странице
 function renderPartners() {
     const partnersGrid = document.getElementById('partnersGrid');
     if (!partnersGrid) return;
     
-    partnersGrid.innerHTML = partnersData.map(partner => {
-        return `
-            <div class="partner-card" onclick="window.location.href='partner-detail.html?id=${partner.id}'">
-                <div class="partner-img" style="background-image: url('${partner.img}')"></div>
-                <div class="partner-content">
-                    <h3>${partner.name}</h3>
-                    <p class="partner-desc">${partner.desc}</p>
-                    <button class="btn-outline">Подробнее</button>
-                </div>
+    partnersGrid.innerHTML = partnersData.map(partner => `
+        <div class="partner-card" onclick="window.location.href='partner-detail.html?id=${partner.id}'">
+            <div class="partner-img" style="background-image: url('${partner.img}')"></div>
+            <div class="partner-content">
+                <h3>${partner.name}</h3>
+                <p class="partner-desc">${partner.desc}</p>
+                <button class="btn-outline">Подробнее</button>
             </div>
-        `;
-    }).join('');
+        </div>
+    `).join('');
 }
 
-// Запускаем отображение партнёров
 document.addEventListener('DOMContentLoaded', renderPartners);
+
+// ========== БУРГЕР-МЕНЮ (МОБИЛЬНАЯ ВЕРСИЯ) ==========
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.getElementById('mobile-hamburger');
+    const mobileMenu = document.getElementById('mobile-menu-overlay');
+    
+    if (hamburger && mobileMenu) {
+        // Открытие/закрытие мобильного меню при клике на бургер
+        hamburger.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            mobileMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            console.log('Мобильное меню активно:', mobileMenu.classList.contains('active'));
+        });
+        
+        // Закрытие меню при клике на любую ссылку внутри
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+        
+        // Закрытие меню при клике вне его
+        document.addEventListener('click', function(e) {
+            if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        });
+    }
+});
