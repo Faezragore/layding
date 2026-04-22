@@ -6,17 +6,24 @@
     <title>Партнёр | Кейтеринг Повод есть</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="partner-detail-page">
 
+<!-- ШАПКА (как на других страницах) -->
 <nav id="navbar">
-    <a href="index.html" class="logo">Повод <span>Есть</span></a>
-    <div class="menu-toggle" id="mobile-menu">
-        <i class="fas fa-bars"></i>
+<a href="index.html" class="logo-area">
+    <img src="img/logo.png" alt="Повод есть" class="logo-img">
+    <div class="logo-vertical-text">
+        <span>Организация</span>
+        <span>мероприятий</span>
+        <span>в Санкт-Петербурге</span>
+        <span>и ЛО</span>
     </div>
+</a>
+    
     <div class="menu" id="main-menu">
         <div class="sub_menu_block">
             <a href="index.html#about">О нас</a>
@@ -27,7 +34,7 @@
             </div>
         </div>
         <div class="sub_menu_block">
-            <a href="index.html#menu">Меню</a>
+            <a href="javascript:void(0)">Меню</a>
             <div class="sub_menu">
                 <a href="menu-detail.html?id=banquet">Банкет</a>
                 <a href="menu-detail.html?id=buffet">Фуршет</a>
@@ -44,19 +51,60 @@
                 <a href="#consult">Консалтинг</a>
                 <a href="#decor">Декор</a>
                 <a href="#staff">Персонал</a>
-                <a href="#furniture">Мебель и оборудование</a>
+                <a href="partners.html">Партнёры</a>
             </div>
         </div>
         <a href="areas.html">Площадки</a>
-        <a href="partners.html">Партнёры</a>
-        <a href="#" class="book-btn" id="openModalBtn">Заказать мероприятие</a>
     </div>
-    <span class="hamburger" id="mobile-hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </span>
+    
+    <div class="nav-right">
+        <div class="nav-buttons">
+            <a href="#" class="btn-nav" id="openModalBtn">Заказать мероприятие</a>
+            <a href="upload/Menu.pdf" class="btn-nav btn-nav-outline" target="_blank">Скачать меню</a>
+        </div>
+        <div class="hamburger" id="mobile-hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
 </nav>
+
+<!-- БУРГЕР-МЕНЮ -->
+<div class="mobile-menu-overlay" id="mobile-menu-overlay">
+    <div class="mobile-menu-section">
+        <div class="mobile-menu-main">О НАС</div>
+        <div class="mobile-submenu">
+            <a href="index.html#contacts">КОНТАКТЫ</a>
+            <a href="#actions">АКЦИИ</a>
+            <a href="#news">НОВОСТИ</a>
+        </div>
+    </div>
+    <div class="mobile-menu-section">
+        <div class="mobile-menu-main">МЕНЮ</div>
+        <div class="mobile-submenu">
+            <a href="menu-detail.html?id=banquet">БАНКЕТ</a>
+            <a href="menu-detail.html?id=buffet">ФУРШЕТ</a>
+            <a href="menu-detail.html?id=vegetarian">ВЕГЕТАРИАНСКОЕ</a>
+            <a href="menu-detail.html?id=bbq">БАРБЕКЮ</a>
+            <a href="menu-detail.html?id=premium">ПРЕМИУМ</a>
+            <a href="menu-detail.html?id=retreat">РЕТРИТ</a>
+            <a href="menu-detail.html?id=retreatpp">РЕТРИТ ПП</a>
+        </div>
+    </div>
+    <div class="mobile-menu-section">
+        <div class="mobile-menu-main">УСЛУГИ</div>
+        <div class="mobile-submenu">
+            <a href="#consult">КОНСАЛТИНГ</a>
+            <a href="#decor">ДЕКОР</a>
+            <a href="#staff">ПЕРСОНАЛ</a>
+            <a href="partners.html">ПАРТНЁРЫ</a>
+        </div>
+    </div>
+    <div class="mobile-menu-section">
+        <a href="areas.html" class="mobile-menu-main">ПЛОЩАДКИ</a>
+    </div>
+</div>
 
 <div class="partner-detail-content">
     <a href="partners.html" class="back-btn">
@@ -98,8 +146,8 @@
         partner1: {
             name: "ZaSov",
             img: "img/partners/zasov-bg.jpg",
-            fullDesc: "<p>Лучшие квесты и игры СПб по рейтингу экспертов!Квесты и зажигательные шоу-игры в Санкт-Петербурге!Больше загадок, круче удовольствие!Максимум драйва и веселья!</p><p>Бронируй, чтобы провести незабываемый праздник!</p>",
-            address: "Санкт-Петербург, Ораниенбаумская улица,проспект Энгельса, 126к1,Новоизмайловский проспект, 3",
+            fullDesc: "<p>Лучшие квесты и игры СПб по рейтингу экспертов! Квесты и зажигательные шоу-игры в Санкт-Петербурге! Больше загадок, круче удовольствие! Максимум драйва и веселья!</p><p>Бронируй, чтобы провести незабываемый праздник!</p>",
+            address: "Санкт-Петербург, Ораниенбаумская улица, проспект Энгельса, 126к1, Новоизмайловский проспект, 3",
             phone: "+7 (921) 763-81-33",
             email: "povodest@yandex.ru",
             website: "za-sov.su"
@@ -107,26 +155,23 @@
         partner2: {
             name: "ДИКИЙ ДЫМ – WILD SMOKE",
             img: "img/partners/partner2-bg.jpg",
-            desc: "ДИКИЙ ДЫМ | БУРГЕРНАЯ ЭНКОЛОВО | МЯСО ИЗ СМОКЕРА.",
-            fullDesc: "<p>ДИКИЙ ДЫМ | БУРГЕРНАЯ ЭНКОЛОВО | МЯСО ИЗ СМОКЕРА.Собственное производство мяса,техасский смокер и барбекю,свежайшая продукция,большой выбор,быстрое обслуживание.</p>",
+            fullDesc: "<p>ДИКИЙ ДЫМ | БУРГЕРНАЯ ЭНКОЛОВО | МЯСО ИЗ СМОКЕРА. Собственное производство мяса, техасский смокер и барбекю, свежайшая продукция, большой выбор, быстрое обслуживание.</p>",
             address: "д. Энколово, Лазурная 1",
             phone: "+7 (921) 763-81-33",
             email: "povodest@yandex.ru",
             website: "vk.com/wild_smoke_ohta"
         },
         partner3: {
-           name: "Золотой ключ и Ко",
-           img: "img/partners/partner3-bg.jpg",
-           desc: "Организация мероприятий, туристические услуги.",
-           fullDesc: "<p>Золотой ключ и Кo. Организует и проводит корпоративные мероприятия разного формата: тренинги командообразования (тимбилдинг), веревочные тренинги, сценарные программы и квесты, прогулки на теплоходах, корпоративные праздники; подбирает площадки для пикника, залы и оборудованные площадки для выездных семинаров, конференций, тренингов, тематических программ; кафе и рестораны для проведения банкетов, а также загородные базы для проведения корпоративных программ; разрабатывает и проводит тематические программы для детей: выпускные вечера, игры-квесты, интерактивные уроки живой истории, экскурсии для школьников.</p>",
-           address: "191123, Санкт-Петербург, ул. Восстания 40/18",
-           phone: "+7 (921) 763-81-33",
-           email: "povodest@yandex.ru",
-           website: "openkey.spb.ru/"
+            name: "Золотой ключ и Ко",
+            img: "img/partners/partner3-bg.jpg",
+            fullDesc: "<p>Золотой ключ и Кo. Организует и проводит корпоративные мероприятия разного формата: тренинги командообразования (тимбилдинг), веревочные тренинги, сценарные программы и квесты, прогулки на теплоходах, корпоративные праздники; подбирает площадки для пикника, залы и оборудованные площадки для выездных семинаров, конференций, тренингов, тематических программ; кафе и рестораны для проведения банкетов, а также загородные базы для проведения корпоративных программ; разрабатывает и проводит тематические программы для детей: выпускные вечера, игры-квесты, интерактивные уроки живой истории, экскурсии для школьников.</p>",
+            address: "191123, Санкт-Петербург, ул. Восстания 40/18",
+            phone: "+7 (921) 763-81-33",
+            email: "povodest@yandex.ru",
+            website: "openkey.spb.ru/"
         }
     };
     
-    // Получаем id из URL
     const urlParams = new URLSearchParams(window.location.search);
     const partnerId = urlParams.get('id') || 'partner1';
     const partner = partnersDetail[partnerId];
@@ -136,7 +181,7 @@
     if (partner) {
         contentDiv.innerHTML = `
             <div class="partner-detail-grid">
-                <div class="partner-detail-img" style="background-image: url('${partner.img}')"></div>
+                <div class="partner-detail-img" style="background-image: url('${partner.img}'); background-size: cover; background-position: center;"></div>
                 <div class="partner-detail-info">
                     <h1 class="partner-detail-title">${partner.name}</h1>
                     <div class="partner-detail-desc">${partner.fullDesc}</div>
@@ -166,7 +211,6 @@
         contentDiv.innerHTML = '<p style="color:white; text-align:center;">Партнёр не найден</p>';
     }
     
-    // Обработчик кнопки заказа
     document.getElementById('orderBtn')?.addEventListener('click', function(e) {
         e.preventDefault();
         document.getElementById('bookingModal').style.display = 'flex';

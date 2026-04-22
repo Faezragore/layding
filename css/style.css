@@ -35,6 +35,12 @@ nav {
     display: flex;
     align-items: center;
     gap: 10px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo-area:hover {
+    text-decoration: none;
 }
 
 .logo-img {
@@ -64,6 +70,35 @@ nav {
     display: flex;
     align-items: center;
     gap: 15px;
+}
+
+/* ========== КНОПКИ В ШАПКЕ ========== */
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-nav {
+    background: #c7a55b;
+    color: #0a0a0a;
+    padding: 8px 18px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+.btn-nav-outline {
+    background: transparent;
+    border: 1px solid #c7a55b;
+    color: #c7a55b;
+}
+
+.btn-nav:hover {
+    background: #e6c282;
+    transform: translateY(-2px);
 }
 
 /* ========== ГОРИЗОНТАЛЬНОЕ МЕНЮ (КОМПЬЮТЕР) ========== */
@@ -170,7 +205,6 @@ nav {
     right: 0;
 }
 
-/* Основные разделы (О НАС, МЕНЮ, УСЛУГИ, ПЛОЩАДКИ) - ЗОЛОТЫЕ, ПО ЦЕНТРУ */
 .mobile-menu-section {
     margin-bottom: 25px;
     text-align: center;
@@ -179,7 +213,7 @@ nav {
 .mobile-menu-main {
     font-size: 22px;
     font-weight: 600;
-    color: #c7a55b;  /* ЗОЛОТОЙ */
+    color: #c7a55b;
     text-decoration: none;
     padding: 10px 0;
     font-family: 'Playfair Display', serif;
@@ -188,7 +222,6 @@ nav {
     text-align: center;
 }
 
-/* Подменю - ВЕРТИКАЛЬНО, ПО ЦЕНТРУ */
 .mobile-submenu {
     display: flex;
     flex-direction: column;
@@ -201,7 +234,7 @@ nav {
     display: inline-block;
     font-size: 16px;
     font-weight: 400;
-    color: #ffffff;  /* БЕЛЫЙ */
+    color: #ffffff;
     text-decoration: none;
     padding: 6px 0;
     transition: 0.3s;
@@ -210,13 +243,7 @@ nav {
 }
 
 .mobile-submenu a:active {
-    color: #c7a55b;  /* При нажатии становится золотым */
-}
-
-/* Если у раздела нет подменю (например, ПЛОЩАДКИ) */
-.mobile-menu-section:last-child .mobile-menu-main {
-    border-bottom: none;
-    margin-bottom: 0;
+    color: #c7a55b;
 }
 
 /* ========== ГЕРОЙ СЕКЦИЯ ========== */
@@ -466,35 +493,6 @@ footer {
     color: #aaa;
 }
 
-/* ========== КНОПКИ В ШАПКЕ ========== */
-.nav-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-.btn-nav {
-    background: #c7a55b;
-    color: #0a0a0a;
-    padding: 8px 18px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 14px;
-    transition: all 0.3s;
-    white-space: nowrap;
-}
-
-.btn-nav-outline {
-    background: transparent;
-    border: 1px solid #c7a55b;
-    color: #c7a55b;
-}
-
-.btn-nav:hover {
-    background: #e6c282;
-    transform: translateY(-2px);
-}
-
 /* ========== ПЛОЩАДКИ ========== */
 .venues-section {
     padding: 100px 5% 60px;
@@ -664,14 +662,14 @@ footer {
     font-size: 18px;
 }
 
-/* ========== ПАРТНЁРЫ ========== */
+/* ========== ПАРТНЁРЫ (КАРТОЧКИ) ========== */
 #partners {
     padding: 60px 5%;
 }
 
 .partners-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
@@ -691,11 +689,11 @@ footer {
 }
 
 .partner-img {
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-color: #141414;
-    height: 200px;
+    height: 280px;
 }
 
 .partner-content {
@@ -706,6 +704,7 @@ footer {
     font-size: 1.3rem;
     margin-bottom: 8px;
     font-family: 'Playfair Display', serif;
+    color: #fff;
 }
 
 .partner-desc {
@@ -714,7 +713,6 @@ footer {
     line-height: 1.5;
     margin-bottom: 20px;
 }
-
 /* ========== ДЕТАЛЬНАЯ СТРАНИЦА ПАРТНЁРА ========== */
 .partner-detail-page {
     min-height: 100vh;
@@ -746,9 +744,9 @@ footer {
 .partner-detail-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 50px;
+    gap: 40px;
     background: #141414;
-    border-radius: 30px;
+    border-radius: 24px;
     overflow: hidden;
 }
 
@@ -756,12 +754,15 @@ footer {
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: #141414;
-    min-height: 300px;
+    background-color: #1a1a1a;
+    min-height: 450px;
+    width: 100%;
 }
 
 .partner-detail-info {
     padding: 40px;
+    display: flex;
+    flex-direction: column;
 }
 
 .partner-detail-title {
@@ -769,12 +770,15 @@ footer {
     font-family: 'Playfair Display', serif;
     margin-bottom: 20px;
     color: #fff;
+    border-left: 4px solid #c7a55b;
+    padding-left: 20px;
 }
 
 .partner-detail-desc {
     color: #e5e5e5;
     line-height: 1.7;
     margin-bottom: 30px;
+    font-size: 1rem;
 }
 
 .partner-params {
@@ -799,6 +803,7 @@ footer {
     width: 24px;
     color: #c7a55b;
     font-size: 18px;
+    text-align: center;
 }
 
 .partner-param a {
@@ -818,15 +823,59 @@ footer {
     border-radius: 40px;
     text-decoration: none;
     font-weight: 600;
-    transition: 0.3s;
+    transition: all 0.3s;
     display: inline-block;
     border: none;
     cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+    align-self: flex-start;
 }
 
 .btn-order:hover {
     background: #e6c282;
     transform: translateY(-2px);
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    .partner-detail-content {
+        padding: 100px 5% 60px;
+    }
+    
+    .partner-detail-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    .partner-detail-img {
+        background-size: contain;
+        min-height: 250px;
+        height: auto;
+    }
+    
+    .partner-detail-info {
+        padding: 25px;
+    }
+    
+    .partner-detail-title {
+        font-size: 1.8rem;
+        padding-left: 15px;
+    }
+    
+    .partner-detail-desc {
+        font-size: 14px;
+    }
+    
+    .partner-param {
+        font-size: 13px;
+    }
+    
+    .btn-order {
+        width: 100%;
+        text-align: center;
+        align-self: stretch;
+    }
 }
 
 /* ========== АДАПТИВ (МОБИЛЬНАЯ ВЕРСИЯ) ========== */
@@ -890,7 +939,11 @@ footer {
     }
     
     .partner-img {
-        height: 180px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: #141414;
+        height: 250px;
     }
     
     .partner-content {
@@ -912,10 +965,15 @@ footer {
     
     .partner-detail-grid {
         grid-template-columns: 1fr;
+        gap: 0;
     }
     
     .partner-detail-img {
-        min-height: 250px;
+       background-size: contain;
+       background-position: center;
+       background-repeat: no-repeat;
+       background-color: #1a1a1a;
+       min-height: 450px;
     }
     
     .partner-detail-info {
@@ -924,6 +982,21 @@ footer {
     
     .partner-detail-title {
         font-size: 1.8rem;
+        padding-left: 15px;
+    }
+    
+    .partner-detail-desc {
+        font-size: 14px;
+    }
+    
+    .partner-param {
+        font-size: 13px;
+    }
+    
+    .btn-order {
+        width: 100%;
+        text-align: center;
+        align-self: stretch;
     }
     
     /* Площадки */
@@ -949,6 +1022,13 @@ footer {
     }
 }
 
+/* На компьютере картинка партнёра без обрезки */
+@media (min-width: 1025px) {
+    .partner-detail-img {
+        background-size: contain;
+    }
+}
+
 /* ========== ПЛАНШЕТЫ ========== */
 @media (min-width: 768px) and (max-width: 1024px) {
     .menu-icons-grid {
@@ -968,5 +1048,24 @@ footer {
     
     .nav-buttons {
         display: flex;
+    }
+}
+
+/* ========== ФИКС КАРТИНКИ ПАРТНЁРА (БЕЗ ОБРЕЗКИ) ========== */
+.partner-detail-img {
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-color: #1a1a1a !important;
+    min-height: 450px !important;
+    width: 100% !important;
+    height: auto !important;
+}
+
+/* Для телефона */
+@media (max-width: 768px) {
+    .partner-detail-img {
+        min-height: 250px !important;
+        background-size: contain !important;
     }
 }

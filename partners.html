@@ -13,10 +13,16 @@
 <body>
 
 <nav id="navbar">
-    <a href="index.html" class="logo">Повод <span>Есть</span></a>
-    <div class="menu-toggle" id="mobile-menu">
-        <i class="fas fa-bars"></i>
+<a href="index.html" class="logo-area">
+    <img src="img/logo.png" alt="Повод есть" class="logo-img">
+    <div class="logo-vertical-text">
+        <span>Организация</span>
+        <span>мероприятий</span>
+        <span>в Санкт-Петербурге</span>
+        <span>и ЛО</span>
     </div>
+</a>
+    
     <div class="menu" id="main-menu">
         <div class="sub_menu_block">
             <a href="index.html#about">О нас</a>
@@ -27,7 +33,7 @@
             </div>
         </div>
         <div class="sub_menu_block">
-            <a href="index.html#menu">Меню</a>
+            <a href="javascript:void(0)">Меню</a>
             <div class="sub_menu">
                 <a href="menu-detail.html?id=banquet">Банкет</a>
                 <a href="menu-detail.html?id=buffet">Фуршет</a>
@@ -44,18 +50,23 @@
                 <a href="#consult">Консалтинг</a>
                 <a href="#decor">Декор</a>
                 <a href="#staff">Персонал</a>
-                <a href="#furniture">Мебель и оборудование</a>
+                <a href="partners.html">Партнёры</a>
             </div>
         </div>
         <a href="areas.html">Площадки</a>
-        <a href="partners.html">Партнёры</a>
-        <a href="#" class="book-btn" id="openModalBtn">Заказать мероприятие</a>
     </div>
-    <span class="hamburger" id="mobile-hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </span>
+    
+    <div class="nav-right">
+        <div class="nav-buttons">
+            <a href="#" class="btn-nav" id="openModalBtn">Заказать мероприятие</a>
+            <a href="upload/Menu.pdf" class="btn-nav btn-nav-outline" target="_blank">Скачать меню</a>
+        </div>
+        <div class="hamburger" id="mobile-hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
 </nav>
 
 <section class="partners-section">
