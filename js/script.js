@@ -326,29 +326,30 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileMenu = document.getElementById('mobile-menu-overlay');
     
     if (hamburger && mobileMenu) {
-        // Открытие/закрытие мобильного меню при клике на бургер
-        hamburger.addEventListener('click', function(e) {
+        // Открытие/закрытие мобильного меню
+        hamburger.onclick = function(e) {
             e.preventDefault();
             e.stopPropagation();
             mobileMenu.classList.toggle('active');
             hamburger.classList.toggle('active');
-            console.log('Мобильное меню активно:', mobileMenu.classList.contains('active'));
-        });
+        };
         
-        // Закрытие меню при клике на любую ссылку внутри
+        // Закрытие при клике на ссылку
         mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', function() {
+            link.onclick = function() {
                 mobileMenu.classList.remove('active');
                 hamburger.classList.remove('active');
-            });
+            };
         });
         
-        // Закрытие меню при клике вне его
-        document.addEventListener('click', function(e) {
-            if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
-                mobileMenu.classList.remove('active');
-                hamburger.classList.remove('active');
+        // Закрытие при клике вне меню
+        document.onclick = function(e) {
+            if (mobileMenu.classList.contains('active')) {
+                if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                    mobileMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
             }
-        });
+        };
     }
 });

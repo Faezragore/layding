@@ -14,13 +14,11 @@
             min-height: 100vh;
             background: #0a0a0a;
         }
-        
         .menu-detail-content {
             max-width: 1200px;
             margin: 0 auto;
             padding: 140px 5% 80px;
         }
-        
         .back-btn {
             display: inline-flex;
             align-items: center;
@@ -31,12 +29,10 @@
             transition: 0.3s;
             font-weight: 500;
         }
-        
         .back-btn:hover {
             gap: 15px;
             color: #e6c282;
         }
-        
         .menu-title {
             text-align: center;
             font-size: 3rem;
@@ -44,7 +40,6 @@
             margin-bottom: 20px;
             color: #fff;
         }
-        
         .menu-title:after {
             content: '';
             display: block;
@@ -53,7 +48,6 @@
             background: #c7a55b;
             margin: 1rem auto 0;
         }
-        
         .price-badge {
             text-align: center;
             background: #c7a55b;
@@ -65,11 +59,9 @@
             font-size: 18px;
             font-weight: 500;
         }
-        
         .price-badge b {
             font-size: 24px;
         }
-        
         .menu-categories {
             display: flex;
             flex-wrap: wrap;
@@ -77,7 +69,6 @@
             gap: 12px;
             margin-bottom: 40px;
         }
-        
         .cat-btn {
             padding: 10px 24px;
             background: #1e1e1e;
@@ -88,21 +79,17 @@
             font-size: 14px;
             border-radius: 30px;
         }
-        
         .cat-btn:hover, .cat-btn.active {
             background: #c7a55b;
             color: #0a0a0a;
         }
-        
         .category-content {
             display: none;
             animation: fadeIn 0.4s ease;
         }
-        
         .category-content.active {
             display: block;
         }
-        
         .dish-card {
             display: flex;
             gap: 25px;
@@ -112,11 +99,9 @@
             overflow: hidden;
             transition: transform 0.3s;
         }
-        
         .dish-card:hover {
             transform: translateX(5px);
         }
-        
         .dish-img {
             width: 120px;
             height: 120px;
@@ -124,47 +109,39 @@
             background-size: cover;
             background-position: center;
         }
-        
         .dish-info {
             padding: 15px 20px 15px 0;
             flex: 1;
         }
-        
         .dish-name {
             font-weight: 600;
             font-size: 18px;
             color: #fff;
             margin-bottom: 8px;
         }
-        
         .dish-desc {
             font-size: 13px;
             color: #888;
             line-height: 1.5;
         }
-        
         .simple-menu-items {
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
-        
         .simple-item {
             padding: 12px 0;
             border-bottom: 1px dashed #2a2a2a;
         }
-        
         .simple-item-name {
             font-weight: 500;
             color: #e5e5e5;
             font-size: 16px;
         }
-        
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
         @media (max-width: 768px) {
             .menu-detail-content {
                 padding: 100px 5% 60px;
@@ -330,35 +307,25 @@
             price: "3300",
             categories: {
                 cold: { name: "Холодные закуски", type: "simple",
-                    items: ["Ассорти свежих овощей с зелёным маслом", "Ассорти солений и маринадов", "Мясное плато", "Сырное плато", "Пряная сельдь с картофелем", "Винная закуска (маслины, оливки)"]
-                },
+                    items: ["Ассорти свежих овощей с зелёным маслом", "Ассорти солений и маринадов", "Мясное плато", "Сырное плато", "Пряная сельдь с картофелем", "Винная закуска (маслины, оливки)"] },
                 salads: { name: "Салаты", type: "simple",
-                    items: ["Салат Цезарь с куриным шашлыком", "Оливье"]
-                },
+                    items: ["Салат Цезарь с куриным шашлыком", "Оливье"] },
                 hot: { name: "Горячие закуски", type: "dish",
                     items: [
                         { name: "Грибной жульен с сыром", img: "img/menu/julien.jpg", desc: "Нежные грибы в сливочном соусе" },
-                        { name: "Куриные наггетсы с соусом", img: "img/menu/nuggets.jpg", desc: "Хрустящие кусочки куриного филе" }
-                    ]
-                },
+                        { name: "Куриные наггетсы с соусом", img: "img/menu/nuggets.jpg", desc: "Хрустящие кусочки куриного филе" } ] },
                 main: { name: "Горячие блюда", type: "dish",
                     items: [
                         { name: "Шашлык куриный", img: "img/menu/chicken-shashlik.jpg", desc: "С маринованным луком" },
-                        { name: "Шашлык из шеи свинины", img: "img/menu/pork-shashlik.jpg", desc: "С маринованным луком" }
-                    ]
-                },
+                        { name: "Шашлык из шеи свинины", img: "img/menu/pork-shashlik.jpg", desc: "С маринованным луком" } ] },
                 garnish: { name: "Гарнир", type: "simple",
-                    items: ["Картофель «Айдахо»", "Овощи гриль"]
-                },
+                    items: ["Картофель «Айдахо»", "Овощи гриль"] },
                 sauce: { name: "Соус", type: "simple",
-                    items: ["Томатный соус с пряностями"]
-                },
+                    items: ["Томатный соус с пряностями"] },
                 bread: { name: "Хлебный буфет", type: "simple",
-                    items: ["Хлебное ассорти (3 вида)"]
-                },
+                    items: ["Хлебное ассорти (3 вида)"] },
                 drinks: { name: "Напитки", type: "simple",
-                    items: ["Домашний морс (4 вида)", "Чай чёрный и зелёный", "Кофе растворимый"]
-                }
+                    items: ["Домашний морс (4 вида)", "Чай чёрный и зелёный", "Кофе растворимый"] }
             }
         },
         buffet: {
@@ -366,15 +333,12 @@
             price: "По договоренности",
             categories: {
                 cold: { name: "Холодные закуски", type: "simple",
-                    items: ["Ассорти свежих овощей", "Сырное плато", "Мясное плато", "Брускетта с красной икрой", "Рулетики из ветчины", "Капрезе", "Винная закуска", "Фруктовое ассорти"]
-                },
+                    items: ["Ассорти свежих овощей", "Сырное плато", "Мясное плато", "Брускетта с красной икрой", "Рулетики из ветчины", "Капрезе", "Винная закуска", "Фруктовое ассорти"] },
                 hot: { name: "Горячие закуски", type: "dish",
                     items: [
                         { name: "Жульен с курой и грибами", img: "img/menu/julien.jpg", desc: "" },
                         { name: "Шашлычок овощной", img: "img/menu/julien.jpg", desc: "" },
-                        { name: "Шашлычок из свинины", img: "img/menu/julien.jpg", desc: "" }
-                    ]
-                }
+                        { name: "Шашлычок из свинины", img: "img/menu/julien.jpg", desc: "" } ] }
             }
         },
         vegetarian: {
@@ -382,14 +346,11 @@
             price: "2800",
             categories: {
                 cold: { name: "Холодные закуски", type: "simple",
-                    items: ["Овощные роллы", "Гуакамоле с тортильей", "Фалафель", "Табуле"]
-                },
+                    items: ["Овощные роллы", "Гуакамоле с тортильей", "Фалафель", "Табуле"] },
                 hot: { name: "Горячие блюда", type: "simple",
-                    items: ["Рататуй", "Запечённые овощи с тофу", "Грибной жульен (веган)"]
-                },
+                    items: ["Рататуй", "Запечённые овощи с тофу", "Грибной жульен (веган)"] },
                 salads: { name: "Салаты", type: "simple",
-                    items: ["Греческий салат", "Салат с киноа и авокадо", "Цезарь без курицы"]
-                }
+                    items: ["Греческий салат", "Салат с киноа и авокадо", "Цезарь без курицы"] }
             }
         },
         bbq: {
@@ -397,27 +358,197 @@
             price: "2400",
             categories: {
                 cold: { name: "Холодные закуски", type: "simple",
-                    items: ["Ассорти свежих овощей", "Ассорти солений", "Ветчинные рулетики"]
-                },
+                    items: ["Ассорти свежих овощей", "Ассорти солений", "Ветчинные рулетики"] },
                 salads: { name: "Салаты", type: "simple",
-                    items: ["Салат Цезарь с пряной курицей", "Греческий салат", "Фруктовый салат"]
-                },
+                    items: ["Салат Цезарь с пряной курицей", "Греческий салат", "Фруктовый салат"] },
                 main: { name: "Горячие блюда", type: "dish",
                     items: [
                         { name: "Шашлык куриный", img: "img/menu/chicken-shashlik.jpg", desc: "С маринованным луком" },
                         { name: "Шашлык из свинины", img: "img/menu/pork-shashlik.jpg", desc: "С маринованным луком" },
                         { name: "Шашлык из баранины", img: "img/menu/pork-shashlik.jpg", desc: "С маринованным луком" },
-                        { name: "Куриные крылышки", img: "img/menu/pork-shashlik.jpg", desc: "В соусе BBQ" }
+                        { name: "Куриные крылышки", img: "img/menu/pork-shashlik.jpg", desc: "В соусе BBQ" } ] },
+                garnish: { name: "Гарнир", type: "simple",
+                    items: ["Картофель «Айдахо»", "Овощи гриль"] },
+                sauce: { name: "Соус", type: "simple",
+                    items: ["Томатный соус", "Домашняя аджика", "Соус BBQ", "Сметанно-чесночный соус"] },
+                drinks: { name: "Напитки", type: "simple",
+                    items: ["Домашний морс", "Лимонад"] }
+            }
+        },
+		retreat: {
+            name: "Ретрит",
+            price: "3000",
+            categories: {
+                day1: { name: "📅 День 1", type: "simple",
+                    items: [
+                        "<strong>🍳 ЗАВТРАК</strong>",
+                        "• Каша из гречневой крупы с орехами",
+                        "• Сырники с яблочным джемом",
+                        "• Ассорти из печений",
+                        "• Свежеиспеченные круассаны",
+                        "• Чай, кофе",
+                        "",
+                        "<strong>🍲 ОБЕД</strong>",
+                        "• Витаминный салат с рукколой, огурцом, помидорами и лимонным соусом",
+                        "• Шурпа с говядиной/бараниной",
+                        "• Картофель айдахо с баварскими колбасками",
+                        "• Плов с курицей",
+                        "• Хлебная корзина",
+                        "• Чай, кофе / Морс",
+                        "",
+                        "<strong>🌙 УЖИН</strong>",
+                        "• Салат с хрустящими баклажанами, розовыми томатами и красным луком",
+                        "• Булгур с треской в сливочном соусе",
+                        "• Жаренные фрукты с мороженным",
+                        "• Чай, кофе"
                     ]
                 },
-                garnish: { name: "Гарнир", type: "simple",
-                    items: ["Картофель «Айдахо»", "Овощи гриль"]
+                day2: { name: "📅 День 2", type: "simple",
+                    items: [
+                        "<strong>🍳 ЗАВТРАК</strong>",
+                        "• Яичница с помидорами",
+                        "• Овсяная каша с фруктами",
+                        "• Блины со сгущенкой",
+                        "• Чай, кофе",
+                        "",
+                        "<strong>🍲 ОБЕД</strong>",
+                        "• Овощи гриль (баклажан, кабачок, перец, кукуруза)",
+                        "• Шашлык из куриной грудки в сливочном маринаде",
+                        "• Шашлык из свинины в классическом маринаде",
+                        "• Борщ со сметаной",
+                        "• Хлебная корзина",
+                        "• Чай, кофе / Морс",
+                        "",
+                        "<strong>🌙 УЖИН</strong>",
+                        "• Салат «Цезарь»",
+                        "• Шампиньоны с чесночным маслом и зеленью",
+                        "• Паэлья с морепродуктами",
+                        "• Паста «Карбонара»",
+                        "• Медовая панакота",
+                        "• Чай, кофе"
+                    ]
                 },
-                sauce: { name: "Соус", type: "simple",
-                    items: ["Томатный соус", "Домашняя аджика", "Соус BBQ", "Сметанно-чесночный соус"]
+                day3: { name: "📅 День 3", type: "simple",
+                    items: [
+                        "<strong>🍳 ЗАВТРАК</strong>",
+                        "• Картофельные драники",
+                        "• Омлет с ветчиной",
+                        "• Ягодный йогурт",
+                        "• Тосты с маслом",
+                        "• Чай, кофе",
+                        "",
+                        "<strong>🍲 ОБЕД</strong>",
+                        "• Рагу с курицей",
+                        "• Уха по-царски (лосось/осетр/сазан)",
+                        "• Салат с чечевицей и шпинатом",
+                        "• Хлебная корзина",
+                        "• Чай, кофе / Кисель",
+                        "",
+                        "<strong>🌙 УЖИН</strong>",
+                        "• Овощной салат с грецкими орехами и гранатом",
+                        "• Греча в нежном курином соусе",
+                        "• Фруктовый салат",
+                        "• Чай, кофе"
+                    ]
                 },
-                drinks: { name: "Напитки", type: "simple",
-                    items: ["Домашний морс", "Лимонад"]
+                info: { name: "ℹ️ Информация", type: "simple",
+                    items: [
+                        "══════════════════════════════",
+                        "💰 Стоимость 1 дня, от 10 человек за одну персону – 3000 ₽",
+                        "══════════════════════════════",
+                        "📌 Минимальный заказ — от 10 человек",
+                        "📌 Возможно составление индивидуального меню"
+                    ]
+                }
+            }
+        },
+        retreatpp: {
+            name: "Ретрит ПП",
+            price: "2500",
+            categories: {
+                day1: { name: "📅 День 1", type: "simple",
+                    items: [
+                        "<strong>🍳 ЗАВТРАК</strong>",
+                        "• Каша из гречневой крупы с орехами",
+                        "• Сырники с яблочным джемом",
+                        "• Ассорти из печений",
+                        "• Свежеиспеченные круассаны",
+                        "• Чай, кофе",
+                        "",
+                        "<strong>🍲 ОБЕД</strong>",
+                        "• Витаминный салат с рукколой, огурцом, помидорами и лимонным соусом",
+                        "• Крем-суп из шпината",
+                        "• Орзо с овощами",
+                        "• Птитим с фасолью",
+                        "• Хлебная корзина",
+                        "• Чай, кофе / Морс",
+                        "",
+                        "<strong>🌙 УЖИН</strong>",
+                        "• Овощной салат",
+                        "• Ризотто с овощами",
+                        "• Киноа с овощами",
+                        "• Фруктовый салат",
+                        "• Чай, кофе"
+                    ]
+                },
+                day2: { name: "📅 День 2", type: "simple",
+                    items: [
+                        "<strong>🍳 ЗАВТРАК</strong>",
+                        "• Яичница из тофу с помидорами и шпинатом",
+                        "• Овсяная каша",
+                        "• Блины со сгущенкой",
+                        "• Чай, кофе",
+                        "",
+                        "<strong>🍲 ОБЕД</strong>",
+                        "• Запеченные овощи (морковь, цветная капуста, брокколи)",
+                        "• Булгур с овощами",
+                        "• Плов с овощами",
+                        "• Сырный крем-суп",
+                        "• Хлебная корзина",
+                        "• Чай, кофе / Морс",
+                        "",
+                        "<strong>🌙 УЖИН</strong>",
+                        "• Салат из чечевицы с перцем и зеленью",
+                        "• Шампиньоны с чесночным маслом и зеленью",
+                        "• Овощное ризотто с грибами",
+                        "• Жаренные фрукты с мороженным",
+                        "• Чай, кофе"
+                    ]
+                },
+                day3: { name: "📅 День 3", type: "simple",
+                    items: [
+                        "<strong>🍳 ЗАВТРАК</strong>",
+                        "• Кабачковые оладьи",
+                        "• Яичница с овощами",
+                        "• Оладьи на кефире",
+                        "• Чай, кофе",
+                        "",
+                        "<strong>🍲 ОБЕД</strong>",
+                        "• Ассорти запеченных овощей и грибов",
+                        "• Крем-суп из сладкого картофеля",
+                        "• Салат с киноа, овощами и лимонным соусом",
+                        "• Хлебная корзина",
+                        "• Чай, кофе / Кисель",
+                        "",
+                        "<strong>🌙 УЖИН</strong>",
+                        "• Овощной салат с грецкими орехами и гранатом",
+                        "• Булгур с овощами",
+                        "• Фруктовое желе",
+                        "• Чай, кофе"
+                    ]
+                },
+                info: { name: "ℹ️ Информация", type: "simple",
+                    items: [
+                        "══════════════════════════════",
+                        "🥗 Вегетарианское меню",
+                        "❌ Блюда не содержат мяса и рыбы",
+                        "🥚 Возможно включение яиц и молочных продуктов",
+                        "══════════════════════════════",
+                        "💰 Стоимость 1 дня, от 10 человек за одну персону – 2500 ₽",
+                        "══════════════════════════════",
+                        "📌 Минимальный заказ — от 10 человек",
+                        "📌 Возможно составление индивидуального меню"
+                    ]
                 }
             }
         }
@@ -480,34 +611,47 @@
 </script>
 
 <script>
-    // Бургер-меню для страницы меню
-    document.addEventListener('DOMContentLoaded', function() {
-        const hamburger = document.getElementById('mobile-hamburger');
-        const mobileMenu = document.getElementById('mobile-menu-overlay');
-        
-        if (hamburger && mobileMenu) {
-            hamburger.addEventListener('click', function(e) {
+    // ========== ПРОСТОЙ БУРГЕР-МЕНЮ ДЛЯ ВСЕХ СТРАНИЦ ==========
+    (function() {
+        function initBurger() {
+            const burger = document.getElementById('mobile-hamburger');
+            const menu = document.getElementById('mobile-menu-overlay');
+            
+            if (!burger || !menu) return;
+            
+            // Открытие/закрытие
+            burger.onclick = function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                mobileMenu.classList.toggle('active');
-                hamburger.classList.toggle('active');
+                menu.classList.toggle('active');
+                burger.classList.toggle('active');
+            };
+            
+            // Закрытие при клике на ссылку
+            menu.querySelectorAll('a').forEach(link => {
+                link.onclick = function() {
+                    menu.classList.remove('active');
+                    burger.classList.remove('active');
+                };
             });
             
-            mobileMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', function() {
-                    mobileMenu.classList.remove('active');
-                    hamburger.classList.remove('active');
-                });
-            });
-            
-            document.addEventListener('click', function(e) {
-                if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
-                    mobileMenu.classList.remove('active');
-                    hamburger.classList.remove('active');
+            // Закрытие при клике вне меню
+            document.onclick = function(e) {
+                if (menu.classList.contains('active')) {
+                    if (!menu.contains(e.target) && !burger.contains(e.target)) {
+                        menu.classList.remove('active');
+                        burger.classList.remove('active');
+                    }
                 }
-            });
+            };
         }
-    });
+        
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initBurger);
+        } else {
+            initBurger();
+        }
+    })();
 </script>
 </body>
 </html>
