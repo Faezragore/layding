@@ -156,7 +156,8 @@ const venuesData = [
     { name: "Центр активного отдыха «Изумрудное озеро»", img: "img/venues/emeraldlake.jpg", type: "terrace", capacity: 35, desc: "Центр активного отдыха" },
     { name: "Хорошее место!", img: "img/venues/goodplace.jpg", type: "tent", capacity: 15, desc: "Хорошее место для хороших людей" },
     { name: "Центр активного отдыха «Илоранта»", img: "img/venues/iloranta.jpg", type: "terrace", capacity: 70, desc: "Берег радости" },
-    { name: "Загородная площадка «В Кругу своих»", img: "img/venues/v-krugu-svoih.jpg", type: "tent", capacity: 30, desc: "Уютные праздники у костра" }
+    { name: "Загородная площадка «В Кругу своих»", img: "img/venues/v-krugu-svoih.jpg", type: "tent", capacity: 30, desc: "Уютные праздники у костра" },
+    { name: "Загородные дома КЛЮЧ. Пионерское", img: "img/venues/klyuch.jpg", type: "tent", capacity: 20, desc: "Организация Ретрита для вас!" },
 ];
 
 const venuesGrid = document.getElementById('venuesGrid');
@@ -198,6 +199,7 @@ function renderVenues() {
         else if (name.includes('хорошее место')) venueId = 'goodplace';
         else if (name.includes('илоранта')) venueId = 'iloranta';
         else if (name.includes('в кругу своих')) venueId = 'v-krugu-svoih';
+        else if (name.includes('ключ')) venueId = 'klyuch';
         else venueId = 'amnesia';
         
         return `
@@ -291,14 +293,14 @@ const partnersData = [
     },
     {
         id: "partner3",
-        name: "Золотой ключ и Ко",
+        name: "ВСЦ «Северо-Запад",
         img: "img/partners/partner3.jpg",
-        desc: "Организация мероприятий",
-        fullDesc: "<p>Организует корпоративные мероприятия, тимбилдинг, квесты</p>",
-        address: "Санкт-Петербург, ул. Восстания 40/18",
+        desc: "Приключения начинаются!",
+        fullDesc: "<p>ВСЦ «Северо-Запад». Приключения начинаются — для незабываемых корпоративов и увлекательных школьных праздников!Квесты-приключения в городе, за городом, в крепостях и фортах, полевая кухня, военно-исторические экскурсии, интерактивные экскурсии — детям и взрослым!</p>",
+        address: "Санкт-Петербург",
         phone: "+7 (921) 763-81-33",
         email: "povodest@yandex.ru",
-        website: "openkey.spb.ru/"
+        website: "vk.ru/nw_quest"
     }
 ];
 
