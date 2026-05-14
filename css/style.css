@@ -713,6 +713,7 @@ footer {
     line-height: 1.5;
     margin-bottom: 20px;
 }
+
 /* ========== ДЕТАЛЬНАЯ СТРАНИЦА ПАРТНЁРА ========== */
 .partner-detail-page {
     min-height: 100vh;
@@ -880,22 +881,18 @@ footer {
 
 /* ========== АДАПТИВ (МОБИЛЬНАЯ ВЕРСИЯ) ========== */
 @media (max-width: 768px) {
-    /* Скрываем горизонтальное меню */
     .menu {
         display: none;
     }
     
-    /* Показываем бургер */
     .hamburger {
         display: flex;
     }
     
-    /* Кнопки в шапке скрываем */
     .nav-buttons {
         display: none;
     }
     
-    /* Кнопки герой вертикально */
     .hero-buttons {
         flex-direction: column;
         align-items: center;
@@ -905,19 +902,16 @@ footer {
         width: 200px;
     }
     
-    /* Иконки меню 2 в ряд */
     .menu-icons-grid {
         grid-template-columns: repeat(2, 1fr);
         max-width: 400px;
     }
     
-    /* Галерея вертикально */
     .gallery-grid {
         grid-template-columns: 1fr;
         max-width: 400px;
     }
     
-    /* Контакты вертикально */
     .contacts-container {
         flex-direction: column;
         align-items: center;
@@ -928,7 +922,6 @@ footer {
         justify-content: center;
     }
     
-    /* Партнёры 1 колонка */
     .partners-grid {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -958,7 +951,6 @@ footer {
         font-size: 13px;
     }
     
-    /* Детальная страница партнёра */
     .partner-detail-content {
         padding: 100px 5% 60px;
     }
@@ -969,11 +961,11 @@ footer {
     }
     
     .partner-detail-img {
-       background-size: contain;
-       background-position: center;
-       background-repeat: no-repeat;
-       background-color: #1a1a1a;
-       min-height: 450px;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: #1a1a1a;
+        min-height: 450px;
     }
     
     .partner-detail-info {
@@ -999,7 +991,6 @@ footer {
         align-self: stretch;
     }
     
-    /* Площадки */
     .venues-section {
         padding: 80px 5% 50px;
     }
@@ -1022,21 +1013,18 @@ footer {
     }
 }
 
-/* На компьютере картинка партнёра без обрезки */
 @media (min-width: 1025px) {
     .partner-detail-img {
         background-size: contain;
     }
 }
 
-/* ========== ПЛАНШЕТЫ ========== */
 @media (min-width: 768px) and (max-width: 1024px) {
     .menu-icons-grid {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-/* ========== КОМПЬЮТЕР ========== */
 @media (min-width: 1025px) {
     .hamburger {
         display: none;
@@ -1051,7 +1039,6 @@ footer {
     }
 }
 
-/* ========== ФИКС КАРТИНКИ ПАРТНЁРА (БЕЗ ОБРЕЗКИ) ========== */
 .partner-detail-img {
     background-size: contain !important;
     background-position: center !important;
@@ -1062,10 +1049,170 @@ footer {
     height: auto !important;
 }
 
-/* Для телефона */
 @media (max-width: 768px) {
     .partner-detail-img {
         min-height: 250px !important;
         background-size: contain !important;
+    }
+}
+
+/* ========== СТРАНИЦА МЕНЮ (КАК НА SOULKITCHEN) ========== */
+.menu-categories {
+    position: sticky;
+    top: 80px;
+    background: #0a0a0a;
+    z-index: 100;
+    padding: 15px 0;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.cat-btn {
+    padding: 10px 24px;
+    background: #1e1e1e;
+    border: none;
+    color: #e5e5e5;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 14px;
+    border-radius: 30px;
+}
+
+.cat-btn:hover, .cat-btn.active {
+    background: #c7a55b;
+    color: #0a0a0a;
+}
+
+.category-content {
+    display: block !important;
+    margin-bottom: 60px;
+    scroll-margin-top: 120px;
+}
+
+.category-grid {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.category-img {
+    flex: 0 0 500px;
+    width: 500px;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 24px;
+    position: sticky;
+    top: 150px;
+}
+
+.category-items {
+    flex: 1;
+}
+
+.simple-menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.simple-item {
+    padding: 12px 0;
+    border-bottom: 1px dashed #2a2a2a;
+}
+
+.simple-item-name {
+    font-weight: 500;
+    color: #e5e5e5;
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    .menu-categories {
+        top: 70px;
+        overflow-x: auto;
+        white-space: nowrap;
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 8px;
+        padding: 10px 5%;
+    }
+    
+    .cat-btn {
+        display: inline-block;
+        white-space: nowrap;
+    }
+    
+    .category-grid {
+        flex-direction: column;
+    }
+    
+    .category-img {
+        flex: 0 0 auto;
+        width: 100%;
+        height: 280px;
+        position: relative;
+        top: 0;
+    }
+}
+
+/* ========== ПЛАВАЮЩАЯ ЦЕНА ========== */
+/* ========== ПЛАВАЮЩАЯ ЦЕНА ========== */
+.floating-price {
+    position: absolute;
+    right: 30px;
+    top: 200px;
+    width: 140px;
+    height: 140px;
+    background: #c7a55b;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #0a0a0a;
+    font-weight: 700;
+    z-index: 999;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+.floating-price .price-value {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.floating-price .price-label {
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 5px;
+    line-height: 1.2;
+    white-space: normal;
+    max-width: 120px;
+}
+
+.floating-price:hover {
+    background: #e6a0a0;
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+@media (max-width: 768px) {
+    .floating-price {
+        width: 100px;
+        height: 100px;
+        right: 15px;
+        top: auto;
+        bottom: 15px;
+        position: fixed;
+    }
+    .floating-price .price-value {
+        font-size: 20px;
+    }
+    .floating-price .price-label {
+        font-size: 9px;
     }
 }
