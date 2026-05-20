@@ -1057,14 +1057,16 @@ footer {
 }
 
 /* ========== СТРАНИЦА МЕНЮ (КАК НА SOULKITCHEN) ========== */
+
+/* ========== КНОПКИ КАТЕГОРИЙ (ГОРИЗОНТАЛЬНО) ========== */
 .menu-categories {
-    position: sticky;
-    top: 80px;
-    background: #0a0a0a;
-    z-index: 100;
-    padding: 15px 0;
-    margin-bottom: 30px;
-    border-bottom: 1px solid #2a2a2a;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 40px;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 .cat-btn {
@@ -1076,6 +1078,7 @@ footer {
     transition: all 0.3s;
     font-size: 14px;
     border-radius: 30px;
+    white-space: nowrap;
 }
 
 .cat-btn:hover, .cat-btn.active {
@@ -1083,31 +1086,51 @@ footer {
     color: #0a0a0a;
 }
 
-.category-content {
-    display: block !important;
-    margin-bottom: 60px;
-    scroll-margin-top: 120px;
-}
-
-.category-grid {
+/* Общий контейнер для всей страницы меню */
+.menu-wrapper {
+    position: relative;
     display: flex;
-    gap: 40px;
+    gap: 60px;
     align-items: flex-start;
 }
 
-.category-img {
-    flex: 0 0 500px;
-    width: 500px;
-    height: 500px;
+/* ЛЕВАЯ КОЛОНКА - ФИКСИРОВАННАЯ КАРТИНКА */
+.menu-sticky-image {
+    position: sticky;
+    top: 150px;
+    width: 450px;
+    flex-shrink: 0;
+}
+
+.category-sticky-img {
+    width: 100%;
+    height: 450px;
     background-size: cover;
     background-position: center;
     border-radius: 24px;
-    position: sticky;
-    top: 150px;
+    transition: opacity 0.3s ease;
 }
 
-.category-items {
+/* ПРАВАЯ КОЛОНКА - ПРОКРУЧИВАЕМЫЙ ТЕКСТ */
+.menu-scroll-content {
     flex: 1;
+}
+
+/* Каждая категория - отдельный блок */
+.category-content {
+    scroll-margin-top: 120px;
+    margin-bottom: 80px;
+}
+
+.category-header {
+    margin-bottom: 25px;
+}
+
+.category-header h3 {
+    font-size: 1.8rem;
+    color: #c7a55b;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 10px;
 }
 
 .simple-menu-items {
@@ -1125,43 +1148,51 @@ footer {
     font-weight: 500;
     color: #e5e5e5;
     font-size: 16px;
+    line-height: 1.5;
 }
 
-@media (max-width: 768px) {
-    .menu-categories {
-        top: 70px;
-        overflow-x: auto;
-        white-space: nowrap;
-        display: flex;
-        flex-wrap: nowrap;
-        gap: 8px;
-        padding: 10px 5%;
-    }
-    
-    .cat-btn {
-        display: inline-block;
-        white-space: nowrap;
-    }
-    
-    .category-grid {
+/* Адаптив для планшетов */
+@media (max-width: 992px) {
+    .menu-wrapper {
         flex-direction: column;
     }
     
-    .category-img {
-        flex: 0 0 auto;
-        width: 100%;
-        height: 280px;
+    .menu-sticky-image {
         position: relative;
         top: 0;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    
+    .category-sticky-img {
+        height: 300px;
+    }
+}
+
+/* Адаптив для телефонов */
+@media (max-width: 768px) {
+    .menu-categories {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .cat-btn {
+        flex-shrink: 0;
+    }
+    
+    .category-header h3 {
+        font-size: 1.4rem;
     }
 }
 
 /* ========== ПЛАВАЮЩАЯ ЦЕНА ========== */
-/* ========== ПЛАВАЮЩАЯ ЦЕНА ========== */
 .floating-price {
     position: absolute;
-    right: 30px;
-    top: 200px;
+    right: -240px;
+    top: 0;
     width: 140px;
     height: 140px;
     background: #c7a55b;
@@ -1208,6 +1239,7 @@ footer {
         top: auto;
         bottom: 15px;
         position: fixed;
+        transform: none;
     }
     .floating-price .price-value {
         font-size: 20px;

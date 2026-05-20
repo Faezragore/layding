@@ -264,7 +264,8 @@
     
     <div class="menu-categories" id="categoriesContainer"></div>
     <div id="categoriesContent"></div>
-	<!-- Плавающая цена -->
+    
+    <!-- Плавающая цена -->
     <div class="floating-price" id="floatingPrice">
         от <span class="price-value">3300</span> ₽<br>
         <span class="price-label">на человека</span>
@@ -323,13 +324,13 @@
                     items: ["Ассорти свежих овощей с зелёным маслом", "Ассорти солений и маринадов", "Мясное плато", "Сырное плато", "Пряная сельдь с картофелем", "Винная закуска (маслины, оливки)"] },
                 salads: { name: "Салаты", type: "simple", img: "img/menu/banquet/caesar.jpg",
                     items: ["Салат Цезарь с куриным шашлыком", "Оливье"] },
-                hot: { name: "Горячие закуски", type: "dish", img: "img/menu/banquet/куриные нагетсы.jpg",
+                hot: { name: "Горячие закуски", type: "dish", img: "img/menu/banquet/Грибной жульен с сыром.jpg",
                     items: [
                         { name: "Грибной жульен с сыром", img: "img/menu/banquet/julien.jpg", desc: "Нежные грибы в сливочном соусе" },
                         { name: "Куриные наггетсы с соусом", img: "img/menu/banquet/nuggets.jpg", desc: "Хрустящие кусочки куриного филе" } ] },
-                main: { name: "Горячие блюда", type: "dish", img: "img/menu/banquet/main.jpg",
+                main: { name: "Горячие блюда", type: "dish", img: "img/menu/banquet/шашлык_куриный.jpg",
                     items: [
-                        { name: "Шашлык куриный", img: "img/menu/banquet/шашклык куриный.jpg", desc: "С маринованным луком" },
+                        { name: "Шашлык куриный", img: "img/menu/banquet/шашлык куриный.jpg", desc: "С маринованным луком" },
                         { name: "Шашлык из шеи свинины", img: "img/menu/banquet/свиной шашлык.webp", desc: "С маринованным луком" } ] },
                 garnish: { name: "Гарнир", type: "simple", img: "img/menu/banquet/овощи гриль.jpg",
                     items: ["Картофель «Айдахо»", "Овощи гриль"] },
@@ -447,6 +448,10 @@
     const menu = menusData[menuId];
     
     if (menu) {
+        // Сохраняем данные в глобальные переменные
+        window.currentMenuData = menu;
+        window.menuCategoriesData = menu.categories;
+        
         document.getElementById('menuTitle').textContent = menu.name;
         document.getElementById('priceBadge').innerHTML = `от <b>${menu.price} ₽</b><br>на человека`;
         
@@ -460,7 +465,7 @@
             `<button class="cat-btn ${index === 0 ? 'active' : ''}" data-cat="${key}">${categories[key].name}</button>`
         ).join('');
         
-        // Контент категорий с картинкой
+        // Контент категорий (только текст, без картинок)
         categoriesContent.innerHTML = catNames.map((key) => {
             const cat = categories[key];
             let itemsHtml = '';
@@ -483,20 +488,69 @@
                 `;
             }
             
-            const categoryImg = cat.img ? `<div class="category-img" style="background-image: url('${cat.img}')"></div>` : '';
-            
             return `
                 <div class="category-content" id="cat-${key}">
-                    <div class="category-grid">
-                        ${categoryImg}
-                        <div class="category-items">${itemsHtml}</div>
+                    <div class="category-header">
+                        <h3>${cat.name}</h3>
                     </div>
+                    ${itemsHtml}
                 </div>
             `;
         }).join('');
         
-        // Убираем старый обработчик кликов по кнопкам (если был)
-        // Скролл-навигация будет ниже
+        // Добавляем левую колонку с фиксированной картинкой
+        const menuDetailContent = document.querySelector('.menu-detail-content');
+        const existingWrapper = document.querySelector('.menu-wrapper');
+        
+        if (!existingWrapper && menuDetailContent) {
+            // Создаём обёртку
+            const wrapper = document.createElement('div');
+            wrapper.className = 'menu-wrapper';
+            
+            // Создаём левую колонку с картинкой
+            const leftColumn = document.createElement('div');
+            leftColumn.className = 'menu-sticky-image';
+            leftColumn.innerHTML = `<div class="category-sticky-img" id="stickyCategoryImg"></div>`;
+            
+            // Переносим существующий контент в правую колонку
+            const rightColumn = document.createElement('div');
+            rightColumn.className = 'menu-scroll-content';
+            
+            if (categoriesContainer && categoriesContent) {
+                // Временно сохраняем контент
+                const tempContainer = categoriesContainer.cloneNode(true);
+                const tempContent = categoriesContent.cloneNode(true);
+                
+                // Очищаем и перестраиваем
+                menuDetailContent.innerHTML = '';
+                
+                wrapper.appendChild(leftColumn);
+                wrapper.appendChild(rightColumn);
+                
+                rightColumn.appendChild(tempContainer);
+                rightColumn.appendChild(tempContent);
+                
+                menuDetailContent.appendChild(wrapper);
+                
+                // Добавляем плавающую цену обратно
+                const floatingPriceDiv = document.querySelector('.floating-price');
+                if (floatingPriceDiv) {
+                    menuDetailContent.appendChild(floatingPriceDiv);
+                }
+            }
+        }
+        
+        // Привязываем плавающую цену к секции "Холодные закуски"
+        (function() {
+            const floatingPrice = document.querySelector('.floating-price');
+            const firstSection = document.querySelector('.category-content');
+            
+            if (floatingPrice && firstSection) {
+                firstSection.style.position = 'relative';
+                firstSection.appendChild(floatingPrice);
+            }
+        })();
+        
     } else {
         document.getElementById('menuTitle').textContent = 'Меню не найдено';
     }
@@ -531,7 +585,6 @@
                 });
             }
             
-            // Плавная прокрутка при клике на кнопку
             catBtns.forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -551,6 +604,71 @@
             document.addEventListener('DOMContentLoaded', initScrollNavigation);
         } else {
             initScrollNavigation();
+        }
+    })();
+</script>
+
+<script>
+    // ========== СМЕНА КАРТИНКИ ПРИ СКРОЛЛЕ ==========
+    (function() {
+        function initStickyImage() {
+            const stickyImg = document.getElementById('stickyCategoryImg');
+            const sections = document.querySelectorAll('.category-content');
+            
+            if (!stickyImg || sections.length === 0) return;
+            
+            // Собираем картинки для каждой категории
+            const categoryImages = {};
+            sections.forEach(section => {
+                const id = section.getAttribute('id');
+                const catKey = id.replace('cat-', '');
+                if (window.currentMenuData && window.currentMenuData.categories[catKey]) {
+                    categoryImages[catKey] = window.currentMenuData.categories[catKey].img;
+                }
+            });
+            
+            let currentImage = '';
+            
+            function updateImage() {
+                const scrollPos = window.scrollY + 200;
+                let activeCategory = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionBottom = sectionTop + section.offsetHeight;
+                    if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+                        activeCategory = section.getAttribute('id').replace('cat-', '');
+                    }
+                });
+                
+                if (activeCategory && categoryImages[activeCategory] && categoryImages[activeCategory] !== currentImage) {
+                    currentImage = categoryImages[activeCategory];
+                    stickyImg.style.opacity = '0';
+                    setTimeout(() => {
+                        if (stickyImg) {
+                            stickyImg.style.backgroundImage = `url('${currentImage}')`;
+                            stickyImg.style.opacity = '1';
+                        }
+                    }, 150);
+                }
+            }
+            
+            // Устанавливаем первую картинку
+            if (sections.length > 0 && window.currentMenuData) {
+                const firstKey = sections[0].getAttribute('id').replace('cat-', '');
+                if (window.currentMenuData.categories[firstKey] && window.currentMenuData.categories[firstKey].img) {
+                    stickyImg.style.backgroundImage = `url('${window.currentMenuData.categories[firstKey].img}')`;
+                }
+            }
+            
+            window.addEventListener('scroll', updateImage);
+            window.addEventListener('load', updateImage);
+        }
+        
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initStickyImage);
+        } else {
+            initStickyImage();
         }
     })();
 </script>
@@ -596,13 +714,23 @@
     })();
 </script>
 <script>
-    // Привязываем плавающую цену к секции "Холодные закуски"
+    // ========== ВОССТАНОВЛЕНИЕ КРУЖКА С ЦЕНОЙ ==========
     (function() {
-        const floatingPrice = document.querySelector('.floating-price');
-        const firstSection = document.querySelector('.category-content');
+        // Находим плавающую цену
+        let floatingPrice = document.querySelector('.floating-price');
         
+        // Если её нет в DOM, создаём заново
+        if (!floatingPrice) {
+            floatingPrice = document.createElement('div');
+            floatingPrice.className = 'floating-price';
+            floatingPrice.id = 'floatingPrice';
+            floatingPrice.innerHTML = `от <span class="price-value">3300</span> ₽<br><span class="price-label">на человека</span>`;
+            document.querySelector('.menu-detail-content').appendChild(floatingPrice);
+        }
+        
+        // Привязываем к первой секции (Холодные закуски)
+        const firstSection = document.querySelector('.category-content');
         if (floatingPrice && firstSection) {
-            // Делаем цену абсолютной относительно первой секции
             firstSection.style.position = 'relative';
             firstSection.appendChild(floatingPrice);
         }
